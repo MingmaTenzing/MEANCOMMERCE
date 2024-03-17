@@ -27,5 +27,7 @@
     </div>
   </div>
 </div>
-<app-search-modal></app-search-modal>
+<div *ngIf="modalState">
+  <app-search-modal></app-search-modal>
+</div>
 <app-bottom-nav></app-bottom-nav>

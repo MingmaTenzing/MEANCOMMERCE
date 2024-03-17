@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchModalService } from '../../../../services/search-modal.service';
 
@@ -9,4 +9,18 @@ import { SearchModalService } from '../../../../services/search-modal.service';
   templateUrl: './search-modal.component.html',
   styleUrl: './search-modal.component.css',
 })
-export class SearchModalComponent {}
+export class SearchModalComponent implements OnInit {
+  isModalOpen: Boolean = false;
+  constructor(private searchService: SearchModalService) {}
+  ngOnInit(): void {
+    const data = this.searchService
+      .watch()
+      .subscribe((value) => (this.isModalOpen = value));
+    console.log(this.isModalOpen);
+  }
+
+  closeModal() {
+    this.searchService.close();
+    console.log(this.isModalOpen);
+  }
+}
