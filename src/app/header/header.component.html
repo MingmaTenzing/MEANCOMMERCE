@@ -1,16 +1,31 @@
-<div class="w-full bg-[#2484C2] h-20 p-4 flex justify-between">
-  <img src="./../../assets/logo.svg" class="invert w-24" />
-  <!-- SEARCH BAR  -->
-  <div></div>
-  <div class="flex space-x-4">
-    <img class="w-6" src="./../../assets/images/cart.svg" />
-    <img class="w-6" src="./../../assets/images/love.svg" />
-    <img class="w-6" src="./../../assets/images/user.svg" />
-    <div (click)="peace()">
-      <img
-        class="w-6 invert md:hidden"
-        src="./../../assets/images/search.svg"
-      />
+<div class="bg-[#191C1F] p-4">
+  <div class="lg:w-[1200px] flex justify-between m-auto">
+    <img class="w-24" src="./../../assets/images/blackfriday.svg" />
+    <img class="w-24" src="./../../assets/images/59off.svg" />
+    <img class="w-24" src="./../../assets/images/shop now.svg" />
+  </div>
+</div>
+<div class="bg-[#2484C2] p-6">
+  <div class="lg:w-[1200px] flex m-auto items-center justify-between">
+    <img src="./../../assets/logo.svg" class="invert w-24" />
+    <!-- SEARCH BAR  -->
+    <div class="h-8 p-2 bg-white hidden md:flex">
+      <input class="outline-none w-[320px] text-black" />
+      <img class="w-6 hidden md:flex" src="./../../assets/images/search.svg" />
+    </div>
+    <div class="flex space-x-4">
+      <img class="w-6" src="./../../assets/images/cart.svg" />
+      <img class="w-6" src="./../../assets/images/love.svg" />
+      <img class="w-6" src="./../../assets/images/user.svg" />
+      <button type="button">
+        <img
+          class="w-6 invert md:hidden"
+          (click)="changeState()"
+          src="./../../assets/images/search.svg"
+        />
+      </button>
     </div>
   </div>
 </div>
+<app-search-modal></app-search-modal>
+<app-bottom-nav></app-bottom-nav>
