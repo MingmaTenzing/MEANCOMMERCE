@@ -1,7 +1,47 @@
 <div
-  class="w-[190px] lg:w-[300px] h-[296px] border p-2 md:p-4 flex flex-col items-center space-y-2"
+  (mouseenter)="hovering()"
+  (mouseleave)="notHovering()"
+  class="w-[170px] md:w-[200px] lg:w-[300px] h-[296px] border p-2 md:p-4 flex flex-col items-center space-y-2"
 >
-  <img src="../../../assets/images/drone.svg" class="h-[188px]" />
+  <div class="relative w-[full] flex justify-center items-center">
+    <img
+      src="../../../assets/images/drone.svg"
+      class="lg:w-[300px] h-[188px]"
+    />
+    <div
+      *ngIf="isHoveringProduct == true"
+      class="hidden md:flex bg-gray-400 opacity-80 absolute top-0 left-0 w-full h-full"
+    >
+      <div
+        class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-2"
+      >
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/love.svg"
+            class="invert group-hover/hovericons:invert-0"
+          />
+        </div>
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/cart.svg"
+            class="invert group-hover/hovericons:invert-0"
+          />
+        </div>
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/eye.svg"
+            class="group-hover/hovericons:invert"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="space-y-3">
     <p class="text-sm line-clamp-2">
       Bose Sport Earbuds-Wireless Earphones-Bluetooth In Ear
