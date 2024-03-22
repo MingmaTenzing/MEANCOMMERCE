@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         ciliconorange: "#FA8232",
+        ciliconPriceBlue: "#2DA5F3",
       },
     },
   },
