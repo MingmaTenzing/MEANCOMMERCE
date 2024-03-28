@@ -5,6 +5,7 @@ import { BestdealsComponent } from './bestdeals/bestdeals.component';
 import { ShopCategoryComponent } from './shop-category/shop-category.component';
 import { ProductsComponent } from './products/products.component';
 import { BannerComponent } from './banner/banner.component';
+import { ComputerAccessoriesComponent } from './computer-accessories/computer-accessories.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { BannerComponent } from './banner/banner.component';
     ShopCategoryComponent,
     ProductsComponent,
     BannerComponent,
+    ComputerAccessoriesComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
