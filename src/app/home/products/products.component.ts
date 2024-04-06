@@ -8,4 +8,6 @@ import { ProductContainerComponent } from '../../components/product-container/pr
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
-export class ProductsComponent {}
+export class ProductsComponent {
+  
+}
