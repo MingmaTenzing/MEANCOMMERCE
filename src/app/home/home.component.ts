@@ -6,6 +6,7 @@ import { ShopCategoryComponent } from './shop-category/shop-category.component';
 import { ProductsComponent } from './products/products.component';
 import { BannerComponent } from './banner/banner.component';
 import { ComputerAccessoriesComponent } from './computer-accessories/computer-accessories.component';
+import { MacbookBannerComponent } from './macbook-banner/macbook-banner.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { ComputerAccessoriesComponent } from './computer-accessories/computer-ac
     ProductsComponent,
     BannerComponent,
     ComputerAccessoriesComponent,
+    MacbookBannerComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
