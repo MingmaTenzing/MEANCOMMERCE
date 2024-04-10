@@ -8,6 +8,7 @@ import { BannerComponent } from './banner/banner.component';
 import { ComputerAccessoriesComponent } from './computer-accessories/computer-accessories.component';
 import { MacbookBannerComponent } from './macbook-banner/macbook-banner.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
+import { LatestNewsComponent } from './latest-news/latest-news.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
     ComputerAccessoriesComponent,
     MacbookBannerComponent,
     FlashSaleComponent,
+    LatestNewsComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
