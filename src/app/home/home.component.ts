@@ -9,6 +9,7 @@ import { ComputerAccessoriesComponent } from './computer-accessories/computer-ac
 import { MacbookBannerComponent } from './macbook-banner/macbook-banner.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { LatestNewsComponent } from './latest-news/latest-news.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ import { LatestNewsComponent } from './latest-news/latest-news.component';
     MacbookBannerComponent,
     FlashSaleComponent,
     LatestNewsComponent,
+    NewsletterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
