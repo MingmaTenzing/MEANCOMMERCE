@@ -1,5 +1,6 @@
-<div class="p-4 flex space-x-6 text-sm">
+<div class="p-4 flex space-x-6 text-sm relative">
   <div
+    (click)="changeState()"
     class="flex bg-gray-100 hover:bg-ciliconorange group/allcategory p-2 space-x-2"
   >
     <button class="group-hover/allcategory:text-white w-[100px]">
@@ -26,5 +27,16 @@
   <div class="flex text-gray-600 space-x-2 items-center">
     <img src="./../../../assets/icons/info.svg" alt="map icon" />
     <p>Need Help</p>
+  </div>
+
+  <div *ngIf="isAllCategoryOpen" class="absolute top-20 left-0 shadow-lg">
+    <div class="bg-white space-y-6 text-xs p-6 text-gray-600">
+      <p>Computer & Laptop</p>
+      <p>Accessories</p>
+      <p>Smartphone</p>
+      <p>Headphone</p>
+      <p>Mobile Accessories</p>
+      <p>Camera</p>
+    </div>
   </div>
 </div>
