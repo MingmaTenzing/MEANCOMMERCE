@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -23,6 +24,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './upload-products.component.css',
 })
 export class UploadProductsComponent {
+  constructor(private http: HttpClient) {}
+
   title = 'Upload products';
   productForm = new FormGroup({
     name: new FormControl(''),
@@ -36,6 +39,9 @@ export class UploadProductsComponent {
   });
 
   formSubmit() {
+    this.http
+      .post('http://localhost:5000/api/v1/products', this.productForm.value)
+      .subscribe((response) => console.log(response));
     console.log(this.productForm.value);
   }
 }
