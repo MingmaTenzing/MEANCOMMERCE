@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="productForm" (ngSubmit)="formSubmit()">
+  <form [formGroup]="productForm" (ngSubmit)="formSubmit()" class="space-y-4">
     <div>
       <label>Name</label>
       <input type="text" class="border outline-none" formControlName="name" />
@@ -43,11 +43,24 @@
       <label>Brand</label>
       <input type="text" class="border outline-none" formControlName="brand" />
     </div>
-    <div>
-      <label>Images</label>
-      <input type="text" class="border outline-none" formControlName="images" />
-    </div>
-    <button class="border">Submit</button>
+
+    <button class="border bg-green-400 p-2 rounded-lg text-white">
+      Submit
+    </button>
   </form>
+  <div>
+    <label>Images</label>
+    <input
+      type="file"
+      (change)="handleFileInput($event)"
+      class="border outline-none"
+    />
+    <button
+      (click)="uploadImage()"
+      class="border bg-blue-400 text-white p-2 rounded-lg"
+    >
+      Upload Image
+    </button>
+  </div>
 </div>
 <router-outlet></router-outlet>
