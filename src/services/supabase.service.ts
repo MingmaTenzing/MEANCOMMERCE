@@ -7,6 +7,7 @@ import { environment } from '../environment';
 })
 export class SupabaseService {
   private supabase: SupabaseClient;
+
   constructor() {
     this.supabase = createClient(
       environment.supabaseUrl,
@@ -14,9 +15,9 @@ export class SupabaseService {
     );
   }
 
-  // uploadPicture(imageFile: File) {
-  //   return this.supabase.storage
-  //     .from('Product Images')
-  //     .upload('public/testing', imageFile);
-  // }
+  uploadPicture(imageFile: File) {
+    return this.supabase.storage
+      .from('Product Images')
+      .upload('public/testing', imageFile);
+  }
 }

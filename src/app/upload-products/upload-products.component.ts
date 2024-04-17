@@ -25,7 +25,7 @@ import { SupabaseService } from '../../services/supabase.service';
   styleUrl: './upload-products.component.css',
 })
 export class UploadProductsComponent {
-  constructor(private http: HttpClient, private supabase: SupabaseService) {}
+  constructor(private http: HttpClient) {}
 
   uploadedImages: Array<string> = [];
   imagefileToUpload: File | null = null;
@@ -57,6 +57,6 @@ export class UploadProductsComponent {
   }
 
   uploadImage() {
-    // this.supabase.uploadPicture();
+    console.log('hello');
   }
 }
