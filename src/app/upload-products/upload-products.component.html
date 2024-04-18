@@ -1,0 +1,52 @@
+<div>
+  <form [formGroup]="productForm" (ngSubmit)="formSubmit()" class="space-y-4">
+    <div>
+      <label>Name</label>
+      <input type="text" class="border outline-none" formControlName="name" />
+    </div>
+    <div>
+      <label>Price</label>
+      <input
+        type="number"
+        class="border outline-none"
+        formControlName="price"
+      />
+    </div>
+
+    <div>
+      <label>Description</label>
+      <input
+        type="text"
+        class="border outline-none"
+        formControlName="description"
+      />
+    </div>
+
+    <div>
+      <label>Rating</label>
+      <input
+        type="number"
+        class="border outline-none"
+        formControlName="rating"
+      />
+    </div>
+
+    <div>
+      <label>Stock</label>
+      <input
+        type="number"
+        class="border outline-none"
+        formControlName="stock"
+      />
+    </div>
+    <div>
+      <label>Brand</label>
+      <input type="text" class="border outline-none" formControlName="brand" />
+    </div>
+
+    <button class="border bg-green-400 p-2 rounded-lg text-white">
+      Submit
+    </button>
+  </form>
+</div>
+<router-outlet></router-outlet>
