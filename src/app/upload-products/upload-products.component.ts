@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { SupabaseService } from '../../services/supabase.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-upload-products',
@@ -24,12 +24,18 @@ import { SupabaseService } from '../../services/supabase.service';
   templateUrl: './upload-products.component.html',
   styleUrl: './upload-products.component.css',
 })
-export class UploadProductsComponent {
-  constructor(private http: HttpClient) {}
-
+export class UploadProductsComponent implements OnInit, OnDestroy {
   uploadedImages: Array<string> = [];
   imagefileToUpload: File | null = null;
+  sub!: Subscription;
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.sub = this.http
+      .get('http://localhost:5000/api/v1/products')
+      .subscribe((data) => console.log(data));
+  }
   title = 'Upload products';
   productForm = new FormGroup({
     name: new FormControl(''),
@@ -48,15 +54,7 @@ export class UploadProductsComponent {
     console.log(this.productForm.value);
   }
 
-  handleFileInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target.files && target.files.length > 0) {
-      this.imagefileToUpload = target.files[0];
-      console.log(this.imagefileToUpload);
-    }
-  }
-
-  uploadImage() {
-    console.log('hello');
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
