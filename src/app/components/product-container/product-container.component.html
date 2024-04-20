@@ -1,7 +1,7 @@
 <div
   class="w-[176px] md:w-[200px] p-2 lg:m-1 space-y-3 lg:w-[210px] h-[320px] border flex flex-col items-start justify-center"
 >
-  <img src="../../../assets/images/phone.svg" />
+  <img src="{{ product.images[0] }}" />
   <div class="flex items-center space-x-1">
     <div class="flex">
       <img src="../../../assets/icons/star.svg" />
@@ -12,7 +12,7 @@
     <p class="text-[10px] text-gray-400">(738)</p>
   </div>
   <p class="text-sm line-clamp-2">
-    Samsung A71 (Snapdragon 820) Tripple Camera 89W Charging
+    {{ product.name }}
   </p>
-  <p class="font-semibold text-ciliconPriceBlue">$780</p>
+  <p class="font-semibold text-ciliconPriceBlue">${{ product.price }}</p>
 </div>

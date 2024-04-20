@@ -17,6 +17,5 @@ export class TestComponent implements OnInit {
   constructor(private MeanBackend: BackendService) {}
   ngOnInit(): void {
     this.products$ = this.MeanBackend.getData();
-    console.log(this.products$);
   }
 }
