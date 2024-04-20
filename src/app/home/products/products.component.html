@@ -22,14 +22,9 @@
     </div>
 
     <div class="flex flex-wrap justify-center lg:justify-start">
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
-      <app-product-container></app-product-container>
+      <div *ngFor="let item of products | async | slice : 0 : 8">
+        <app-product-container [product]="item"></app-product-container>
+      </div>
     </div>
   </div>
 </div>

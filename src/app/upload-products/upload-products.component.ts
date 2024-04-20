@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './upload-products.component.html',
   styleUrl: './upload-products.component.css',
 })
-export class UploadProductsComponent implements OnInit, OnDestroy {
+export class UploadProductsComponent implements OnInit {
   uploadedImages: Array<string> = [];
   imagefileToUpload: File | null = null;
   sub!: Subscription;
@@ -47,14 +47,14 @@ export class UploadProductsComponent implements OnInit, OnDestroy {
     brand: new FormControl(''),
   });
 
-  formSubmit() {
-    this.http
-      .post('http://localhost:5000/api/v1/products', this.productForm.value)
-      .subscribe((response) => console.log(response));
-    console.log(this.productForm.value);
-  }
+  // formSubmit() {
+  //   this.http
+  //     .post('http://localhost:5000/api/v1/products', this.productForm.value)
+  //     .subscribe((response) => console.log(response));
+  //   console.log(this.productForm.value);
+  // }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.sub.unsubscribe();
+  // }
 }
