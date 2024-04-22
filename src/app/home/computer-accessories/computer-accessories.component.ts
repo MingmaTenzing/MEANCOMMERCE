@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductContainerComponent } from '../../components/product-container/product-container.component';
+import { BackendService } from '../../../services/backend.service';
+import { Observable } from 'rxjs';
+import { MeanProducts } from '../../../types';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-computer-accessories',
   standalone: true,
-  imports: [ProductContainerComponent],
+  imports: [ProductContainerComponent, CommonModule],
   templateUrl: './computer-accessories.component.html',
   styleUrl: './computer-accessories.component.css',
 })
-export class ComputerAccessoriesComponent {}
+export class ComputerAccessoriesComponent implements OnInit {
+  products!: Observable<MeanProducts[]>;
+  constructor(private meanBackend: BackendService) {}
+
+  ngOnInit(): void {
+    this.products = this.meanBackend.getData();
+  }
+}
