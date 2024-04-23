@@ -1,15 +1,8 @@
 <div class="p-4 md:p-0">
   <p class="font-semibold text-xl md:text-2xl my-4">Best Deals</p>
   <div class="flex flex-wrap">
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
-    <app-best-deal-product></app-best-deal-product>
+    <div *ngFor="let item of products | async | slice : 40 : 48">
+      <app-best-deal-product [product]="item"></app-best-deal-product>
+    </div>
   </div>
 </div>

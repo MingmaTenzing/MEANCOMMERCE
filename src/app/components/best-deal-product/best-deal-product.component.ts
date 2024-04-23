@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MeanProducts } from '../../../types';
 
 @Component({
   selector: 'app-best-deal-product',
@@ -9,6 +10,7 @@ import { Component } from '@angular/core';
   styleUrl: './best-deal-product.component.css',
 })
 export class BestDealProductComponent {
+  @Input() product!: MeanProducts;
   isHoveringProduct: boolean = false;
   hovering() {
     this.isHoveringProduct = true;
