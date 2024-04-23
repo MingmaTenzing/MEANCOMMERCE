@@ -1,0 +1,12 @@
+<div
+  class="border justify-center m-2 space-x-3 items-center h-[104px] flex w-[240px] max-w-[240px] lg:w-[280px] lg:max-w-[280px] p-2"
+>
+  <img src="{{ product.images[0] }}" class="w-[80px] h-[80px] object-contain" />
+
+  <div class="space-y-2">
+    <p class="text-[12px] line-clamp-2">{{ product.name }}</p>
+    <p class="text-[12px] text-ciliconPriceBlue font-semibold">
+      ${{ product.price }}
+    </p>
+  </div>
+</div>
