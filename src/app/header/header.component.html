@@ -13,10 +13,12 @@
       <input class="outline-none w-[320px] text-black" />
       <img class="w-6 hidden md:flex" src="./../../assets/icons/search.svg" />
     </div>
-    <div class="flex space-x-4">
+    <div class="flex space-x-4 relative">
       <img class="w-6" src="./../../assets/icons/cart.svg" />
       <img class="w-6" src="./../../assets/icons/love.svg" />
-      <img class="w-6" src="./../../assets/icons/user.svg" />
+      <div (click)="userLoginModal()">
+        <img class="w-6" src="./../../assets/icons/user.svg" />
+      </div>
       <button type="button">
         <img
           class="w-6 invert md:hidden"
@@ -24,6 +26,42 @@
           src="./../../assets/icons/search.svg"
         />
       </button>
+
+      <!-- LOGIN FORM MODAL -->
+      <div
+        *ngIf="loginModal"
+        class="absolute -left-0 md:-left-1/2 top-14 -translate-x-1/2 bg-white shadow-2xl shadow-black w-[300px] p-4 rounded-lg space-y-4 z-10"
+      >
+        <h5 class="font-semibold text-center">Sign in to your account</h5>
+        <form class="space-y-4">
+          <div>
+            <label class="text-[12px]">Email Address</label>
+            <input type="email" class="border outline-none w-full h-10" />
+          </div>
+          <div>
+            <label class="text-[12px]">Password</label>
+            <input type="password" class="border outline-none w-full h-10" />
+          </div>
+          <button
+            class="w-full bg-ciliconorange p-2 text-white uppercase text-sm"
+          >
+            login
+          </button>
+        </form>
+        <div class="flex items-center">
+          <div class="w-full border-1 h-[0.5px] bg-gray-200"></div>
+          <p class="text-[8px] text-center w-full text-gray-400">
+            Don't have account
+          </p>
+          <div class="w-full border-1 h-[0.5px] bg-gray-200"></div>
+        </div>
+        <button
+          class="uppercase text-center font-semibold text-[10px] text-ciliconorange border p-2 flex items-center justify-center w-full border-ciliconorange border-opacity-45"
+        >
+          create account
+        </button>
+      </div>
+      <!-- /// LOGIN FORM MODAL -->
     </div>
   </div>
 </div>
