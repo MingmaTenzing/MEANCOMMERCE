@@ -4,6 +4,7 @@ import {
   Input,
   NgModule,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
@@ -18,8 +19,9 @@ import { SearchModalService } from '../../../services/search-modal.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   modalState: Boolean = false;
+  loginModal: Boolean = false;
   constructor(private SearchModalService: SearchModalService) {}
 
   ngOnInit(): void {
@@ -38,8 +40,14 @@ export class HeaderComponent implements OnInit {
     console.log(this.modalState);
   }
 
+  userLoginModal() {
+    this.loginModal = !this.loginModal;
+  }
+
   // changeModalState() {
   //   this.SearchModalService.changeModalState();
   //   console.log(this.SearchModalService.isSearchModalOpen);
   // }
+
+  ngOnDestroy(): void {}
 }
