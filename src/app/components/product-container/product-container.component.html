@@ -1,10 +1,48 @@
 <div
   class="w-[176px] md:w-[200px] p-2 lg:m-1 space-y-3 lg:w-[210px] h-[320px] border flex flex-col items-start justify-center"
 >
-  <img
-    src="{{ product.images[0] }}"
-    class="w-[182px] h-[162px] object-contain"
-  />
+  <div (mouseenter)="hovering()" (mouseleave)="notHovering()" class="relative">
+    <img
+      ngSrc="{{ product.images[0] }}"
+      width="182"
+      height="162"
+      class="w-[182px] h-[162px] object-contain"
+    />
+    <div
+      *ngIf="isproductHover"
+      class="hidden md:flex w-full h-full absolute bg-gray-400 opacity-80 top-0"
+    >
+      <div
+        class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 space-x-2"
+      >
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/love.svg"
+            class="invert group-hover/hovericons:invert-0"
+          />
+        </div>
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/cart.svg"
+            class="invert group-hover/hovericons:invert-0"
+          />
+        </div>
+        <div
+          class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/icons/eye.svg"
+            class="group-hover/hovericons:invert"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex items-center space-x-1">
     <div class="flex">
       <img src="../../../assets/icons/star.svg" />
