@@ -13,4 +13,10 @@ export class BackendService {
       'http://localhost:5000/api/v1/products'
     );
   }
+
+  getSingleProduct(id: string) {
+    return this.http.get<MeanProducts>(
+      `http://localhost:5000/api/v1/products/${id}`
+    );
+  }
 }
