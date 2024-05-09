@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MeanProducts } from '../types';
+import { MeanProducts } from '../../types';
 
 @Injectable({
   providedIn: 'root',
