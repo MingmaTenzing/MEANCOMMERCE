@@ -10,5 +10,5 @@ export interface MeanProducts {
   createAt: Date;
   stock: number;
   sku: number;
-  _id: number;
+  _id: string;
 }

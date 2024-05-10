@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FlashContainerComponent } from '../../components/flash-container/flash-container.component';
-import { BackendService } from '../../../services/backend.service';
+import { BackendService } from '../../../services/backend/backend.service';
 import { Observable } from 'rxjs';
 import { MeanProducts } from '../../../types';
 

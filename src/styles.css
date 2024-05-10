@@ -2,6 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
 
 .poppins-thin {
     font-family: "Poppins", sans-serif;
