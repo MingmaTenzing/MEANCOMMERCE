@@ -2,11 +2,12 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { Observable, ObservedValueOf, Subject, Subscription } from 'rxjs';
 import { MeanProducts } from '../../../types';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-quick-view',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './quick-view.component.html',
   styleUrl: './quick-view.component.css',
 })

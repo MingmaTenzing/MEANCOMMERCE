@@ -1,11 +1,47 @@
-<div
-  class="bg-black h-[100vh] bg-opacity-80 flex justify-center items-center p-2"
->
-  <div class="w-[1200px] m-auto bg-white h-[600px]">
-    <button (click)="closeQuickView()" class="">close</button>
+<div class="bg-black h-[100vh] bg-opacity-80 flex justify-center items-center">
+  <div class="w-[1200px] m-auto bg-white h-[600px] p-6 flex space-x-6">
+    <!-- PRODUCT IMAGES -->
     <div class="w-1/2">
-      <div class="border w-[600px]"></div>
+      <div class="border p-6 flex items-center justify-center">
+        <img
+          src="../../../assets/images/xiaomi.svg"
+          class="h-[400px] object-cover"
+        />
+      </div>
+      <div class="flex space-x-2">
+        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
+          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+        </div>
+        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
+          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+        </div>
+        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
+          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+        </div>
+        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
+          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+        </div>
+        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
+          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+        </div>
+      </div>
     </div>
-    <div class="w-1/2"></div>
+    <div class="w-1/2">
+      <div class="flex space-x-2 items-center">
+        <div class="flex">
+          <img src="../../../assets/icons/star.svg" />
+          <img src="../../../assets/icons/star.svg" />
+          <img src="../../../assets/icons/star.svg" />
+          <img src="../../../assets/icons/star.svg" />
+        </div>
+        <p class="text-sm font-semibold">4.7 Star Rating</p>
+      </div>
+
+      <p class="text-xl font-medium">
+        2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD
+        Storage) - Space Gray
+      </p>
+    </div>
   </div>
 </div>
+<!-- <button (click)="closeQuickView()" class="">close</button> -->

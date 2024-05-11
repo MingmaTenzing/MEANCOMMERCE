@@ -7,7 +7,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuickViewService {
-  quickView$ = new BehaviorSubject<boolean>(false);
+  pipe() {
+    throw new Error('Method not implemented.');
+  }
+  quickView$ = new BehaviorSubject<boolean>(true);
   productId!: string;
   constructor(private http: HttpClient) {}
 
