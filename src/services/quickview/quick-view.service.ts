@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class QuickViewService {
-  quickView$ = new BehaviorSubject<boolean>(true);
+  quickView$ = new BehaviorSubject<boolean>(false);
   productId!: string;
   constructor(private http: HttpClient) {}
 
@@ -23,7 +23,7 @@ export class QuickViewService {
 
   getQuickViewProduct() {
     return this.http.get<MeanProducts>(
-      `http://localhost:5000/api/v1/products/${this.productId}`
+      'http://localhost:5000/api/v1/products/661f3a9e67816d0c6ff70984'
     );
   }
 }

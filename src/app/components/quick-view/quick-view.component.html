@@ -1,5 +1,8 @@
 <div class="bg-black h-[100vh] bg-opacity-80 flex justify-center items-center">
-  <div class="w-[1200px] m-auto bg-white h-[600px] p-6 flex space-x-6">
+  <div
+    *ngIf="product$ | async; let product"
+    class="w-[1200px] m-auto bg-white h-[600px] p-6 flex space-x-6"
+  >
     <!-- PRODUCT IMAGES -->
     <div class="w-1/2">
       <div class="border p-6 flex items-center justify-center">
@@ -49,19 +52,21 @@
       <div class="w-[80%] space-y-2 text-xs">
         <div class="flex justify-between">
           <p class="text-gray-500">
-            Sku: <span class="font-semibold text-black">A266471</span>
+            Sku: <span class="font-semibold text-black">{{ product.sku }}</span>
           </p>
           <p class="text-gray-500">
-            Stock: <span class="font-semibold text-black">20</span>
+            Stock:
+            <span class="font-semibold text-black">{{ product.stock }}</span>
           </p>
         </div>
         <div class="flex justify-between">
           <p class="text-gray-500">
-            Brand: <span class="font-semibold text-black">Apple</span>
+            Brand:
+            <span class="font-semibold text-black">{{ product.brand }}</span>
           </p>
           <p class="text-gray-500">
             Category:
-            <span class="font-semibold text-black">Computer & Laptop</span>
+            <span class="font-semibold text-black">{{ product.category }}</span>
           </p>
         </div>
       </div>
@@ -76,13 +81,7 @@
       <!-- product description -->
 
       <p class="text-sm text-gray-500 line-clamp-6">
-        Pairing a powerful AMD processor with a Ray Tracing-enabled RTX 3060
-        12GB graphics card capable of tearing through AAA titles, this Allied
-        Stinger PC is a VR- and streaming-ready gaming beast! 16GB of super-fast
-        3200MHz RAM brings the best out of the 6-core, 12-thread Ryzen 5 5500
-        processor, while a 1TB NVMe solid state operating system drive delivers
-        load times that will have you booted and into your favourite AAA titles
-        in mere seconds.
+        {{ product.description }}
       </p>
 
       <!-- add to cart section -->
