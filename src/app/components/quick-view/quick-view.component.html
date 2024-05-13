@@ -26,7 +26,9 @@
         </div>
       </div>
     </div>
-    <div class="w-1/2">
+
+    <!-- PRODUCT DESCRIPTIONn -->
+    <div class="w-1/2 space-y-4">
       <div class="flex space-x-2 items-center">
         <div class="flex">
           <img src="../../../assets/icons/star.svg" />
@@ -34,13 +36,116 @@
           <img src="../../../assets/icons/star.svg" />
           <img src="../../../assets/icons/star.svg" />
         </div>
-        <p class="text-sm font-semibold">4.7 Star Rating</p>
+        <p class="text-sm font-semibold">
+          <span>{{ product.rating }}</span
+          >Star Rating
+        </p>
+      </div>
+      <!-- product title -->
+      <p class="text-xl font-medium">
+        {{ product.name }}
+      </p>
+      <!-- product manufacturer details -->
+      <div class="w-[80%] space-y-2 text-xs">
+        <div class="flex justify-between">
+          <p class="text-gray-500">
+            Sku: <span class="font-semibold text-black">A266471</span>
+          </p>
+          <p class="text-gray-500">
+            Stock: <span class="font-semibold text-black">20</span>
+          </p>
+        </div>
+        <div class="flex justify-between">
+          <p class="text-gray-500">
+            Brand: <span class="font-semibold text-black">Apple</span>
+          </p>
+          <p class="text-gray-500">
+            Category:
+            <span class="font-semibold text-black">Computer & Laptop</span>
+          </p>
+        </div>
+      </div>
+      <!-- price -->
+      <div class="flex space-x-3 items-center">
+        <p class="text-[#2DA5F3] font-semibold text-[24px]">$1699</p>
+        <p class="line-through text-gray-500 text-xl">$1999.00</p>
+        <div class="bg-[#EFD33D] p-2 font-semibold">21% OFF</div>
+      </div>
+      <!-- divider line -->
+      <div class="w-full h-[1px] bg-gray-200"></div>
+      <!-- product description -->
+
+      <p class="text-sm text-gray-500 line-clamp-6">
+        Pairing a powerful AMD processor with a Ray Tracing-enabled RTX 3060
+        12GB graphics card capable of tearing through AAA titles, this Allied
+        Stinger PC is a VR- and streaming-ready gaming beast! 16GB of super-fast
+        3200MHz RAM brings the best out of the 6-core, 12-thread Ryzen 5 5500
+        processor, while a 1TB NVMe solid state operating system drive delivers
+        load times that will have you booted and into your favourite AAA titles
+        in mere seconds.
+      </p>
+
+      <!-- add to cart section -->
+      <div class="flex space-x-2">
+        <div class="border flex w-[20%] justify-between p-2 px-3 items-center">
+          <button>-</button>
+          <p>1</p>
+          <button>+</button>
+        </div>
+        <div
+          class="w-[60%] bg-ciliconorange flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+        >
+          <span>Add to cart</span>
+          <img src="../../../assets/icons/cart.svg" class="w-6" />
+        </div>
+        <button
+          class="p-2 border-ciliconorange text-ciliconorange uppercase border w-[20%]"
+        >
+          buy now
+        </button>
+      </div>
+      <!-- add to wishlist -->
+      <div class="flex justify-between w-full">
+        <div class="flex space-x-2">
+          <div class="flex text-sm items-center space-x-1 text-gray-500">
+            @if (!addtoFav) {
+
+            <mat-icon
+              fontSet="material-symbols-outlined"
+              (click)="favoriteModal()"
+              class="text-gray-500"
+              width="6px"
+              >favorite</mat-icon
+            >
+            } @else {
+
+            <mat-icon
+              (click)="favoriteModal()"
+              fontIcon="favorite"
+              class="text-ciliconorange"
+            ></mat-icon>
+            }
+            <p>Add to wishlist</p>
+          </div>
+          <div class="flex items-center space-x-1 text-sm text-gray-500">
+            <mat-icon fontSet="material-symbols-outlined">autorenew</mat-icon>
+            <p>Add to Compare</p>
+          </div>
+        </div>
+        <div class="text-sm flex text-gray-500 items-center space-x-2">
+          <p class="">Share Product:</p>
+          <img src="../../../assets/icons/copyicon.svg" />
+          <img src="../../../assets/icons/facebook.svg" />
+          <img src="../../../assets/icons/twitter.svg" />
+          <img src="../../../assets/icons/pinterest.svg" />
+        </div>
       </div>
 
-      <p class="text-xl font-medium">
-        2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD
-        Storage) - Space Gray
-      </p>
+      <!-- checkout options -->
+      <div class="border w-full p-4 space-y-2">
+        <p class="text-gray-500 text-[12px]">100% Gaurantee Safe Checkout</p>
+        <img src="../../../assets/images/credit-cards.png" class="w-[260px]" />
+      </div>
     </div>
   </div>
 </div>
