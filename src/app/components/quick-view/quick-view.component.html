@@ -14,10 +14,10 @@
       <div class="flex flex-row space-x-2">
         <div *ngFor="let image of product.images">
           <div
+            (click)="changeMainImage(image)"
             class="w-[96px] h-[96px] active:border-ciliconorange border p-2 flex items-center justify-center"
           >
             <img
-              (click)="changeMainImage(image)"
               ngSrc="{{ image }}"
               width="96"
               height="96"
@@ -92,9 +92,9 @@
       <!-- add to cart section -->
       <div class="flex space-x-2">
         <div class="border flex w-[20%] justify-between p-2 px-3 items-center">
-          <button>-</button>
-          <p>1</p>
-          <button>+</button>
+          <button (click)="decreaseNumber()">-</button>
+          <p>{{ numberofItems_addToCart }}</p>
+          <button (click)="increaseNumber()">+</button>
         </div>
         <div
           class="w-[60%] bg-ciliconorange flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"

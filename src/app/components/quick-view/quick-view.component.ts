@@ -20,6 +20,8 @@ export class QuickViewComponent implements OnInit, OnDestroy {
 
   mainProductImage: string = '';
 
+  numberofItems_addToCart: number = 1;
+
   productmainImages: Array<string> = [];
 
   addtoFav: boolean = false;
@@ -48,5 +50,16 @@ export class QuickViewComponent implements OnInit, OnDestroy {
 
   changeMainImage(image: string) {
     this.mainProductImage = image;
+  }
+
+  increaseNumber() {
+    if (this.numberofItems_addToCart < 20) {
+      this.numberofItems_addToCart++;
+    }
+  }
+  decreaseNumber() {
+    if (this.numberofItems_addToCart > 1) {
+      this.numberofItems_addToCart--;
+    }
   }
 }
