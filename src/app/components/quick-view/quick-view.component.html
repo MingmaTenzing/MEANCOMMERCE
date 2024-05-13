@@ -6,26 +6,20 @@
     <!-- PRODUCT IMAGES -->
     <div class="w-1/2">
       <div class="border p-6 flex items-center justify-center">
-        <img
-          src="../../../assets/images/xiaomi.svg"
-          class="h-[400px] object-cover"
-        />
+        <img src="{{ product.images[0] }}" class="h-[400px] object-contain" />
       </div>
-      <div class="flex space-x-2">
-        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
-          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
-        </div>
-        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
-          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
-        </div>
-        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
-          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
-        </div>
-        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
-          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
-        </div>
-        <div class="w-[96px] h-[96px] border active:border-ciliconorange p-1">
-          <img ngSrc="../../../assets/images/tv.svg" width="96" height="96" />
+      <div class="flex flex-row space-x-2">
+        <div *ngFor="let image of product.images">
+          <div
+            class="w-[96px] h-[96px] active:border-ciliconorange border p-2 flex items-center justify-center"
+          >
+            <img
+              ngSrc="{{ image }}"
+              width="96"
+              height="96"
+              class="object-contain w-[94px] h-[94px]"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +39,7 @@
         </p>
       </div>
       <!-- product title -->
-      <p class="text-xl font-medium">
+      <p class="text-xl font-medium line-clamp-2">
         {{ product.name }}
       </p>
       <!-- product manufacturer details -->
@@ -72,9 +66,13 @@
       </div>
       <!-- price -->
       <div class="flex space-x-3 items-center">
-        <p class="text-[#2DA5F3] font-semibold text-[24px]">$1699</p>
-        <p class="line-through text-gray-500 text-xl">$1999.00</p>
-        <div class="bg-[#EFD33D] p-2 font-semibold">21% OFF</div>
+        <p class="text-[#2DA5F3] font-semibold text-[24px]">
+          ${{ product.price }}
+        </p>
+        <p class="line-through text-gray-500 text-xl">
+          ${{ (product.price * 5) / 4 }}
+        </p>
+        <div class="bg-[#EFD33D] p-2 font-semibold">20% OFF</div>
       </div>
       <!-- divider line -->
       <div class="w-full h-[1px] bg-gray-200"></div>

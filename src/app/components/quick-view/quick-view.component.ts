@@ -23,9 +23,6 @@ export class QuickViewComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   ngOnInit(): void {
     this.product$ = this.QuickViewService.getQuickViewProduct();
-    this.QuickViewService.getQuickViewProduct().subscribe((item) =>
-      console.log(item)
-    );
   }
 
   closeQuickView() {
