@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../services/backend.service';
+import { BackendService } from '../../services/backend/backend.service';
 import { Observable } from 'rxjs';
 import { MeanProducts } from '../../types';
 import { RouterOutlet } from '@angular/router';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { FeaturesComponent } from './features/features.component';
 import { BestdealsComponent } from './bestdeals/bestdeals.component';
@@ -11,6 +11,10 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { LatestNewsComponent } from './latest-news/latest-news.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { FooterComponent } from './footer/footer.component';
+import { QuickViewComponent } from '../components/quick-view/quick-view.component';
+import { QuickViewService } from '../../services/quickview/quick-view.service';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     WidgetsComponent,
     FeaturesComponent,
+    CommonModule,
     BestdealsComponent,
     ShopCategoryComponent,
     ProductsComponent,
@@ -28,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
     LatestNewsComponent,
     NewsletterComponent,
     FooterComponent,
+    QuickViewComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
