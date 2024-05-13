@@ -15,14 +15,23 @@ import { MatIconModule } from '@angular/material/icon';
 export class QuickViewComponent implements OnInit, OnDestroy {
   constructor(private QuickViewService: QuickViewService) {}
 
-  product$!: Observable<MeanProducts>;
+  // product$!: Observable<MeanProducts>;
+  product!: MeanProducts;
+
+  mainProductImage: string = '';
+
+  productmainImages: Array<string> = [];
 
   addtoFav: boolean = false;
 
   data!: Observable<MeanProducts>;
   subscription!: Subscription;
   ngOnInit(): void {
-    this.product$ = this.QuickViewService.getQuickViewProduct();
+    // this.product$ = this.QuickViewService.getQuickViewProduct();
+    this.subscription = this.QuickViewService.getQuickViewProduct().subscribe(
+      (data) => (this.product = data)
+    );
+    this.mainProductImage = this.product.images[0];
   }
 
   closeQuickView() {
@@ -32,7 +41,12 @@ export class QuickViewComponent implements OnInit, OnDestroy {
   favoriteModal() {
     this.addtoFav = !this.addtoFav;
   }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  changeMainImage(image: string) {
+    this.mainProductImage = image;
   }
 }

@@ -1,12 +1,15 @@
 <div class="bg-black h-[100vh] bg-opacity-80 flex justify-center items-center">
   <div
-    *ngIf="product$ | async; let product"
+    *ngIf="product"
     class="w-[1200px] m-auto bg-white h-[600px] p-6 flex space-x-6"
   >
     <!-- PRODUCT IMAGES -->
     <div class="w-1/2">
       <div class="border p-6 flex items-center justify-center">
-        <img src="{{ product.images[0] }}" class="h-[400px] object-contain" />
+        <img
+          src="{{ mainProductImage || product.images[0] }}"
+          class="h-[400px] object-contain"
+        />
       </div>
       <div class="flex flex-row space-x-2">
         <div *ngFor="let image of product.images">
@@ -14,6 +17,7 @@
             class="w-[96px] h-[96px] active:border-ciliconorange border p-2 flex items-center justify-center"
           >
             <img
+              (click)="changeMainImage(image)"
               ngSrc="{{ image }}"
               width="96"
               height="96"
@@ -26,17 +30,20 @@
 
     <!-- PRODUCT DESCRIPTIONn -->
     <div class="w-1/2 space-y-4">
-      <div class="flex space-x-2 items-center">
-        <div class="flex">
-          <img src="../../../assets/icons/star.svg" />
-          <img src="../../../assets/icons/star.svg" />
-          <img src="../../../assets/icons/star.svg" />
-          <img src="../../../assets/icons/star.svg" />
+      <div class="flex justify-between">
+        <div class="flex space-x-2 items-center">
+          <div class="flex">
+            <img src="../../../assets/icons/star.svg" />
+            <img src="../../../assets/icons/star.svg" />
+            <img src="../../../assets/icons/star.svg" />
+            <img src="../../../assets/icons/star.svg" />
+          </div>
+          <p class="text-sm font-semibold">
+            <span>{{ product.rating }}</span
+            >Star Rating
+          </p>
         </div>
-        <p class="text-sm font-semibold">
-          <span>{{ product.rating }}</span
-          >Star Rating
-        </p>
+        <button class="text-xl" (click)="closeQuickView()">X</button>
       </div>
       <!-- product title -->
       <p class="text-xl font-medium line-clamp-2">
