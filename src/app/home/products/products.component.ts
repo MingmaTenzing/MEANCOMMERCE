@@ -4,23 +4,21 @@ import { BackendService } from '../../../services/backend/backend.service';
 import { Observable } from 'rxjs';
 import { MeanProducts } from '../../../types';
 import { CommonModule } from '@angular/common';
+import { LoadingProductComponent } from '../../components/loading-product/loading-product.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ProductContainerComponent, CommonModule],
+  imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
 export class ProductsComponent implements OnInit {
   constructor(private meanBackend: BackendService) {}
 
-  products: Observable<MeanProducts[]> | null = null;
+  products!: Observable<MeanProducts[]>;
 
   ngOnInit(): void {
     this.products = this.meanBackend.getData();
-    if (this.products === null) {
-      console.log(' im herer');
-    }
   }
 }
