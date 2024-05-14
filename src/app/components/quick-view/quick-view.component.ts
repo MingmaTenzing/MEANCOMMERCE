@@ -26,7 +26,7 @@ export class QuickViewComponent implements OnInit, OnDestroy {
   constructor(private QuickViewService: QuickViewService) {}
 
   // product$!: Observable<MeanProducts>;
-  product!: MeanProducts;
+  product: MeanProducts | null = null;
 
   mainProductImage: string = '';
 
@@ -36,14 +36,15 @@ export class QuickViewComponent implements OnInit, OnDestroy {
 
   addtoFav: boolean = false;
 
-  data!: Observable<MeanProducts>;
   subscription!: Subscription;
   ngOnInit(): void {
     // this.product$ = this.QuickViewService.getQuickViewProduct();
     this.subscription = this.QuickViewService.getQuickViewProduct().subscribe(
       (data) => (this.product = data)
     );
-    this.mainProductImage = this.product.images[0];
+    if (this.product) {
+      this.mainProductImage = this.product.images[0];
+    }
   }
 
   closeQuickView() {

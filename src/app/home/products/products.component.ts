@@ -15,10 +15,12 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent implements OnInit {
   constructor(private meanBackend: BackendService) {}
 
-  products!: Observable<MeanProducts[]>;
+  products: Observable<MeanProducts[]> | null = null;
 
   ngOnInit(): void {
     this.products = this.meanBackend.getData();
-    console.log(this.products);
+    if (this.products === null) {
+      console.log(' im herer');
+    }
   }
 }
