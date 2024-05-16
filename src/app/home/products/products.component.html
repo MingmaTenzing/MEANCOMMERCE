@@ -22,8 +22,17 @@
     </div>
 
     <div class="flex flex-wrap justify-center lg:justify-start">
-      @if (products) {
-      <div>hello</div>
+      @if (!(products | async)) {
+
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+
       } @else {
       <div *ngFor="let item of products | async | slice : 0 : 8">
         <app-product-container [product]="item"></app-product-container>

@@ -4,11 +4,12 @@ import { BackendService } from '../../../services/backend/backend.service';
 import { Observable } from 'rxjs';
 import { MeanProducts } from '../../../types';
 import { CommonModule } from '@angular/common';
+import { LoadingProductComponent } from '../../components/loading-product/loading-product.component';
 
 @Component({
   selector: 'app-computer-accessories',
   standalone: true,
-  imports: [ProductContainerComponent, CommonModule],
+  imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
   templateUrl: './computer-accessories.component.html',
   styleUrl: './computer-accessories.component.css',
 })
