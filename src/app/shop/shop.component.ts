@@ -31,6 +31,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   products: Array<MeanProducts> = [];
   subscription!: Subscription;
   categoryName: string = '';
+  shopRange: string = '';
 
   categoryForm = new FormGroup({
     SmartPhone: new FormControl('smartphone'),
