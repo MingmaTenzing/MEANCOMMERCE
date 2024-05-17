@@ -1,0 +1,97 @@
+<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 lg:flex">
+  <div class="hidden lg:flex">
+    <!-- side menu only for tablet and laptop -->
+    <div class="w-[312px]">
+      <!-- category section -->
+      <div class="space-y-2">
+        <h3 class="font-semibold uppercase">Category</h3>
+
+        <div class="space-y-2">
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="Smartphone"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Smartphones</label>
+          </div>
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="Accessories"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Accessories</label>
+          </div>
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="Computer & Laptop"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Computer & Laptop</label>
+          </div>
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="Headphone"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Headphones</label>
+          </div>
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="TV"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Tv</label>
+          </div>
+          <div class="flex space-x-2 items-center focus:text-ciliconorange">
+            <input
+              type="radio"
+              name="category"
+              value="Camera"
+              [(ngModel)]="categoryName"
+            />
+            <label class="">Camera</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- price range section -->
+      <div>
+        <input type="range" />
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS section  -->
+
+  <div class="space-y-3">
+    <!-- header -->
+    <div class="flex justify-between">
+      <h2 class="font-semibold text-xl">Products</h2>
+      <form class="flex space-x-2 items-center">
+        <label>Sort by:</label>
+        <select id="sort_Products" name="filter" class="border">
+          <option value="name">Name</option>
+          <option value="price">Price</option>
+          <option value="rating">Rating</option>
+        </select>
+      </form>
+    </div>
+
+    <!-- products -->
+    <div class="flex flex-wrap">
+      <div *ngFor="let item of products">
+        <app-product-container [product]="item"></app-product-container>
+      </div>
+    </div>
+  </div>
+</div>

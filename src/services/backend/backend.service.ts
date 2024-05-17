@@ -10,7 +10,7 @@ export class BackendService {
 
   getData() {
     return this.http.get<MeanProducts[]>(
-      'http://localhost:5000/api/v1/products'
+      'http://localhost:5000/api/v1/products?page=1&limit=10'
     );
   }
 

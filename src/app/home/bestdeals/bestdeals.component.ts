@@ -21,3 +21,4 @@ export class BestdealsComponent implements OnInit {
     this.products = this.meanBackend.getData();
   }
 }
+ 
