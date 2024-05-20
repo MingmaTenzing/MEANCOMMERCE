@@ -4,6 +4,8 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { QuickViewComponent } from '../quick-view/quick-view.component';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { Observable } from 'rxjs';
+import { Router } from 'express';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-container',
@@ -14,9 +16,13 @@ import { Observable } from 'rxjs';
 })
 export class ProductContainerComponent {
   @Input() product!: MeanProducts;
+  @Input() isQuickViewDisabled!: boolean;
   isproductHover: boolean = false;
 
-  constructor(private quickViewService: QuickViewService) {}
+  constructor(
+    private quickViewService: QuickViewService,
+    private router: ActivatedRoute
+  ) {}
 
   hovering() {
     this.isproductHover = true;

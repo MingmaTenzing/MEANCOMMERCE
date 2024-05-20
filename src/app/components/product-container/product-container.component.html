@@ -9,7 +9,7 @@
       class="w-[182px] h-[162px] object-contain"
     />
     <div
-      *ngIf="isproductHover"
+      *ngIf="isproductHover && !isQuickViewDisabled"
       class="hidden lg:flex w-full h-full absolute bg-gray-400 opacity-80 top-0"
     >
       <div

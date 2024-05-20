@@ -35,7 +35,10 @@
 
       } @else {
       <div *ngFor="let item of products | async | slice : 0 : 8">
-        <app-product-container [product]="item"></app-product-container>
+        <app-product-container
+          [isQuickViewDisabled]="false"
+          [product]="item"
+        ></app-product-container>
       </div>
       }
     </div>

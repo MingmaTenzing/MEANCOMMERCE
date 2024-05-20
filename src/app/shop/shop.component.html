@@ -174,7 +174,10 @@
     <!-- products -->
     <div class="flex flex-wrap">
       <div *ngFor="let item of products">
-        <app-product-container [product]="item"></app-product-container>
+        <app-product-container
+          [isQuickViewDisabled]="true"
+          [product]="item"
+        ></app-product-container>
       </div>
     </div>
   </div>
