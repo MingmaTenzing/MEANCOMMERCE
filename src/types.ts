@@ -12,3 +12,9 @@ export interface MeanProducts {
   sku: number;
   _id: string;
 }
+
+export interface shopProducts {
+  category: string | null;
+  maximumRange: number | null;
+  mininumRange: number | null;
+}
