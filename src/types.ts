@@ -14,7 +14,7 @@ export interface MeanProducts {
 }
 
 export interface shopProducts {
-  category: string | null;
-  maximumRange: number | null;
-  mininumRange: number | null;
+  category: string;
+  maximumRange: number;
+  mininumRange: number;
 }

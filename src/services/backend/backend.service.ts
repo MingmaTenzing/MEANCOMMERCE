@@ -15,7 +15,7 @@ export class BackendService {
     );
   }
 
-  getshopProducts(form: FormGroup) {
+  getshopProducts(form: any) {
     return this.http.post<MeanProducts[]>(
       'http://localhost:5000/api/v1/products?page=1&limit=10',
       form.value

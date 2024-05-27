@@ -8,7 +8,7 @@ import {
 import { ProductContainerComponent } from '../components/product-container/product-container.component';
 import { LoadingProductComponent } from '../components/loading-product/loading-product.component';
 import { BackendService } from '../../services/backend/backend.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { MeanProducts } from '../../types';
 import { CommonModule } from '@angular/common';
 import {
@@ -37,6 +37,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   products: MeanProducts[] = [];
   subscription!: Subscription;
+  formSubscription: Subscription = new Subscription();
 
   selectiveProducts = new FormGroup({
     category: new FormControl('Smartphone'),
@@ -48,16 +49,22 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.subscription = this.meanBackend.getData().subscribe((data) => {
       this.products = data;
     });
+
+    this.formSubscription = this.selectiveProducts.valueChanges.subscribe(
+      (formData) => {
+        console.log(formData),
+          this.meanBackend
+            .getshopProducts(formData)
+            .subscribe((data) => console.log(data));
+      }
+    );
   }
 
-  submit() {
-    console.log(this.selectiveProducts.value);
-    this.subscription = this.meanBackend
-      .getshopProducts(this.selectiveProducts)
-      .subscribe((data) => {
-        this.products = data;
-      });
-  }
+  // this.subscription = this.meanBackend
+  //   .getshopProducts(this.selectiveProducts)
+  //   .subscribe((data) => {
+  //     this.products = data;
+  //   });
 
   setPriceRange(min: number, max: number) {
     this.selectiveProducts.patchValue({
@@ -68,5 +75,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+
+    this.formSubscription.unsubscribe();
   }
 }
