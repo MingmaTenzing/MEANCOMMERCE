@@ -24,10 +24,15 @@ export class BackendService {
         }
       );
     }
-
     return this.http.post<MeanProducts[]>(
       'http://localhost:5000/api/v1/products?page=1&limit=10',
-      form
+      {
+        category: form.value.category,
+        price: {
+          $lt: form.value.maximumRange,
+          $gt: form.value.minimumRange,
+        },
+      }
     );
   }
 
