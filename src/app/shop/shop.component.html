@@ -3,6 +3,7 @@
 >
   <!-- side menu only for tablet and laptop -->
   <form
+    (ngSubmit)="submit()"
     [formGroup]="selectiveProducts"
     class="min-w-[300px] w-[300px] hidden lg:flex lg:flex-col space-y-4"
   >
@@ -153,7 +154,7 @@
             <label class="text-sm text-gray-600">Apple</label>
           </div>
           <div class="flex items-center space-x-2">
-            <input type="checkbox" name="popular_brand" />
+            <input type="checkbox" name="popular_brand" value="Sony" />
             <label class="text-sm text-gray-600">Sony</label>
           </div>
           <div class="flex items-center space-x-2">
@@ -184,6 +185,21 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="w-[50%] h-[1px] bg-gray-200"></div>
+    <!-- filter and reset section  -->
+
+    <div class="flex space-x-2 items-center">
+      <button
+        (click)="submit()"
+        class="bg-ciliconorange text-white px-3 py-1 rounded-lg"
+      >
+        Filter
+      </button>
+      <button class="bg-ciliconorange text-white px-3 py-1 rounded-lg">
+        Reset
+      </button>
     </div>
   </form>
 

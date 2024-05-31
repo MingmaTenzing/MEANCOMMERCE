@@ -15,10 +15,19 @@ export class BackendService {
     );
   }
 
-  getshopProducts(form: any) {
+  getshopProducts(form: FormGroup) {
+    if (form.value.maximumRange == 0) {
+      return this.http.post<MeanProducts[]>(
+        'http://localhost:5000/api/v1/products?page=1&limit=10',
+        {
+          category: form.value.category,
+        }
+      );
+    }
+
     return this.http.post<MeanProducts[]>(
       'http://localhost:5000/api/v1/products?page=1&limit=10',
-      form.value
+      form
     );
   }
 

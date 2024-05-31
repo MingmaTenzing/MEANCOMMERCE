@@ -33,31 +33,30 @@ import {
   styleUrl: './shop.component.css',
 })
 export class ShopComponent implements OnInit, OnDestroy {
+  value!: string;
   constructor(private meanBackend: BackendService) {}
 
   products: MeanProducts[] = [];
   subscription!: Subscription;
-  formSubscription: Subscription = new Subscription();
 
   selectiveProducts = new FormGroup({
-    category: new FormControl('Smartphone'),
+    category: new FormControl(''),
     maximumRange: new FormControl(0),
     mininumRange: new FormControl(0),
+    // brand: new FormControl(['']),
   });
 
   ngOnInit(): void {
     this.subscription = this.meanBackend.getData().subscribe((data) => {
       this.products = data;
     });
+  }
 
-    this.formSubscription = this.selectiveProducts.valueChanges.subscribe(
-      (formData) => {
-        console.log(formData),
-          this.meanBackend
-            .getshopProducts(formData)
-            .subscribe((data) => console.log(data));
-      }
-    );
+  submit() {
+    console.log(this.selectiveProducts.value);
+    this.subscription = this.meanBackend
+      .getshopProducts(this.selectiveProducts)
+      .subscribe((data) => (this.products = data));
   }
 
   // this.subscription = this.meanBackend
@@ -75,7 +74,5 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-
-    this.formSubscription.unsubscribe();
   }
 }
