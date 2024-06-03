@@ -32,6 +32,9 @@ export class BackendService {
           $lt: form.value.maximumRange,
           $gt: form.value.minimumRange,
         },
+        brand: {
+          $in: ['Apple'],
+        },
       }
     );
   }

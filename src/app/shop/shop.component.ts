@@ -39,6 +39,8 @@ export class ShopComponent implements OnInit, OnDestroy {
   products: MeanProducts[] = [];
   subscription!: Subscription;
 
+  selectedBrands: string[] = [];
+
   selectiveProducts = new FormGroup({
     category: new FormControl(''),
     maximumRange: new FormControl(0),
@@ -58,6 +60,8 @@ export class ShopComponent implements OnInit, OnDestroy {
       .getshopProducts(this.selectiveProducts)
       .subscribe((data) => (this.products = data));
   }
+
+  addBrands(brand: string) {}
 
   // this.subscription = this.meanBackend
   //   .getshopProducts(this.selectiveProducts)
