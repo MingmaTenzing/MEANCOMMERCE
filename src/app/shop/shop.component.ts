@@ -57,11 +57,19 @@ export class ShopComponent implements OnInit, OnDestroy {
   submit() {
     console.log(this.selectiveProducts.value);
     this.subscription = this.meanBackend
-      .getshopProducts(this.selectiveProducts)
+      .getshopProducts(this.selectiveProducts, this.selectedBrands)
       .subscribe((data) => (this.products = data));
   }
 
-  addBrands(brand: string) {}
+  addBrands(brand: string) {
+    if (this.selectedBrands.includes(brand)) {
+      this.selectedBrands = this.selectedBrands.filter((data) => brand != data);
+      console.log(this.selectedBrands);
+    } else {
+      this.selectedBrands.push(brand);
+      console.log(this.selectedBrands);
+    }
+  }
 
   // this.subscription = this.meanBackend
   //   .getshopProducts(this.selectiveProducts)

@@ -15,12 +15,15 @@ export class BackendService {
     );
   }
 
-  getshopProducts(form: FormGroup) {
+  getshopProducts(form: FormGroup, selectedBrands: string[]) {
     if (form.value.maximumRange == 0) {
       return this.http.post<MeanProducts[]>(
         'http://localhost:5000/api/v1/products?page=1&limit=10',
         {
           category: form.value.category,
+          brand: {
+            $in: selectedBrands,
+          },
         }
       );
     }
@@ -33,7 +36,7 @@ export class BackendService {
           $gt: form.value.minimumRange,
         },
         brand: {
-          $in: ['Apple'],
+          $in: selectedBrands,
         },
       }
     );
