@@ -2,7 +2,7 @@
   <p class="text-xl font-semibold md:text-2xl lg:text-3xl">Flash Sale</p>
 
   <div class="hidden md:flex flex-wrap">
-    <div *ngFor="let item of product | async | slice : 30 : 38">
+    <div *ngFor="let item of product | async | slice : 0 : 8">
       <app-flash-container [product]="item"></app-flash-container>
     </div>
   </div>

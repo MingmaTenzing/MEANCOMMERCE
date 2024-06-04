@@ -12,3 +12,20 @@ export interface MeanProducts {
   sku: number;
   _id: string;
 }
+
+export interface shopProducts {
+  category: string;
+  maximumRange: number;
+  mininumRange: number;
+}
+
+export interface FilterSearch {
+  category?: string;
+  price?: {
+    $gte?: number;
+    $lt?: number;
+  };
+  brand?: {
+    $in?: string[] | null;
+  };
+}

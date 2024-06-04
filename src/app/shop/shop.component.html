@@ -1,0 +1,219 @@
+<div
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 lg:flex lg:justify-between"
+>
+  <!-- side menu only for tablet and laptop -->
+  <form
+    (ngSubmit)="submit()"
+    [formGroup]="selectiveProducts"
+    class="min-w-[300px] w-[300px] hidden lg:flex lg:flex-col space-y-4"
+  >
+    <!-- category section -->
+    <div class="space-y-2">
+      <h3 class="font-semibold uppercase">Category</h3>
+
+      <div class="space-y-2">
+        <div class="flex space-x-2 items-center focus:text-ciliconorange">
+          <input
+            type="radio"
+            name="category"
+            value="Smartphone"
+            formControlName="category"
+            checked
+          />
+          <label class="text-sm text-gray-600">Smartphones</label>
+        </div>
+
+        <div class="flex space-x-2 items-center focus:text-ciliconorange">
+          <input
+            type="radio"
+            name="category"
+            value="Computer & Laptop"
+            formControlName="category"
+          />
+          <label class="text-sm text-gray-600">Computer & Laptop</label>
+        </div>
+        <div class="flex space-x-2 items-center focus:text-ciliconorange">
+          <input
+            type="radio"
+            name="category"
+            value="Headphone"
+            formControlName="category"
+          />
+          <label class="text-sm text-gray-600">Headphones</label>
+        </div>
+        <div class="flex space-x-2 items-center focus:text-ciliconorange">
+          <input
+            type="radio"
+            name="category"
+            value="TV"
+            formControlName="category"
+          />
+          <label class="text-sm text-gray-600">Tv</label>
+        </div>
+        <div class="flex space-x-2 items-center focus:text-ciliconorange">
+          <input
+            type="radio"
+            name="category"
+            value="Camera"
+            formControlName="category"
+          />
+          <label class="text-sm text-gray-600">Camera</label>
+        </div>
+      </div>
+      {{ selectiveProducts.value.category }}
+    </div>
+
+    <!-- divider line -->
+    <div class="w-[50%] h-[1px] bg-gray-200"></div>
+
+    <!-- price range section -->
+    <div class="space-y-2">
+      <h3 class="font-semibold uppercase">Price range</h3>
+
+      <div class="flex items-center space-x-2">
+        <input type="radio" name="price_range" (click)="setPriceRange(0, 0)" />
+        <label class="text-sm text-gray-600">All Price</label>
+      </div>
+      <div class="flex items-center space-x-2">
+        <input
+          type="radio"
+          name="price_range"
+          (click)="setPriceRange(25, 100)"
+        />
+        <label class="text-sm text-gray-600">$25 to $100</label>
+      </div>
+      <div class="flex items-center space-x-2">
+        <input
+          type="radio"
+          name="price_range"
+          (click)="setPriceRange(100, 300)"
+        />
+        <label class="text-sm text-gray-600">$100 to $300</label>
+      </div>
+      <div class="flex items-center space-x-2">
+        <input
+          type="radio"
+          name="price_range"
+          (click)="setPriceRange(300, 500)"
+          value="$300 to $500"
+        />
+        <label class="text-sm text-gray-600">$300 to $500</label>
+      </div>
+      <div
+        class="flex items-center space-x-2"
+        (click)="setPriceRange(500, 1000)"
+      >
+        <input type="radio" name="price_range" value="$300 to $500" />
+        <label class="text-sm text-gray-600">$500 to $1000</label>
+      </div>
+      <div class="flex items-center space-x-2">
+        <input
+          type="radio"
+          name="price_range"
+          (click)="setPriceRange(1000, 10000)"
+          value="$300 to $500"
+        />
+        <label class="text-sm text-gray-600">$1000 to $10,000</label>
+      </div>
+    </div>
+    <!-- divider line -->
+
+    <div class="w-[50%] h-[1px] bg-gray-200"></div>
+
+    <!-- popular brands -->
+    <div class="space-y-2">
+      <h3 class="uppercase font-semibold">Popular Brands</h3>
+
+      <div class="flex space-x-4">
+        <div class="space-y-2">
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Apple')" />
+            <label class="text-sm text-gray-600"> Apple</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" value="Sony" (click)="addBrands('Sony')" />
+            <label class="text-sm text-gray-600">Sony</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Cannon')" />
+            <label class="text-sm text-gray-600">Canon</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Google')" />
+            <label class="text-sm text-gray-600">Google</label>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Asus')" />
+            <label class="text-sm text-gray-600">Asus</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Lenovo')" />
+            <label class="text-sm text-gray-600">Lenovo</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Dell')" />
+            <label class="text-sm text-gray-600">Dell</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" (click)="addBrands('Samsung')" />
+            <label class="text-sm text-gray-600">Samsung</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-[50%] h-[1px] bg-gray-200"></div>
+    <!-- filter and reset section  -->
+
+    <div class="flex space-x-2 items-center">
+      <button
+        (click)="submit()"
+        class="bg-ciliconorange text-white px-3 py-1 rounded-lg"
+      >
+        Filter
+      </button>
+      <button class="bg-ciliconorange text-white px-3 py-1 rounded-lg">
+        Reset
+      </button>
+    </div>
+  </form>
+
+  <!-- PRODUCTS section  -->
+
+  <div class="space-y-3 lg:w-[900px]">
+    <!-- header -->
+    <div class="flex justify-between">
+      <h2 class="font-semibold text-xl">Products</h2>
+      <form class="flex space-x-2 items-center">
+        <label>Sort by:</label>
+        <select id="sort_Products" name="filter" class="border">
+          <option value="name">Name</option>
+          <option value="price">Price</option>
+          <option value="rating">Rating</option>
+        </select>
+      </form>
+    </div>
+
+    <!-- products -->
+
+    <div class="flex flex-wrap">
+      @if (products.length > 0) {
+      <div *ngFor="let item of products">
+        <app-product-container
+          [isQuickViewDisabled]="true"
+          [product]="item"
+        ></app-product-container>
+      </div>
+      } @else {
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      <app-loading-product></app-loading-product>
+      }
+    </div>
+  </div>
+</div>

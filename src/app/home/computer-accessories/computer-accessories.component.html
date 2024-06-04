@@ -51,7 +51,7 @@
       <app-loading-product></app-loading-product>
 
       } @else {
-      <div *ngFor="let item of products | async | slice : 20 : 28">
+      <div *ngFor="let item of products | async | slice : 0 : 8">
         <app-product-container [product]="item"></app-product-container>
       </div>
       }

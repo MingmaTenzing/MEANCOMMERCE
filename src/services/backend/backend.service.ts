@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MeanProducts } from '../../types';
+import { FilterSearch, MeanProducts, shopProducts } from '../../types';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,14 @@ export class BackendService {
 
   getData() {
     return this.http.get<MeanProducts[]>(
-      'http://localhost:5000/api/v1/products'
+      'http://localhost:5000/api/v1/products?page=1&limit=10'
+    );
+  }
+
+  getshopProducts(filter: FilterSearch) {
+    return this.http.post<MeanProducts[]>(
+      'http://localhost:5000/api/v1/products?page=1&limit=10',
+      filter
     );
   }
 
