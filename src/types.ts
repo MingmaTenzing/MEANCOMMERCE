@@ -22,10 +22,10 @@ export interface shopProducts {
 export interface FilterSearch {
   category?: string;
   price?: {
-    $gte: number;
-    $lt: number;
+    $gte?: number;
+    $lt?: number;
   };
   brand?: {
-    $in: string[] | null;
+    $in?: string[] | null;
   };
 }

@@ -54,7 +54,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    let filter: any = {};
+    let filter: FilterSearch = {};
     if (this.selectiveProducts.value.category) {
       filter.category = this.selectiveProducts.value.category;
     }
@@ -62,18 +62,22 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.selectiveProducts.value.maximumRange &&
       this.selectiveProducts.value.mininumRange
     ) {
-      (filter.price.$lt = this.selectiveProducts.value.maximumRange),
-        (filter.price.$gte = this.selectiveProducts.value.mininumRange);
+      filter.price = {
+        $lt: this.selectiveProducts.value.maximumRange,
+        $gte: this.selectiveProducts.value.mininumRange,
+      };
     }
     if (this.selectedBrands.length > 0) {
-      filter.brand.$in = this.selectedBrands;
+      filter.brand = {
+        $in: this.selectedBrands,
+      };
     }
 
-    console.log(filter);
-
     this.subscription = this.meanBackend
-      .getshopProducts(this.selectiveProducts, this.selectedBrands)
-      .subscribe((data) => (this.products = data));
+      .getshopProducts(filter)
+      .subscribe((data) => {
+        this.products = data;
+      });
   }
 
   addBrands(brand: string) {
