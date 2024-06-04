@@ -9,7 +9,7 @@ import { ProductContainerComponent } from '../components/product-container/produ
 import { LoadingProductComponent } from '../components/loading-product/loading-product.component';
 import { BackendService } from '../../services/backend/backend.service';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { MeanProducts } from '../../types';
+import { FilterSearch, MeanProducts } from '../../types';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -43,9 +43,8 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   selectiveProducts = new FormGroup({
     category: new FormControl(''),
-    maximumRange: new FormControl(0),
-    mininumRange: new FormControl(0),
-    // brand: new FormControl(['']),
+    maximumRange: new FormControl(),
+    mininumRange: new FormControl(),
   });
 
   ngOnInit(): void {
@@ -55,7 +54,23 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    console.log(this.selectiveProducts.value);
+    let filter: any = {};
+    if (this.selectiveProducts.value.category) {
+      filter.category = this.selectiveProducts.value.category;
+    }
+    if (
+      this.selectiveProducts.value.maximumRange &&
+      this.selectiveProducts.value.mininumRange
+    ) {
+      (filter.price.$lt = this.selectiveProducts.value.maximumRange),
+        (filter.price.$gte = this.selectiveProducts.value.mininumRange);
+    }
+    if (this.selectedBrands.length > 0) {
+      filter.brand.$in = this.selectedBrands;
+    }
+
+    console.log(filter);
+
     this.subscription = this.meanBackend
       .getshopProducts(this.selectiveProducts, this.selectedBrands)
       .subscribe((data) => (this.products = data));
