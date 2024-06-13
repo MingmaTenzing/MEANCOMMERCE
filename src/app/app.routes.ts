@@ -14,10 +14,12 @@ export const routes: Routes = [
   {
     path: 'shop',
     component: ShopComponent,
+    title: 'Shop',
   },
   {
     path: 'product-detail/:id',
     component: ProductDetailComponent,
+    title: 'Product Details',
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
