@@ -1,153 +1,174 @@
-<div class="flex justify-center items-center">
-  <div
-    *ngIf="product"
-    class="lg:w-[1200px] w-full bg-white p-4 lg:p-6 lg:flex lg:space-x-6 space-y-8"
-  >
-    <!-- PRODUCT IMAGES -->
-    <div class="lg:w-1/2">
-      <div class="border p-6 flex items-center justify-center">
-        <img
-          src="{{ mainProductImage || product.images[0] }}"
-          class="h-[400px] object-contain"
-        />
-      </div>
-      <div class="flex space-x-2 overflow-x-scroll scrollbar-hide">
-        <div *ngFor="let image of product.images">
-          <div
-            (click)="changeMainImage(image)"
-            class="w-[96px] h-[96px] active:border-ciliconorange border p-2 flex items-center justify-center"
-          >
-            <img
-              ngSrc="{{ image }}"
-              width="96"
-              height="96"
-              class="object-contain w-[94px] h-[94px]"
-            />
+<div>
+  <!-- product information -->
+  <div class="flex justify-center items-center">
+    <div
+      *ngIf="product"
+      class="lg:w-[1200px] w-full bg-white p-4 lg:p-6 lg:flex lg:space-x-20 space-y-8"
+    >
+      <!-- PRODUCT IMAGES -->
+      <div class="lg:w-1/2">
+        <div class="border p-6 flex items-center justify-center">
+          <img
+            src="{{ mainProductImage || product.images[0] }}"
+            class="h-[400px] object-contain"
+          />
+        </div>
+        <div class="flex space-x-2 overflow-x-scroll scrollbar-hide">
+          <div *ngFor="let image of product.images">
+            <div
+              (click)="changeMainImage(image)"
+              class="w-[96px] h-[96px] active:border-ciliconorange border p-2 flex items-center justify-center"
+            >
+              <img
+                ngSrc="{{ image }}"
+                width="96"
+                height="96"
+                class="object-contain w-[94px] h-[94px]"
+              />
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT DESCRIPTIONn -->
+      <div class="lg:w-1/2 space-y-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-2 items-center">
+            <div class="flex">
+              <img src="../../../assets/icons/star.svg" />
+              <img src="../../../assets/icons/star.svg" />
+              <img src="../../../assets/icons/star.svg" />
+              <img src="../../../assets/icons/star.svg" />
+            </div>
+            <p class="text-sm font-semibold">
+              <span>{{ product.rating }}</span
+              >Star Rating
+            </p>
+          </div>
+        </div>
+        <!-- product title -->
+        <p class="text-xl font-medium line-clamp-2">
+          {{ product.name }}
+        </p>
+        <!-- product manufacturer details -->
+        <div class="w-[80%] space-y-2 text-xs">
+          <div class="flex justify-between">
+            <p class="text-gray-500">
+              Sku:
+              <span class="font-semibold text-black">{{ product.sku }}</span>
+            </p>
+            <p class="text-gray-500">
+              Stock:
+              <span class="font-semibold text-black">{{ product.stock }}</span>
+            </p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-500">
+              Brand:
+              <span class="font-semibold text-black">{{ product.brand }}</span>
+            </p>
+            <p class="text-gray-500">
+              Category:
+              <span class="font-semibold text-black">{{
+                product.category
+              }}</span>
+            </p>
+          </div>
+        </div>
+        <!-- price -->
+        <div class="flex space-x-3 items-center">
+          <p class="text-[#2DA5F3] font-semibold text-[24px]">
+            ${{ product.price }}
+          </p>
+          <p class="line-through text-gray-500 text-xl">
+            ${{ (product.price * 5) / 4 }}
+          </p>
+          <div class="bg-[#EFD33D] p-2 font-semibold">20% OFF</div>
+        </div>
+        <!-- divider line -->
+        <div class="w-full h-[1px] bg-gray-200"></div>
+        <!-- product description -->
+
+        <p class="text-sm text-gray-500 line-clamp-6">
+          {{ product.description }}
+        </p>
+
+        <!-- add to cart section -->
+        <div class="flex space-x-2">
+          <div
+            class="border flex w-[20%] justify-between p-2 px-3 items-center"
+          >
+            <button (click)="decreaseNumber()">-</button>
+            <p>{{ numberofItems_addToCart }}</p>
+            <button (click)="increaseNumber()">+</button>
+          </div>
+          <div
+            class="w-[60%] bg-ciliconorange flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+          >
+            <span>Add to cart</span>
+            <img src="../../../assets/icons/cart.svg" class="w-6" />
+          </div>
+          <button
+            class="p-2 border-ciliconorange text-ciliconorange uppercase border w-[20%]"
+          >
+            buy now
+          </button>
+        </div>
+        <!-- add to wishlist -->
+        <div class="md:flex justify-between w-full space-y-2 md:space-y-0">
+          <div class="flex space-x-2">
+            <div class="flex text-sm items-center space-x-1 text-gray-500">
+              @if (!addtoFav) {
+
+              <mat-icon
+                fontSet="material-symbols-outlined"
+                (click)="favoriteModal()"
+                class="text-gray-500"
+                width="6px"
+                >favorite</mat-icon
+              >
+              } @else {
+
+              <mat-icon
+                (click)="favoriteModal()"
+                fontIcon="favorite"
+                class="text-ciliconorange"
+              ></mat-icon>
+              }
+              <p>Add to wishlist</p>
+            </div>
+            <div class="flex items-center space-x-1 text-sm text-gray-500">
+              <mat-icon fontSet="material-symbols-outlined">autorenew</mat-icon>
+              <p>Add to Compare</p>
+            </div>
+          </div>
+          <div class="text-sm flex text-gray-500 items-center space-x-2">
+            <p class="">Share Product:</p>
+            <img src="../../../assets/icons/copyicon.svg" />
+            <img src="../../../assets/icons/facebook.svg" />
+            <img src="../../../assets/icons/twitter.svg" />
+            <img src="../../../assets/icons/pinterest.svg" />
+          </div>
+        </div>
+
+        <!-- checkout options -->
+        <div class="border w-full p-4 space-y-2">
+          <p class="text-gray-500 text-[12px]">100% Gaurantee Safe Checkout</p>
+          <img
+            src="../../../assets/images/credit-cards.png"
+            class="w-[260px]"
+          />
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- PRODUCT DESCRIPTIONn -->
-    <div class="lg:w-1/2 space-y-4">
-      <div class="flex justify-between">
-        <div class="flex space-x-2 items-center">
-          <div class="flex">
-            <img src="../../../assets/icons/star.svg" />
-            <img src="../../../assets/icons/star.svg" />
-            <img src="../../../assets/icons/star.svg" />
-            <img src="../../../assets/icons/star.svg" />
-          </div>
-          <p class="text-sm font-semibold">
-            <span>{{ product.rating }}</span
-            >Star Rating
-          </p>
-        </div>
-      </div>
-      <!-- product title -->
-      <p class="text-xl font-medium line-clamp-2">
-        {{ product.name }}
-      </p>
-      <!-- product manufacturer details -->
-      <div class="w-[80%] space-y-2 text-xs">
-        <div class="flex justify-between">
-          <p class="text-gray-500">
-            Sku: <span class="font-semibold text-black">{{ product.sku }}</span>
-          </p>
-          <p class="text-gray-500">
-            Stock:
-            <span class="font-semibold text-black">{{ product.stock }}</span>
-          </p>
-        </div>
-        <div class="flex justify-between">
-          <p class="text-gray-500">
-            Brand:
-            <span class="font-semibold text-black">{{ product.brand }}</span>
-          </p>
-          <p class="text-gray-500">
-            Category:
-            <span class="font-semibold text-black">{{ product.category }}</span>
-          </p>
-        </div>
-      </div>
-      <!-- price -->
-      <div class="flex space-x-3 items-center">
-        <p class="text-[#2DA5F3] font-semibold text-[24px]">
-          ${{ product.price }}
-        </p>
-        <p class="line-through text-gray-500 text-xl">
-          ${{ (product.price * 5) / 4 }}
-        </p>
-        <div class="bg-[#EFD33D] p-2 font-semibold">20% OFF</div>
-      </div>
-      <!-- divider line -->
-      <div class="w-full h-[1px] bg-gray-200"></div>
-      <!-- product description -->
-
-      <p class="text-sm text-gray-500 line-clamp-6">
-        {{ product.description }}
-      </p>
-
-      <!-- add to cart section -->
-      <div class="flex space-x-2">
-        <div class="border flex w-[20%] justify-between p-2 px-3 items-center">
-          <button (click)="decreaseNumber()">-</button>
-          <p>{{ numberofItems_addToCart }}</p>
-          <button (click)="increaseNumber()">+</button>
-        </div>
-        <div
-          class="w-[60%] bg-ciliconorange flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
-        >
-          <span>Add to cart</span>
-          <img src="../../../assets/icons/cart.svg" class="w-6" />
-        </div>
-        <button
-          class="p-2 border-ciliconorange text-ciliconorange uppercase border w-[20%]"
-        >
-          buy now
-        </button>
-      </div>
-      <!-- add to wishlist -->
-      <div class="md:flex justify-between w-full space-y-2 md:space-y-0">
-        <div class="flex space-x-2">
-          <div class="flex text-sm items-center space-x-1 text-gray-500">
-            @if (!addtoFav) {
-
-            <mat-icon
-              fontSet="material-symbols-outlined"
-              (click)="favoriteModal()"
-              class="text-gray-500"
-              width="6px"
-              >favorite</mat-icon
-            >
-            } @else {
-
-            <mat-icon
-              (click)="favoriteModal()"
-              fontIcon="favorite"
-              class="text-ciliconorange"
-            ></mat-icon>
-            }
-            <p>Add to wishlist</p>
-          </div>
-          <div class="flex items-center space-x-1 text-sm text-gray-500">
-            <mat-icon fontSet="material-symbols-outlined">autorenew</mat-icon>
-            <p>Add to Compare</p>
-          </div>
-        </div>
-        <div class="text-sm flex text-gray-500 items-center space-x-2">
-          <p class="">Share Product:</p>
-          <img src="../../../assets/icons/copyicon.svg" />
-          <img src="../../../assets/icons/facebook.svg" />
-          <img src="../../../assets/icons/twitter.svg" />
-          <img src="../../../assets/icons/pinterest.svg" />
-        </div>
-      </div>
-
-      <!-- checkout options -->
-      <div class="border w-full p-4 space-y-2">
-        <p class="text-gray-500 text-[12px]">100% Gaurantee Safe Checkout</p>
-        <img src="../../../assets/images/credit-cards.png" class="w-[260px]" />
+  <!-- related products -->
+  <div class="p-4">
+    <h3 class="font-semibold text-lg">Related Products</h3>
+    <div class="space-y-4">
+      <div *ngFor="let item of relatedproducts | slice : 0 : 12">
+        <app-related-products [product]="item"></app-related-products>
       </div>
     </div>
   </div>

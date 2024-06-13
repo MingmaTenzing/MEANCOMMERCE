@@ -21,5 +21,5 @@ export const routes: Routes = [
     component: ProductDetailComponent,
     title: 'Product Details',
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
