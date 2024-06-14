@@ -1,9 +1,9 @@
-<div>
+<div class="lg:w-[1200px] lg:m-auto space-y-10 lg:space-y-20 py-6">
   <!-- product information -->
   <div class="flex justify-center items-center">
     <div
       *ngIf="product"
-      class="lg:w-[1200px] w-full bg-white p-4 lg:p-6 lg:flex lg:space-x-20 space-y-8"
+      class="lg:w-[1200px] w-full bg-white p-4 lg:p-0 lg:flex lg:space-x-20 space-y-8"
     >
       <!-- PRODUCT IMAGES -->
       <div class="lg:w-1/2">
@@ -164,11 +164,13 @@
   </div>
 
   <!-- related products -->
-  <div class="p-4">
+  <div class="p-4 lg:p-0 space-y-4">
     <h3 class="font-semibold text-lg">Related Products</h3>
-    <div class="space-y-4">
-      <div *ngFor="let item of relatedproducts | slice : 0 : 12">
-        <app-related-products [product]="item"></app-related-products>
+    <div
+      class="space-y-4 md:space-y-0 md:flex md:overflow-x-scroll scrollbar-hide lg:flex-wrap lg:justify-between lg:left-0"
+    >
+      <div *ngFor="let item of relatedproducts | slice : 0 : 12" class="">
+        <app-related-products [product]="item" class=""></app-related-products>
       </div>
     </div>
   </div>

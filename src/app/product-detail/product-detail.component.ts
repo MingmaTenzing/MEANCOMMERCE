@@ -10,7 +10,14 @@ import {
   RouterEvent,
 } from '@angular/router';
 import { BackendService } from '../../services/backend/backend.service';
-import { Subject, Subscription, filter } from 'rxjs';
+import {
+  Subject,
+  Subscription,
+  filter,
+  switchMap,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { MeanProducts } from '../../types';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
@@ -28,11 +35,9 @@ import { RelatedProductsComponent } from '../components/related-products/related
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent implements OnDestroy {
   productId: string = '';
-  subscription!: Subscription;
-  routerSubscription!: Subscription;
-
+  private _destroy$ = new Subject<void>();
   mainProductImage: string = '';
   numberofItems_addToCart: number = 1;
 
@@ -46,28 +51,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private meanBackend: BackendService
   ) {
-    this.routerSubscription = this.router.events
+    this.route.params
       .pipe(
-        filter(
-          (event: Event): event is ActivationEnd =>
-            event instanceof ActivationEnd
-        )
+        takeUntil(this._destroy$),
+        switchMap((params) => this.meanBackend.getSingleProduct(params['id'])),
+        switchMap((item) => {
+          this.product = item;
+          return this.meanBackend.getCategoryProducts(this.product.category);
+        })
       )
-      .subscribe((event: ActivationEnd) => {
-        this.productId = event.snapshot.params['id'];
-        this.subscription = this.meanBackend
-          .getSingleProduct(this.productId)
-          .subscribe((data) => (this.product = data));
-      });
-  }
-
-  ngOnInit(): void {
-    this.subscription = this.meanBackend
-      .getCategoryProducts(this.product!.category)
-      .subscribe((data) => (this.relatedproducts = data));
+      .subscribe((categoryProduct) => (this.relatedproducts = categoryProduct));
   }
 
   favoriteModal() {
@@ -90,7 +85,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.routerSubscription.unsubscribe();
+    this._destroy$.next();
   }
 }
