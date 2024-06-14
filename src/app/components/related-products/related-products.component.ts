@@ -12,4 +12,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class RelatedProductsComponent {
   @Input() product!: MeanProducts;
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 }

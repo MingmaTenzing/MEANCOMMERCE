@@ -22,6 +22,7 @@ import { MeanProducts } from '../../types';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RelatedProductsComponent } from '../components/related-products/related-products.component';
+import { ProductDetailLoadingComponent } from '../components/product-detail-loading/product-detail-loading.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -31,11 +32,12 @@ import { RelatedProductsComponent } from '../components/related-products/related
     CommonModule,
     NgOptimizedImage,
     RelatedProductsComponent,
+    ProductDetailLoadingComponent,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
-export class ProductDetailComponent implements OnDestroy {
+export class ProductDetailComponent implements OnInit, OnDestroy {
   productId: string = '';
   private _destroy$ = new Subject<void>();
   mainProductImage: string = '';
@@ -44,7 +46,7 @@ export class ProductDetailComponent implements OnDestroy {
   productmainImages: Array<string> = [];
 
   addtoFav: boolean = false;
-
+  loadingTest: boolean = true;
   product: MeanProducts | null = null;
 
   relatedproducts: MeanProducts[] | null = null;
@@ -53,6 +55,7 @@ export class ProductDetailComponent implements OnDestroy {
     private route: ActivatedRoute,
     private meanBackend: BackendService
   ) {
+    window.scrollTo(0, 0);
     this.route.params
       .pipe(
         takeUntil(this._destroy$),
@@ -62,8 +65,12 @@ export class ProductDetailComponent implements OnDestroy {
           return this.meanBackend.getCategoryProducts(this.product.category);
         })
       )
-      .subscribe((categoryProduct) => (this.relatedproducts = categoryProduct));
+      .subscribe((categoryProduct) => {
+        this.relatedproducts = categoryProduct;
+      });
   }
+
+  ngOnInit(): void {}
 
   favoriteModal() {
     this.addtoFav = !this.addtoFav;
