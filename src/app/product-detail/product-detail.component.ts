@@ -8,6 +8,7 @@ import {
   Event,
   Router,
   RouterEvent,
+  RouterModule,
 } from '@angular/router';
 import { BackendService } from '../../services/backend/backend.service';
 import {
@@ -46,7 +47,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productmainImages: Array<string> = [];
 
   addtoFav: boolean = false;
-  loadingTest: boolean = true;
+
   product: MeanProducts | null = null;
 
   relatedproducts: MeanProducts[] | null = null;

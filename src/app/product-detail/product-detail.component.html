@@ -1,5 +1,5 @@
 <div class="lg:w-[1200px] lg:m-auto space-y-10 lg:space-y-20 py-6">
-  @if (!loadingTest) {
+  @if (product) {
   <div class="flex justify-center items-center">
     <div
       *ngIf="product"
@@ -164,7 +164,7 @@
   </div>
 
   <!-- related products -->
-  <!-- @defer (when relatedproducts!.length > 0) {
+  @defer (when relatedproducts!.length > 0) {
   <div class="p-4 lg:p-0 space-y-4">
     <h3 class="font-semibold text-lg">Recommend {{ product.category }}s</h3>
     <div
@@ -175,8 +175,7 @@
       </div>
     </div>
   </div>
-  } -->
-  } @else {
+  } } @else {
   <app-product-detail-loading></app-product-detail-loading>
   }
 </div>
