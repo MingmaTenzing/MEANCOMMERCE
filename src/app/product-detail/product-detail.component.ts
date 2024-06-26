@@ -57,7 +57,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private Router: Router,
     private meanBackend: BackendService
   ) {
-    Router.events.subscribe((event: Event) => {
+    Router.events.pipe(takeUntil(this._destroy$)).subscribe((event: Event) => {
       if (event instanceof ActivationEnd) {
         window.scrollTo(0, 0);
       }
