@@ -1,16 +1,14 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { QuickViewComponent } from '../quick-view/quick-view.component';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
-import { Observable } from 'rxjs';
-import { Router } from 'express';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-container',
   standalone: true,
-  imports: [NgOptimizedImage, CommonModule, QuickViewComponent],
+  imports: [NgOptimizedImage, CommonModule, QuickViewComponent, RouterModule],
   templateUrl: './product-container.component.html',
   styleUrl: './product-container.component.css',
 })

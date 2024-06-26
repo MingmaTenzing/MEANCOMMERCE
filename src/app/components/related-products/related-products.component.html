@@ -1,0 +1,21 @@
+<div
+  routerLink="/product-detail/{{ product._id }}"
+  (click)="scrollToTop()"
+  routerLinkActive="active"
+  class="p-2 h-[100px] w-[full] md:w-[300px] border flex items-center justify-center space-x-4 md:m-2 cursor-pointer"
+>
+  <div class="min-w-[80px] min-h-[80px]">
+    <img
+      class="w-[80px] h-[80px] object-contain"
+      ngSrc="{{ product.images[0] }}"
+      width="80"
+      height="80"
+    />
+  </div>
+  <div class="text-sm">
+    <p class="line-clamp-2">
+      {{ product.name }}
+    </p>
+    <p class="text-ciliconPriceBlue">${{ product.price }}</p>
+  </div>
+</div>

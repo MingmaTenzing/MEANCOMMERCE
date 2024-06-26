@@ -29,3 +29,7 @@ export interface FilterSearch {
     $in?: string[] | null;
   };
 }
+
+export interface categoryProductFilter {
+  category: string;
+}

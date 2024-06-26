@@ -55,10 +55,6 @@ export class QuickViewComponent implements OnInit, OnDestroy {
     this.addtoFav = !this.addtoFav;
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   changeMainImage(image: string) {
     this.mainProductImage = image;
   }
@@ -72,5 +68,8 @@ export class QuickViewComponent implements OnInit, OnDestroy {
     if (this.numberofItems_addToCart > 1) {
       this.numberofItems_addToCart--;
     }
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
