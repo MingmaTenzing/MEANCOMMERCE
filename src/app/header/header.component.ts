@@ -11,11 +11,17 @@ import {
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, BottomNavComponent, SearchModalComponent],
+  imports: [
+    CommonModule,
+    BottomNavComponent,
+    SearchModalComponent,
+    RouterModule,
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
