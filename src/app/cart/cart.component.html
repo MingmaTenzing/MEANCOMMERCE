@@ -143,37 +143,52 @@
     [product]="item"
   ></app-mobile-shopping-cart-item>
   <!-- card totals -->
-  <div class="lg:w-[300px] border p-4 space-y-4 shadow-sm rounded-lg">
-    <h3 class="font-medium text-lg">Card Totals</h3>
-    <div class="space-y-2">
-      <div class="flex justify-between items-center">
-        <p class="text-gray-600 text-sm">Sub-Total</p>
-        <span class="text-sm text-gray-900">$320</span>
+  <section id="cardtotals and coupon code" class="space-y-4">
+    <div class="lg:w-[300px] border p-4 space-y-4 shadow-sm rounded-lg">
+      <h3 class="font-medium text-lg">Card Totals</h3>
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600 text-sm">Sub-Total</p>
+          <span class="text-sm text-gray-900">$320</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600 text-sm">Shipping</p>
+          <span class="text-sm text-gray-900">$320</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600 text-sm">Discount</p>
+          <span class="text-sm text-gray-900">$320</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600 text-sm">Tax</p>
+          <span class="text-sm text-gray-900">$61.99</span>
+        </div>
       </div>
-      <div class="flex justify-between items-center">
-        <p class="text-gray-600 text-sm">Shipping</p>
-        <span class="text-sm text-gray-900">$320</span>
+      <!-- divider line -->
+      <div class="h-[1px] w-full bg-gray-100"></div>
+      <!-- total -->
+      <div class="flex justify-between font-medium">
+        <p>Total</p>
+        <span>$357.99 AUD</span>
       </div>
-      <div class="flex justify-between items-center">
-        <p class="text-gray-600 text-sm">Discount</p>
-        <span class="text-sm text-gray-900">$320</span>
-      </div>
-      <div class="flex justify-between items-center">
-        <p class="text-gray-600 text-sm">Tax</p>
-        <span class="text-sm text-gray-900">$61.99</span>
-      </div>
-    </div>
-    <!-- divider line -->
-    <div class="h-[1px] w-full bg-gray-100"></div>
-    <!-- total -->
-    <div class="flex justify-between font-medium">
-      <p>Total</p>
-      <span>$357.99 AUD</span>
-    </div>
 
-    <!-- proceed to checkout  -->
-    <button class="p-2 uppercase bg-ciliconorange text-white text-lg w-full">
-      Proceed to checkout
-    </button>
-  </div>
+      <!-- proceed to checkout  -->
+      <button class="p-2 uppercase bg-ciliconorange text-white text-lg w-full">
+        Proceed to checkout
+      </button>
+    </div>
+    <!-- couipon code -->
+    <div class="lg:w-[300px] border space-y-4 shadow-sm rounded-lg">
+      <p class="font-medium text-lg p-4 border-b">Coupon Code</p>
+      <div class="p-4 space-y-4">
+        <input
+          class="outline-none border p-2 w-full"
+          placeholder="Email Address "
+        />
+        <button class="bg-[#2DA5F3] text-white uppercase p-2 px-4 text-sm">
+          Apply coupon
+        </button>
+      </div>
+    </div>
+  </section>
 </div>
