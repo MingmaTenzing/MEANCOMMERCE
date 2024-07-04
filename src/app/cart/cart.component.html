@@ -139,7 +139,7 @@
 
   <app-mobile-shopping-cart-item
     class="md:hidden"
-    *ngFor="let item of cartItems"
+    *ngFor="let item of cartItems$ | async"
     [product]="item"
   ></app-mobile-shopping-cart-item>
   <!-- card totals -->

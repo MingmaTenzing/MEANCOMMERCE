@@ -1,10 +1,12 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { MobileShoppingCartItemComponent } from '../components/mobile-shopping-cart-item/mobile-shopping-cart-item.component';
-import { CartService } from '../../services/cart/cart.service';
 import { cartItems } from '../../types';
 import { BrowserModule } from '@angular/platform-browser';
-import { Subject, filter, takeUntil } from 'rxjs';
+import { Observable, Subject, filter, takeUntil } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../states/cart-items/app.state';
+import { selectProducts } from '../states/cart-items/selector';
 
 @Component({
   selector: 'app-cart',
@@ -13,18 +15,12 @@ import { Subject, filter, takeUntil } from 'rxjs';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
-export class CartComponent implements OnDestroy {
-  private _destroy$ = new Subject<void>();
-  cartItems: cartItems[] = [];
+export class CartComponent {
+  cartItems$ = this.store.select(selectProducts);
 
-  constructor(private cartService: CartService) {
-    this.cartService
-      .getCartItems()
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((data) => (this.cartItems = data));
-  }
+  constructor(private store: Store<AppState>) {}
 
-  ngOnDestroy(): void {
-    this._destroy$.next();
-  }
+  // ngOnDestroy(): void {
+  //   this._destroy$.next();
+  // }
 }
