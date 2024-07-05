@@ -24,6 +24,8 @@ import { RelatedProductsComponent } from '../components/related-products/related
 import { ProductDetailLoadingComponent } from '../components/product-detail-loading/product-detail-loading.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { routes } from '../app.routes';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../states/cart-items/action';
 
 @Component({
   selector: 'app-product-detail',
@@ -55,7 +57,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private Router: Router,
-    private meanBackend: BackendService
+    private meanBackend: BackendService,
+    private store: Store
   ) {
     Router.events.pipe(takeUntil(this._destroy$)).subscribe((event: Event) => {
       if (event instanceof ActivationEnd) {
@@ -107,9 +110,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  // addToCart(product: cartItems) {
-  //   this.cartService.addToCart(product);
-  // }
+  addToCart(product: cartItems) {
+    this.store.dispatch(addProduct({ product }));
+  }
 
   ngOnDestroy(): void {
     this._destroy$.next();

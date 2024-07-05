@@ -7,7 +7,7 @@ export interface MeanProducts {
   name: string;
   price: number;
   rating: number;
-  createAt: Date;
+  createdAt: Date;
   stock: number;
   sku: number;
   _id: string;
@@ -43,7 +43,7 @@ export interface cartItems {
   name: string;
   price: number;
   rating: number;
-  createAt: Date;
+  createdAt: Date;
   stock: number;
   sku: number;
   _id: string;

@@ -9,6 +9,10 @@ export const removeProduct = createAction(
   '[cartItems] Remove',
   props<{ product: cartItems }>()
 );
+export const increaseQuantity = createAction(
+  '[cartItems] IncreaseQuantity',
+  props<{ product: cartItems }>()
+);
 export const updateCart = createAction(
   '[cartItems] Update All WholeCart',
   props<{ products: cartItems[] }>()

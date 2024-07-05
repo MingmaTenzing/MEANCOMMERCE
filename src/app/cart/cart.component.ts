@@ -7,6 +7,7 @@ import { Observable, Subject, filter, takeUntil } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../states/cart-items/app.state';
 import { selectProducts } from '../states/cart-items/selector';
+import { dirname } from 'node:path';
 
 @Component({
   selector: 'app-cart',
@@ -15,12 +16,26 @@ import { selectProducts } from '../states/cart-items/selector';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
-export class CartComponent {
-  cartItems$ = this.store.select(selectProducts);
+export class CartComponent implements OnDestroy {
+  cartItems: cartItems[] = [];
+  private readonly destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {
+    this.store
+      .select(selectProducts)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((products) => (this.cartItems = products));
+  }
 
-  // ngOnDestroy(): void {
-  //   this._destroy$.next();
-  // }
+  increaseQuantity(item: cartItems) {
+    item.quantity!++;
+  }
+
+  descreaseQuantity(item: cartItems) {
+    item.quantity!--;
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
