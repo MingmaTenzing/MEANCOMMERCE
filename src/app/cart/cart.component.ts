@@ -2,12 +2,14 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { MobileShoppingCartItemComponent } from '../components/mobile-shopping-cart-item/mobile-shopping-cart-item.component';
 import { cartItems } from '../../types';
-import { BrowserModule } from '@angular/platform-browser';
-import { Observable, Subject, filter, takeUntil } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { Subject, filter, takeUntil } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { AppState } from '../states/cart-items/app.state';
 import { selectProducts } from '../states/cart-items/selector';
-import { dirname } from 'node:path';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from '../states/cart-items/action';
 
 @Component({
   selector: 'app-cart',
@@ -28,11 +30,11 @@ export class CartComponent implements OnDestroy {
   }
 
   increaseQuantity(item: cartItems) {
-    item.quantity!++;
+    this.store.dispatch(increaseQuantity({ product: item }));
   }
 
   descreaseQuantity(item: cartItems) {
-    item.quantity!--;
+    this.store.dispatch(decreaseQuantity({ product: item }));
   }
   ngOnDestroy(): void {
     this.destroy$.next();

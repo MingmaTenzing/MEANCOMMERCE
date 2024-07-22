@@ -5,6 +5,7 @@ import {
   updateCart,
   clear,
   increaseQuantity,
+  decreaseQuantity,
 } from './action';
 import { AppState } from './app.state';
 import { cartItems } from '../../../types';
@@ -40,5 +41,21 @@ export const cartReducer = createReducer(
   on(updateCart, (state, { products }) => ({
     ...state,
     cartItems: products,
+  })),
+  on(increaseQuantity, (state, { product }) => ({
+    ...state,
+    cartItems: state.cartItems.map((item) =>
+      item._id === product._id
+        ? { ...item, quantity: item.quantity! + 1 }
+        : item
+    ),
+  })),
+  on(decreaseQuantity, (state, { product }) => ({
+    ...state,
+    cartItems: state.cartItems.map((item) =>
+      item._id === product._id
+        ? { ...item, quantity: item.quantity! - 1 }
+        : item
+    ),
   }))
 );

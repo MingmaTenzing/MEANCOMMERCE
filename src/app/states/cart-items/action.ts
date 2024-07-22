@@ -13,6 +13,10 @@ export const increaseQuantity = createAction(
   '[cartItems] IncreaseQuantity',
   props<{ product: cartItems }>()
 );
+export const decreaseQuantity = createAction(
+  '[cartItems] DecreaseQuantity',
+  props<{ product: cartItems }>()
+);
 export const updateCart = createAction(
   '[cartItems] Update All WholeCart',
   props<{ products: cartItems[] }>()
