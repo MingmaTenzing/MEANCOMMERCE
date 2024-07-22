@@ -5,7 +5,10 @@ import { cartItems } from '../../types';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../states/cart-items/app.state';
-import { selectProducts } from '../states/cart-items/selector';
+import {
+  selectCartTotalAmount,
+  selectProducts,
+} from '../states/cart-items/selector';
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -20,13 +23,20 @@ import {
 })
 export class CartComponent implements OnDestroy {
   cartItems: cartItems[] = [];
+  cartTotalAmount: number = 0;
   private readonly destroy$ = new Subject<void>();
 
   constructor(private store: Store<AppState>) {
     this.store
       .select(selectProducts)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((products) => (this.cartItems = products));
+      .subscribe((products) => {
+        this.cartItems = products;
+      });
+    this.store
+      .select(selectCartTotalAmount)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((amount) => (this.cartTotalAmount = amount));
   }
 
   increaseQuantity(item: cartItems) {

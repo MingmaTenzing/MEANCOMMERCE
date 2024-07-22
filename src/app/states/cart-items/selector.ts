@@ -14,6 +14,12 @@ export const selectProductbyId = (productId: string) =>
     products.find((p) => p._id === productId)
   );
 
+export const selectCartTotalAmount = createSelector(
+  selectProducts,
+  (products: cartItems[]) =>
+    products.reduce((total, item) => total + item.price * item.quantity!, 0)
+);
+
 // export const selectProductbyId = createSelector(
 //   selectProducts,
 //   (products: cartItems[], props: { productId: string }) =>
