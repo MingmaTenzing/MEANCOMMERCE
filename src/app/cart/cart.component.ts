@@ -12,6 +12,7 @@ import {
 import {
   decreaseQuantity,
   increaseQuantity,
+  removeProduct,
 } from '../states/cart-items/action';
 
 @Component({
@@ -24,6 +25,9 @@ import {
 export class CartComponent implements OnDestroy {
   cartItems: cartItems[] = [];
   cartTotalAmount: number = 0;
+  discount: number = 45;
+  shippingCost: number = 10;
+
   private readonly destroy$ = new Subject<void>();
 
   constructor(private store: Store<AppState>) {
@@ -45,6 +49,10 @@ export class CartComponent implements OnDestroy {
 
   descreaseQuantity(item: cartItems) {
     this.store.dispatch(decreaseQuantity({ product: item }));
+  }
+
+  removeProduct(item: cartItems) {
+    this.store.dispatch(removeProduct({ product: item }));
   }
   ngOnDestroy(): void {
     this.destroy$.next();

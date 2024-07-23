@@ -18,6 +18,7 @@
         <tr *ngFor="let item of cartItems" class="hover:bg-gray-50">
           <td class="text-center text-sm flex items-center space-x-3 p-4">
             <button
+              (click)="removeProduct(item)"
               class="hover:border-red-500 text-sm hover:text-red-500 cursor-pointer border-2 px-2 py-0.5 rounded-full text-gray-400 border-gray-400 font-semibold"
             >
               x
@@ -80,15 +81,17 @@
         </div>
         <div class="flex justify-between items-center">
           <p class="text-gray-600 text-sm">Shipping</p>
-          <span class="text-sm text-gray-900">$320</span>
+          <span class="text-sm text-gray-900">${{ shippingCost }}</span>
         </div>
         <div class="flex justify-between items-center">
           <p class="text-gray-600 text-sm">Discount</p>
-          <span class="text-sm text-gray-900">$320</span>
+          <span class="text-sm text-gray-900">${{ discount }}</span>
         </div>
         <div class="flex justify-between items-center">
           <p class="text-gray-600 text-sm">Tax</p>
-          <span class="text-sm text-gray-900">$61.99</span>
+          <span class="text-sm text-gray-900"
+            >${{ (cartTotalAmount - cartTotalAmount * 0.9).toFixed(2) }}</span
+          >
         </div>
       </div>
       <!-- divider line -->
@@ -96,7 +99,16 @@
       <!-- total -->
       <div class="flex justify-between font-medium">
         <p>Total</p>
-        <span>$357.99 AUD</span>
+        <span
+          >${{
+            (
+              cartTotalAmount +
+              shippingCost +
+              (cartTotalAmount - cartTotalAmount * 0.9) -
+              discount
+            ).toFixed(2)
+          }}</span
+        >
       </div>
 
       <!-- proceed to checkout  -->
