@@ -7,6 +7,7 @@ import {
   shopProducts,
 } from '../../types';
 import { FormGroup } from '@angular/forms';
+import { Url } from 'url';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,13 @@ export class BackendService {
   getSingleProduct(id: string) {
     return this.http.get<MeanProducts>(
       `http://localhost:5000/api/v1/products/${id}`
+    );
+  }
+
+  createCheckoutSession() {
+    return this.http.post<string>(
+      'http://localhost:5000/api/v1/create-checkout-session',
+      {}
     );
   }
 }

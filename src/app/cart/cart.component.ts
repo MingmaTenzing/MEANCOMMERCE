@@ -14,11 +14,27 @@ import {
   increaseQuantity,
   removeProduct,
 } from '../states/cart-items/action';
+import {
+  FormControl,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { BackendService } from '../../services/backend/backend.service';
+import { Url } from 'url';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [NgOptimizedImage, MobileShoppingCartItemComponent, CommonModule],
+  imports: [
+    NgOptimizedImage,
+    MobileShoppingCartItemComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
@@ -27,10 +43,15 @@ export class CartComponent implements OnDestroy {
   cartTotalAmount: number = 0;
   discount: number = 45;
   shippingCost: number = 10;
+  checkoutUrl: String = '';
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private backend: BackendService,
+    private router: Router
+  ) {
     this.store
       .select(selectProducts)
       .pipe(takeUntil(this.destroy$))
@@ -53,6 +74,17 @@ export class CartComponent implements OnDestroy {
 
   removeProduct(item: cartItems) {
     this.store.dispatch(removeProduct({ product: item }));
+  }
+
+  checkout() {
+    this.backend
+      .createCheckoutSession()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((url) => {
+        if (url) {
+          window.location.href = url;
+        }
+      });
   }
   ngOnDestroy(): void {
     this.destroy$.next();
