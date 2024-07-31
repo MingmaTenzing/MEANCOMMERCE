@@ -1,0 +1,23 @@
+<div class="md:hidden py-4 border-b">
+  <div class="flex w-full text-sm justify-between space-x-2">
+    <img
+      ngSrc="{{ product.images[0] }}"
+      class="w-[72px] object-contain"
+      width="72"
+      height="72"
+    />
+    <div class="space-y-1">
+      <p class="font-semibold line-clamp-2">{{ product.name }}</p>
+      <p class="text-gray-500">Stock: {{ product.stock }}</p>
+      <p class="text-gray-500">${{ product.price }}</p>
+    </div>
+    <div class="flex flex-col items-end space-y-4">
+      <div class="border flex items-center h-[40px] p-2 space-x-4">
+        <button class="text-lg">-</button>
+        <p>{{ product.quantity }}</p>
+        <button class="text-lg">+</button>
+      </div>
+      <img src="../../assets/icons/delete.png" width="20" height="20" />
+    </div>
+  </div>
+</div>

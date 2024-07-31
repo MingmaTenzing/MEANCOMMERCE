@@ -17,13 +17,15 @@ import {
   take,
   takeUntil,
 } from 'rxjs';
-import { MeanProducts } from '../../types';
+import { MeanProducts, cartItems } from '../../types';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RelatedProductsComponent } from '../components/related-products/related-products.component';
 import { ProductDetailLoadingComponent } from '../components/product-detail-loading/product-detail-loading.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { routes } from '../app.routes';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../states/cart-items/action';
 
 @Component({
   selector: 'app-product-detail',
@@ -55,7 +57,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private Router: Router,
-    private meanBackend: BackendService
+    private meanBackend: BackendService,
+    private store: Store
   ) {
     Router.events.pipe(takeUntil(this._destroy$)).subscribe((event: Event) => {
       if (event instanceof ActivationEnd) {
@@ -105,6 +108,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     if (this.numberofItems_addToCart > 1) {
       this.numberofItems_addToCart--;
     }
+  }
+
+  addToCart(product: cartItems) {
+    this.store.dispatch(addProduct({ product }));
   }
 
   ngOnDestroy(): void {

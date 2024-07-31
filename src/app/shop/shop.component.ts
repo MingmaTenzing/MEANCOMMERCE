@@ -50,6 +50,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.meanBackend.getData().subscribe((data) => {
       this.products = data;
+      console.log(this.products);
     });
   }
 

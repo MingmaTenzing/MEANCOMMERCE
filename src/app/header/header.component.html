@@ -14,7 +14,22 @@
       <img class="w-6 hidden md:flex" src="./../../assets/icons/search.svg" />
     </div>
     <div class="flex space-x-4 relative">
-      <img class="w-6" src="./../../assets/icons/cart.svg" />
+      <div class="relative">
+        <img
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+          class="w-6"
+          src="./../../assets/icons/cart.svg"
+        />
+        <div
+          *ngIf="numberofCartItems >= 1"
+          class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
+        >
+          <p class="text-white rounded-full text-sm">
+            {{ numberofCartItems }}
+          </p>
+        </div>
+      </div>
       <img class="w-6" src="./../../assets/icons/love.svg" />
       <div (click)="userLoginModal()">
         <img class="w-6" src="./../../assets/icons/user.svg" />

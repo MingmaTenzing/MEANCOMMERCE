@@ -9,6 +9,8 @@ import { QuickViewService } from '../services/quickview/quick-view.service';
 import { Observable } from 'rxjs';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { MatIconRegistry } from '@angular/material/icon';
+import { Store, StoreModule } from '@ngrx/store';
+import { cartReducer } from './states/cart-items/reducer';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,7 @@ import { MatIconRegistry } from '@angular/material/icon';
     FooterComponent,
     HttpClientModule,
     QuickViewComponent,
+   
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

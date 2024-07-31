@@ -7,7 +7,7 @@ export interface MeanProducts {
   name: string;
   price: number;
   rating: number;
-  createAt: Date;
+  createdAt: Date;
   stock: number;
   sku: number;
   _id: string;
@@ -32,4 +32,20 @@ export interface FilterSearch {
 
 export interface categoryProductFilter {
   category: string;
+}
+
+export interface cartItems {
+  brand: string;
+  category: string;
+  description: string;
+  featured: boolean;
+  images: Array<string>;
+  name: string;
+  price: number;
+  rating: number;
+  createdAt: Date;
+  stock: number;
+  sku: number;
+  _id: string;
+  quantity?: number;
 }
