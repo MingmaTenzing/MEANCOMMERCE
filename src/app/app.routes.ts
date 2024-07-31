@@ -9,9 +9,9 @@ import { UploadProductsComponent } from './upload-products/upload-products.compo
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import bootstrap from '../main.server';
-import { bootstrapApplication } from '@angular/platform-browser';
+
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +34,11 @@ export const routes: Routes = [
     path: 'product-detail/:id',
     component: ProductDetailComponent,
     title: 'Product Details',
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    title: 'Checkout',
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
