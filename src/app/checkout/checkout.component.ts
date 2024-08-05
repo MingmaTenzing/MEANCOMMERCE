@@ -3,6 +3,9 @@ import { concat, concatMap, forkJoin, switchMap, tap } from 'rxjs';
 import { mergeMap, Subject, take, takeUntil } from 'rxjs';
 import { StripeService } from '../../services/stripe/stripe.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { line_items, cartItems } from '../../types';
+import { Store } from '@ngrx/store';
+import { selectProducts } from '../states/cart-items/selector';
 
 @Component({
   selector: 'app-checkout',
@@ -13,6 +16,7 @@ import { loadStripe, Stripe } from '@stripe/stripe-js';
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
+  cartItems: cartItems[] = [];
 
   private stripe: Stripe | null = null;
   clientSecretKey: string = '';
@@ -28,7 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   intialize(): void {
-    this.StripeService.fetchClientSecret()
+    this.StripeService.createCheckoutSession()
       .pipe(takeUntil(this.destroy$))
       .subscribe((clientSecret) => {
         this.clientSecretKey = clientSecret;

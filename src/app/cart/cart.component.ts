@@ -14,15 +14,11 @@ import {
   increaseQuantity,
   removeProduct,
 } from '../states/cart-items/action';
-import {
-  FormControl,
-  FormsModule,
-  NgForm,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../services/backend/backend.service';
-import { Url } from 'url';
 import { Router, RouterModule } from '@angular/router';
+import Stripe from 'stripe';
+import { StripeService } from '../../services/stripe/stripe.service';
 
 @Component({
   selector: 'app-cart',
@@ -45,11 +41,14 @@ export class CartComponent implements OnDestroy {
   shippingCost: number = 10;
   checkoutUrl: String = '';
 
+  line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+
   private readonly destroy$ = new Subject<void>();
 
   constructor(
     private store: Store<AppState>,
     private backend: BackendService,
+    private StripeService: StripeService,
     private router: Router
   ) {
     this.store
@@ -77,14 +76,22 @@ export class CartComponent implements OnDestroy {
   }
 
   checkout() {
-    this.backend
-      .createCheckoutSession()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((url) => {
-        if (url) {
-          window.location.href = url;
-        }
+    this.cartItems.forEach((item) => {
+      this.line_items.push({
+        quantity: item.quantity,
+        price_data: {
+          currency: 'AUD',
+          product_data: {
+            name: item.name,
+            description: item.description,
+            images: item.images,
+          },
+          unit_amount: item.price * 100,
+        },
       });
+    });
+
+    this.StripeService.provideLineItems(this.line_items);
   }
   ngOnDestroy(): void {
     this.destroy$.next();
