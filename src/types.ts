@@ -1,3 +1,5 @@
+import Stripe from 'stripe';
+
 export interface MeanProducts {
   brand: string;
   category: string;
@@ -11,6 +13,9 @@ export interface MeanProducts {
   stock: number;
   sku: number;
   _id: string;
+}
+export interface line_items {
+  line_items: Stripe.Checkout.SessionCreateParams.LineItem[];
 }
 
 export interface shopProducts {

@@ -8,6 +8,7 @@ import {
 } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { Url } from 'url';
+import Stripe from 'stripe';
 
 @Injectable({
   providedIn: 'root',
@@ -43,10 +44,4 @@ export class BackendService {
     );
   }
 
-  createCheckoutSession() {
-    return this.http.post<string>(
-      'http://localhost:5000/api/v1/create-checkout-session',
-      {}
-    );
-  }
 }
