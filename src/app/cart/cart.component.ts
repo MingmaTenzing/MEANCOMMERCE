@@ -92,6 +92,7 @@ export class CartComponent implements OnDestroy {
     });
 
     this.StripeService.provideLineItems(this.line_items);
+    this.router.navigate(['/checkout']);
   }
   ngOnDestroy(): void {
     this.destroy$.next();
