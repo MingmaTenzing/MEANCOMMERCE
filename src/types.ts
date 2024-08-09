@@ -18,6 +18,12 @@ export interface line_items {
   line_items: Stripe.Checkout.SessionCreateParams.LineItem[];
 }
 
+export interface session_Status {
+  status: string;
+  customer_email: string;
+  customer_name: string;
+}
+
 export interface shopProducts {
   category: string;
   maximumRange: number;
