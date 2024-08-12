@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { concat, concatMap, forkJoin, switchMap, tap } from 'rxjs';
-import { mergeMap, Subject, take, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { StripeService } from '../../services/stripe/stripe.service';
 import {
   loadStripe,
@@ -8,20 +7,24 @@ import {
   StripeEmbeddedCheckout,
   StripeEmbeddedCheckoutOptions,
 } from '@stripe/stripe-js';
-import { line_items, cartItems } from '../../types';
-import { Store } from '@ngrx/store';
-import { selectProducts } from '../states/cart-items/selector';
+import { cartItems } from '../../types';
+
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CommonModule } from '@angular/common';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [],
+  imports: [NgxSkeletonLoaderModule, CommonModule, MatProgressSpinnerModule],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
   cartItems: cartItems[] = [];
+  loading: boolean = true;
   stripeEmbedded!: StripeEmbeddedCheckout;
   private stripe: Stripe | null = null;
   clientSecretKey: string = '';
@@ -42,6 +45,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       .subscribe((clientSecret) => {
         this.clientSecretKey = clientSecret;
         this.intializeCheckout();
+        this.loading = false;
       });
   }
 
