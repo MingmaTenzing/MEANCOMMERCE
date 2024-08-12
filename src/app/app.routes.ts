@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ReturnComponent } from './return/return.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,6 +40,11 @@ export const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Checkout',
+  },
+  {
+    path: 'success',
+    component: ReturnComponent,
+    title: 'Success',
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
