@@ -19,6 +19,7 @@ import { BackendService } from '../../services/backend/backend.service';
 import { Router, RouterModule } from '@angular/router';
 import Stripe from 'stripe';
 import { StripeService } from '../../services/stripe/stripe.service';
+import { RouteAuthService } from '../../services/routeAuth/route-auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -49,7 +50,8 @@ export class CartComponent implements OnDestroy {
     private store: Store<AppState>,
     private backend: BackendService,
     private StripeService: StripeService,
-    private router: Router
+    private router: Router,
+    private routeAuth: RouteAuthService
   ) {
     this.store
       .select(selectProducts)
@@ -92,7 +94,7 @@ export class CartComponent implements OnDestroy {
     });
 
     this.StripeService.provideLineItems(this.line_items);
-    this.router.navigate(['/checkout']);
+    this.routeAuth.proceedRoute();
   }
   ngOnDestroy(): void {
     this.destroy$.next();

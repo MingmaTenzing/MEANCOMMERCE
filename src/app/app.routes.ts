@@ -13,6 +13,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
+import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,6 +41,7 @@ export const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Checkout',
+    canActivate: [checkoutGaurdGuard],
   },
   {
     path: 'success',
