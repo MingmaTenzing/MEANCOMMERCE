@@ -12,12 +12,7 @@ export class StripeService {
   constructor(private http: HttpClient) {}
 
   provideLineItems(items: Stripe.Checkout.SessionCreateParams.LineItem[]) {
-    if (this.line_items.length > 0) {
-      this.line_items.push.apply(this.line_items, items);
-    } else {
-      this.line_items.push(...items);
-      console.log(this.line_items);
-    }
+    this.line_items = items;
   }
 
   getLineItems() {
