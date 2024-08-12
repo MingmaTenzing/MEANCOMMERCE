@@ -2,7 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { concat, concatMap, forkJoin, switchMap, tap } from 'rxjs';
 import { mergeMap, Subject, take, takeUntil } from 'rxjs';
 import { StripeService } from '../../services/stripe/stripe.service';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+import {
+  loadStripe,
+  Stripe,
+  StripeEmbeddedCheckout,
+  StripeEmbeddedCheckoutOptions,
+} from '@stripe/stripe-js';
 import { line_items, cartItems } from '../../types';
 import { Store } from '@ngrx/store';
 import { selectProducts } from '../states/cart-items/selector';
@@ -17,7 +22,7 @@ import { selectProducts } from '../states/cart-items/selector';
 export class CheckoutComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
   cartItems: cartItems[] = [];
-
+  stripeEmbedded!: StripeEmbeddedCheckout;
   private stripe: Stripe | null = null;
   clientSecretKey: string = '';
 
@@ -48,10 +53,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       return console.log('client secret not available');
     }
     try {
-      const checkout = await this.stripe.initEmbeddedCheckout({
+      this.stripeEmbedded = await this.stripe.initEmbeddedCheckout({
         clientSecret: this.clientSecretKey,
       });
-      checkout.mount('#checkout');
+
+      this.stripeEmbedded.mount('#checkout');
     } catch (error) {
       console.log(error);
     }
@@ -60,5 +66,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.stripeEmbedded.unmount();
+    this.stripeEmbedded.destroy();
   }
 }
