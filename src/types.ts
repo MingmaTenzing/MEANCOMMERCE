@@ -13,6 +13,7 @@ export interface MeanProducts {
   stock: number;
   sku: number;
   _id: string;
+  quantity?: number;
 }
 export interface line_items {
   line_items: Stripe.Checkout.SessionCreateParams.LineItem[];
