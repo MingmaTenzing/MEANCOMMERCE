@@ -11,7 +11,7 @@ import {
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { selectProducts } from '../states/cart-items/selector';
@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   numberofCartItems: number = 0;
   constructor(
     private SearchModalService: SearchModalService,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +52,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.store
       .select(selectProducts)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((products) => (this.numberofCartItems = products.length));
+      .subscribe((products) => {
+        this.numberofCartItems = products.length;
+      });
   }
 
   changeState() {
@@ -61,6 +64,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userLoginModal() {
     this.loginModal = !this.loginModal;
+  }
+
+  goToCart() {
+    if (this.numberofCartItems <= 0) {
+      return window.alert('Please Add items to Cart First');
+    }
+    this.router.navigate(['/cart']);
   }
 
   // changeModalState() {

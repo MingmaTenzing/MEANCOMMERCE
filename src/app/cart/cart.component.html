@@ -113,6 +113,7 @@
 
       <!-- proceed to checkout  -->
       <button
+        [disabled]="cartItems.length === 0"
         (click)="checkout()"
         class="p-2 uppercase bg-ciliconorange text-white text-lg w-full"
       >

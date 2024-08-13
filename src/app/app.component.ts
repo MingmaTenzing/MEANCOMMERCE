@@ -11,6 +11,7 @@ import { QuickViewComponent } from './components/quick-view/quick-view.component
 import { MatIconRegistry } from '@angular/material/icon';
 import { Store, StoreModule } from '@ngrx/store';
 import { cartReducer } from './states/cart-items/reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,6 @@ import { cartReducer } from './states/cart-items/reducer';
     FooterComponent,
     HttpClientModule,
     QuickViewComponent,
-   
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
