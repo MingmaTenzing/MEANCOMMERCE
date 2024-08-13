@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { MeanProducts } from '../../../types';
+import { cartItems, MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { QuickViewComponent } from '../quick-view/quick-view.component';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../../states/cart-items/action';
 
 @Component({
   selector: 'app-product-container',
@@ -19,7 +21,8 @@ export class ProductContainerComponent {
 
   constructor(
     private quickViewService: QuickViewService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private store: Store
   ) {}
 
   hovering() {
@@ -31,6 +34,9 @@ export class ProductContainerComponent {
   enableQuickView() {
     this.quickViewService.productId = this.product._id;
     this.quickViewService.enableQuickView();
+  }
+  addToCart(product: MeanProducts) {
+    this.store.dispatch(addProduct({ product }));
   }
 }
 
