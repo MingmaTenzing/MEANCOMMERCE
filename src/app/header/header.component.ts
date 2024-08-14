@@ -11,7 +11,12 @@ import {
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
-import { Router, RouterModule } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterModule,
+} from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { selectProducts } from '../states/cart-items/selector';
@@ -31,6 +36,8 @@ import { RippleModule } from 'primeng/ripple';
     ToastModule,
     ButtonModule,
     RippleModule,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
