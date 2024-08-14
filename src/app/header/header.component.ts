@@ -15,6 +15,10 @@ import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { selectProducts } from '../states/cart-items/selector';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { Button, ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 
 @Component({
   selector: 'app-header',
@@ -24,9 +28,13 @@ import { selectProducts } from '../states/cart-items/selector';
     BottomNavComponent,
     SearchModalComponent,
     RouterModule,
+    ToastModule,
+    ButtonModule,
+    RippleModule,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   modalState: Boolean = false;
@@ -36,7 +44,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private SearchModalService: SearchModalService,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +77,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   goToCart() {
     if (this.numberofCartItems <= 0) {
-      return window.alert('Please Add items to Cart First');
+      return this.messageService.add({
+        severity: 'warn',
+        summary: 'Warn',
+        detail: 'Please Add items to cart first.',
+      });
     }
     this.router.navigate(['/cart']);
   }
