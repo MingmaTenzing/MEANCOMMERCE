@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.numberofCartItems <= 0) {
       return this.messageService.add({
         severity: 'warn',
-        summary: 'Warn',
+        summary: 'No items found in Cart',
         detail: 'Please Add items to cart first.',
       });
     }
