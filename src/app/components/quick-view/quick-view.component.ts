@@ -5,6 +5,9 @@ import { MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../../states/cart-items/action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quick-view',
@@ -23,13 +26,17 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ],
 })
 export class QuickViewComponent implements OnInit, OnDestroy {
-  constructor(private QuickViewService: QuickViewService) {}
+  constructor(
+    private QuickViewService: QuickViewService,
+    private router: Router,
+    private store: Store
+  ) {}
 
   // product$!: Observable<MeanProducts>;
   product: MeanProducts | null = null;
 
   mainProductImage: string = '';
-
+  addedtoCart: boolean = false;
   numberofItems_addToCart: number = 1;
 
   productmainImages: Array<string> = [];
@@ -57,6 +64,15 @@ export class QuickViewComponent implements OnInit, OnDestroy {
 
   changeMainImage(image: string) {
     this.mainProductImage = image;
+  }
+
+  addtoCart(product: MeanProducts) {
+    this.store.dispatch(addProduct({ product }));
+    this.addedtoCart = true;
+  }
+  gotoCart() {
+    this.QuickViewService.closeQuickView();
+    this.router.navigate(['/cart']);
   }
 
   increaseNumber() {

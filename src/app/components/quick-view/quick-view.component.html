@@ -98,7 +98,17 @@
           <button (click)="increaseNumber()">+</button>
         </div>
         <div
-          class="w-[60%] bg-ciliconorange flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+          *ngIf="addedtoCart"
+          (click)="gotoCart()"
+          class="w-[60%] bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+        >
+          <span>Go to Cart</span>
+          <img src="../../../assets/icons/cart.svg" class="w-6" />
+        </div>
+        <div
+          *ngIf="!addedtoCart"
+          (click)="addtoCart(product)"
+          class="w-[60%] bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
         >
           <span>Add to cart</span>
           <img src="../../../assets/icons/cart.svg" class="w-6" />
