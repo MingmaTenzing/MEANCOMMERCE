@@ -21,22 +21,7 @@
     <div class="flex space-x-4 relative">
       <p-toast />
 
-      @if (numberofCartItems === 0) {
-      <p-button>
-        <div (click)="goToCart()" class="relative">
-          <img class="w-6" src="./../../assets/icons/cart.svg" />
-          <div
-            *ngIf="numberofCartItems >= 1"
-            class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
-          >
-            <p class="text-white rounded-full text-sm">
-              {{ numberofCartItems }}
-            </p>
-          </div>
-        </div>
-      </p-button>
-      } @else {
-      <div (click)="goToCart()" class="relative">
+      <div (click)="goToCart()" class="relative cursor-pointer">
         <img class="w-6" src="./../../assets/icons/cart.svg" />
         <div
           *ngIf="numberofCartItems >= 1"
@@ -47,7 +32,6 @@
           </p>
         </div>
       </div>
-      }
 
       <img class="w-6" src="./../../assets/icons/love.svg" />
       <div (click)="userLoginModal()">
