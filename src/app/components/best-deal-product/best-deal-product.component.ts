@@ -6,6 +6,9 @@ import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { addToWishlist } from '../../states/wishlist-items/actions';
+import { selectWishlist } from '../../states/wishlist-items/selector';
+import { WishListState } from '../../states/wishlist-items/wishlist-State';
 
 @Component({
   selector: 'app-best-deal-product',
@@ -21,9 +24,11 @@ export class BestDealProductComponent {
 
   constructor(
     private quickViewService: QuickViewService,
-    private store: Store,
+    private store: Store<WishListState>,
     private MessageService: MessageService
-  ) {}
+  ) {
+    this.store.select(selectWishlist).subscribe((data) => console.log(data));
+  }
 
   hovering() {
     this.isHoveringProduct = true;
@@ -35,6 +40,10 @@ export class BestDealProductComponent {
     this.quickViewService.productId = this.product._id;
     this.quickViewService.enableQuickView();
   }
+  addToWishlist(product: MeanProducts) {
+    this.store.dispatch(addToWishlist({ product }));
+  }
+
   addToCart(product: MeanProducts) {
     this.store.dispatch(addProduct({ product }));
     this.MessageService.add({

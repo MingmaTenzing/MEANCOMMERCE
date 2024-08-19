@@ -8,6 +8,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideState, provideStore } from '@ngrx/store';
 import { cartReducer } from './states/cart-items/reducer';
 import { provideNgxStripe } from 'ngx-stripe';
+import { wishListReducer } from './states/wishlist-items/reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideState({ name: 'cartItems', reducer: cartReducer }),
+    provideState({ name: 'wishList', reducer: wishListReducer }),
     provideNgxStripe(
       'pk_test_51N1gQ2ASPEPBGJmG9FK1qYh81k5hQgOieL6Sq2rtyxPl83f4UJqGnAWp8gVCiJU6FY1bPe6Ie30mjDcmCdHwkjeX00rXWDhqJc'
     ),
