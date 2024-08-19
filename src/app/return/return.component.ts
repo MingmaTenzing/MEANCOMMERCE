@@ -4,12 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, take, takeUntil } from 'rxjs';
 import { StripeService } from '../../services/stripe/stripe.service';
 import Stripe from 'stripe';
+import { MatIconModule } from '@angular/material/icon';
+
 import { session_Status } from '../../types';
 
 @Component({
   selector: 'app-return',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './return.component.html',
   styleUrl: './return.component.css',
 })
