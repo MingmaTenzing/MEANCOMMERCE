@@ -1,25 +1,100 @@
-<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto">
-  <h1>Wishlist</h1>
-  <table class="border w-full table-auto">
+<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto my-[72px]">
+  <div class="border p-4">
+    <h1 class="text-gray-900 font-semibold">Wishlist</h1>
+  </div>
+  <table class="border w-full table-auto hidden md:inline-table">
     <thead class="font-light">
       <tr class="border bg-gray-50">
-        <th class="p-2 font-normal text-gray-700">Products</th>
-        <th class="text-gray-700 font-normal">Price</th>
-        <th class="text-gray-700 font-normal">Stock Status</th>
-        <th class="text-gray-700 font-normal">Actions</th>
+        <th class="p-4 font-normal text-gray-700 text-start">Products</th>
+        <th class="p-4 text-gray-700 font-normal text-start">Price</th>
+        <th class="p-4 text-gray-700 font-normal text-start">Stock Status</th>
+        <th class="p-4 text-gray-700 font-normal text-start">Actions</th>
       </tr>
     </thead>
-    <tbody>
-      <tr class="text-center">
-        <td class="text-sm md:text-base p-4">MSI Laptop</td>
-        <td class="text-sm md:text-base p-4">$30000</td>
+    <tbody class="">
+      <tr
+        *ngFor="let item of wishListItems"
+        class="space-y-[16px] hover:bg-gray-50"
+      >
         <td
-          class="text-sm md:text-base p-4 uppercase text-green-500 font-semibold"
+          (click)="routeToProductDetail(item)"
+          class="text-sm cursor-pointer md:text-base p-4 flex items-center space-x-2 lg:w-[580px]"
+        >
+          <img ngSrc="{{ item.images[0] }}" width="72" height="72" />
+          <p class="line-clamp-2">{{ item.name }}</p>
+        </td>
+        <td class="text-sm md:text-base p-4 lg:w-[200px]">${{ item.price }}</td>
+        <td
+          class="text-sm md:text-base p-4 lg:w-[200px] uppercase text-green-500 font-semibold"
         >
           in stock
         </td>
-        <td class="text-sm md:text-base p-4"><button>add to cart</button></td>
+        <td class="text-sm md:text-base">
+          <div class="flex items-center space-x-2">
+            <div
+              (click)="addToCart(item)"
+              class="bg-ciliconorange w-auto cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 text-sm"
+            >
+              <span>Add to cart</span>
+              <img src="../../../assets/icons/cart.svg" class="w-6" />
+            </div>
+            <div>
+              <button
+                (click)="removefromWishList(item)"
+                class="hover:border-red-500 text-sm hover:text-red-500 cursor-pointer border-2 px-2 py-0.5 rounded-full text-gray-400 border-gray-400 font-semibold"
+              >
+                x
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- wishlist for mobile -->
+  <table class="border w-full table-auto md:hidden">
+    <thead class="font-light">
+      <tr class="border bg-gray-50">
+        <th class="p-4 font-normal text-gray-700 text-start">Products</th>
+        <th class="p-4 text-gray-700 font-normal text-start">Price</th>
+        <th class="p-4 text-gray-700 font-normal text-start">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="px-[24px]">
+      <tr
+        *ngFor="let item of wishListItems"
+        class="space-y-[16px] hover:bg-gray-50"
+      >
+        <td
+          (click)="routeToProductDetail(item)"
+          class="cursor-pointer text-sm md:text-base p-4 flex items-center space-x-2 lg:w-[580px]"
+        >
+          <img ngSrc="{{ item.images[0] }}" width="72" height="72" />
+          <p class="line-clamp-2">{{ item.name }}</p>
+        </td>
+        <td class="text-sm md:text-base p-4 lg:w-[200px]">${{ item.price }}</td>
+
+        <td class="text-sm md:text-base">
+          <div class="flex flex-col items-end space-y-2">
+            <div
+              (click)="addToCart(item)"
+              class="bg-ciliconorange w-auto cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 text-xs"
+            >
+              <img src="../../../assets/icons/cart.svg" class="w-6" />
+            </div>
+            <div>
+              <button
+                (click)="removefromWishList(item)"
+                class="hover:border-red-500 text-sm hover:text-red-500 cursor-pointer border-2 px-2 py-0.5 rounded-full text-gray-400 border-gray-400 font-semibold"
+              >
+                x
+              </button>
+            </div>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+<p-toast />

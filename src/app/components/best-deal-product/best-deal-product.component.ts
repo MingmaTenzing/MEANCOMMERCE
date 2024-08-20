@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MeanProducts } from '../../../types';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
-import { Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -26,9 +26,7 @@ export class BestDealProductComponent {
     private quickViewService: QuickViewService,
     private store: Store<WishListState>,
     private MessageService: MessageService
-  ) {
-    this.store.select(selectWishlist).subscribe((data) => console.log(data));
-  }
+  ) {}
 
   hovering() {
     this.isHoveringProduct = true;
@@ -42,6 +40,11 @@ export class BestDealProductComponent {
   }
   addToWishlist(product: MeanProducts) {
     this.store.dispatch(addToWishlist({ product }));
+    this.MessageService.add({
+      severity: 'success',
+      summary: 'Added to Wishlist',
+      detail: 'Product has been added to Wishlist',
+    });
   }
 
   addToCart(product: MeanProducts) {
