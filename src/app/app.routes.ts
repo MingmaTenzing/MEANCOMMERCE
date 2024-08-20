@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
 import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -47,6 +48,11 @@ export const routes: Routes = [
     path: 'success',
     component: ReturnComponent,
     title: 'Success',
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
+    title: 'Wishlist',
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

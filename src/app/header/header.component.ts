@@ -18,12 +18,13 @@ import {
   RouterModule,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, take } from 'rxjs';
 import { selectProducts } from '../states/cart-items/selector';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import { selectWishlist } from '../states/wishlist-items/selector';
 
 @Component({
   selector: 'app-header',
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
   numberofCartItems: number = 0;
+  numberof_WishListedItems: number = 0;
   constructor(
     private SearchModalService: SearchModalService,
     private store: Store,
@@ -57,7 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const data = this.SearchModalService.watch();
-    data.subscribe((value) => {
+    data.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       if (value == false) {
         this.modalState = false;
       } else {
@@ -71,6 +73,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((products) => {
         this.numberofCartItems = products.length;
       });
+
+    this.store
+      .select(selectWishlist)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((items) => (this.numberof_WishListedItems = items.length));
   }
 
   changeState() {
@@ -81,7 +88,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userLoginModal() {
     this.loginModal = !this.loginModal;
   }
-
+  gotoWishList() {
+    if (this.numberof_WishListedItems <= 0) {
+      return this.messageService.add({
+        severity: 'warn',
+        summary: 'No items found on your Wishlist',
+        detail: 'Please Add items to wishlist first.',
+      });
+    }
+    this.router.navigate(['/wishlist']);
+  }
   goToCart() {
     if (this.numberofCartItems <= 0) {
       return this.messageService.add({
