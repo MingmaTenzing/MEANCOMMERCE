@@ -1,0 +1,17 @@
+<div class="w-[264px]">
+  <div class="card flex justify-content-center">
+    <p-sidebar
+      [(visible)]="sidebarVisible"
+      position="right"
+      class="bg-blue-300"
+    >
+      <div
+        class="flex items-center space-x-2 hover:bg-ciliconorange hover:text-white"
+      >
+        <i class="pi pi-bars"></i>
+        <span> Dashboard </span>
+      </div>
+    </p-sidebar>
+    <p-button (onClick)="sidebarVisible = true" icon="pi pi-arrow-right" />
+  </div>
+</div>
