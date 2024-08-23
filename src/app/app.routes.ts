@@ -15,6 +15,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
 import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -53,6 +54,11 @@ export const routes: Routes = [
     path: 'wishlist',
     component: WishlistComponent,
     title: 'Wishlist',
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    title: 'Dashboard',
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
