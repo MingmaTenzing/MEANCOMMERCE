@@ -1,0 +1,52 @@
+<div class="border">
+  <!-- header -->
+  <div class="p-4 border-b flex justify-between">
+    <h3 class="uppercase text-gray-900 font-medium">Recent Order</h3>
+    <div class="text-[#FA8232] text-sm space-x-2 flex items-center">
+      <span>View All</span>
+      <i class="pi pi-arrow-right"></i>
+    </div>
+  </div>
+
+  <!-- table -->
+  <table class="table-auto w-full">
+    <thead class="w-full bg-gray-50 text-xs uppercase text-gray-700">
+      <tr class="">
+        <th class="text-start p-4 font-medium">Order id</th>
+        <th class="text-start p-4 font-medium">Status</th>
+        <th class="text-start p-4 font-medium">Date</th>
+        <th class="text-start p-4 font-medium">Total</th>
+        <th class="text-start p-4 font-medium">Action</th>
+      </tr>
+    </thead>
+    <tbody class="">
+      <tr class="text-sm font-medium hover:bg-gray-50">
+        <td class="p-4">#124261</td>
+        <td class="p-4 uppercase text-ciliconorange">In progress</td>
+        <td class="p-4">{{ date }}</td>
+        <td class="p-4">2233</td>
+        <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
+          <span>View Details</span><i class="pi pi-arrow-right"></i>
+        </td>
+      </tr>
+      <tr class="text-sm font-medium hover:bg-gray-50">
+        <td class="p-4">#124261</td>
+        <td class="p-4 uppercase text-green-500">Completed</td>
+        <td class="p-4">{{ date }}</td>
+        <td class="p-4">2233</td>
+        <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
+          <span>View Details</span><i class="pi pi-arrow-right"></i>
+        </td>
+      </tr>
+      <tr class="text-sm font-medium hover:bg-gray-50">
+        <td class="p-4">#124261</td>
+        <td class="p-4 uppercase text-red-500">canceled</td>
+        <td class="p-4">{{ date }}</td>
+        <td class="p-4">2233</td>
+        <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
+          <span>View Details</span><i class="pi pi-arrow-right"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

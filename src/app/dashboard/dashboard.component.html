@@ -1,5 +1,12 @@
-<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6">
-  <div>
-    <app-side-panel> </app-side-panel>
+<div
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:pt-[40px] md:pb-[72px]"
+>
+  <div class="flex justify-between">
+    <!-- <app-side-panel> </app-side-panel> -->
+
+    <app-side-menu class="w-[200px] hidden lg:flex"></app-side-menu>
+    <div class="lg:w-[984px]">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

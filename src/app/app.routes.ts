@@ -15,8 +15,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
 import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { MainComponent } from './dashboard/feature/main/main.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrderHistoryComponent } from './dashboard/feature/order-history/order-history.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -59,6 +61,23 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Dashboard',
+    children: [
+      {
+        path: 'order-history',
+        component: OrderHistoryComponent,
+        title: 'Order History',
+      },
+      {
+        path: 'main',
+        component: MainComponent,
+        title: 'Dashboard',
+      },
+      {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full',
+      },
+    ],
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
