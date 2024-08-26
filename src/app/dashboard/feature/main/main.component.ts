@@ -3,6 +3,7 @@ import { AccountInfoCardComponent } from '../../components/account-info-card/acc
 import { BillingAddressCardComponent } from '../../components/billing-address-card/billing-address-card.component';
 import { FunFactCardsComponent } from '../../components/fun-fact-cards/fun-fact-cards.component';
 import { PaymentOptionComponent } from '../../components/payment-option/payment-option.component';
+import { RecentOrderComponent } from '../../components/recent-order/recent-order.component';
 
 @Component({
   selector: 'app-main',
@@ -12,6 +13,7 @@ import { PaymentOptionComponent } from '../../components/payment-option/payment-
     BillingAddressCardComponent,
     FunFactCardsComponent,
     PaymentOptionComponent,
+    RecentOrderComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
