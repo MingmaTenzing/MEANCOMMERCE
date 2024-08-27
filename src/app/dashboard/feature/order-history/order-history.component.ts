@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './order-history.component.html',
-  styleUrl: './order-history.component.css'
+  styleUrl: './order-history.component.css',
 })
 export class OrderHistoryComponent {
-
+  date = new Date().toString();
 }
