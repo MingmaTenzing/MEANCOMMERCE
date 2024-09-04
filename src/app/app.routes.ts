@@ -20,6 +20,9 @@ import { MainComponent } from './dashboard/feature/main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderHistoryComponent } from './dashboard/feature/order-history/order-history.component';
 import { SettingsComponent } from './dashboard/feature/settings/settings.component';
+import { SigninComponent } from './auth/feature/signin/signin/signin.component';
+import { SignupComponent } from './auth/feature/signup/signup/signup.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -78,6 +81,7 @@ export const routes: Routes = [
         component: SettingsComponent,
         title: 'Settings',
       },
+
       {
         path: '',
         redirectTo: 'main',
@@ -85,5 +89,28 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'auth',
+    component: AuthFormComponent,
+    title: 'Auth',
+    children: [
+      {
+        path: 'signin',
+        component: SigninComponent,
+        title: 'Signin',
+      },
+      {
+        path: 'signup',
+        component: SignupComponent,
+        title: 'Signup',
+      },
+      {
+        path: '',
+        redirectTo: 'signin',
+        pathMatch: 'full',
+      },
+    ],
+  },
+
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

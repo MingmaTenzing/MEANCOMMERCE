@@ -1,1 +1,36 @@
-<p>signin works!</p>
+<div class="p-4 border rounded-b-md space-y-4">
+  <div class="flex flex-col space-y-2 text-sm font-medium">
+    <label class="text-gray-900">Email Address</label>
+    <input type="email" class="outline-none border text-gray-500 p-2" />
+  </div>
+  <div class="flex flex-col space-y-2 text-sm font-medium">
+    <label class="text-gray-900">Password</label>
+    <input type="password" class="outline-none border text-gray-500 p-2" />
+  </div>
+  <div class="flex justify-center">
+    <button
+      class="flex space-x-2 items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
+    >
+      <span class="uppercase">Sign in</span> <i class="pi pi-arrow-right"></i>
+    </button>
+  </div>
+  <!-- or line -->
+  <div class="flex items-center space-x-1 text-gray-500 text-sm">
+    <div class="h-0.5 w-full bg-gray-100"></div>
+    <span>or</span>
+    <div class="h-0.5 w-full bg-gray-100"></div>
+  </div>
+  <!-- google and apple signin -->
+  <div
+    class="w-full p-2 border cursor-pointer text-sm text-gray-700 flex items- font-normal justify-center space-x-4"
+  >
+    <i class="pi pi-google"></i>
+    <span>Login with Google</span>
+  </div>
+  <div
+    class="w-full p-2 border cursor-pointer text-sm text-gray-700 flex font-normal items-center justify-center space-x-4"
+  >
+    <i class="pi pi-apple"></i>
+    <span>Login with Apple</span>
+  </div>
+</div>

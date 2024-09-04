@@ -8,10 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuickViewService } from '../services/quickview/quick-view.service';
 import { Observable } from 'rxjs';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
-import { MatIconRegistry } from '@angular/material/icon';
-import { Store, StoreModule } from '@ngrx/store';
-import { cartReducer } from './states/cart-items/reducer';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
