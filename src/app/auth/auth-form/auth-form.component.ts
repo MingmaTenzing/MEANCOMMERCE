@@ -5,6 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   Router,
@@ -16,7 +17,7 @@ import {
 @Component({
   selector: 'app-auth-form',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.css',
   animations: [

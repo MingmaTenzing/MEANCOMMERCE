@@ -3,20 +3,23 @@
     <!-- header -->
     <div class="relative">
       <div
-        class="flex justify-between border p-4 rounded-t-md text-gray-900 text-lg font-semibold"
+        class="flex border p-4 rounded-t-md text-gray-900 text-lg font-semibold"
       >
-        <span
+        <div
           (click)="toggle()"
           routerLinkActive="true"
           routerLink="/auth/signin"
-          class="cursor-pointer"
-          >Sign In</span
+          [ngClass]="{ 'text-gray': !left_side_bar }"
+          class="cursor-pointer w-1/2 text-center"
         >
+          Sign In
+        </div>
         <span
           (click)="toggle()"
           routerLinkActive="true"
           routerLink="/auth/signup"
-          class="cursor-pointer"
+          [ngClass]="{ 'text-gray': left_side_bar }"
+          class="cursor-pointer w-1/2 text-center"
           >Sign up</span
         >
       </div>
