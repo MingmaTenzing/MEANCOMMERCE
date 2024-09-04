@@ -19,6 +19,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { MainComponent } from './dashboard/feature/main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderHistoryComponent } from './dashboard/feature/order-history/order-history.component';
+import { SettingsComponent } from './dashboard/feature/settings/settings.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -71,6 +72,11 @@ export const routes: Routes = [
         path: 'main',
         component: MainComponent,
         title: 'Dashboard',
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        title: 'Settings',
       },
       {
         path: '',
