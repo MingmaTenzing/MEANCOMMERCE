@@ -7,8 +7,6 @@ import {
   shopProducts,
 } from '../../types';
 import { FormGroup } from '@angular/forms';
-import { Url } from 'url';
-import Stripe from 'stripe';
 
 @Injectable({
   providedIn: 'root',
@@ -44,4 +42,14 @@ export class BackendService {
     );
   }
 
+  signInUser(user_credentials: FormGroup) {
+    console.log(user_credentials.value.email, user_credentials.value.password);
+
+    this.http
+      .post('http://localhost:5000/api/v1/auth/login', {
+        email: 'testing@gmail.com',
+        password: '123testing',
+      })
+      .subscribe((token) => console.log(token));
+  }
 }

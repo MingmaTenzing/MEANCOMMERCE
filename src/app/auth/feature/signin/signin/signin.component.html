@@ -1,14 +1,27 @@
-<div class="p-6 border rounded-b-md space-y-4">
+<form
+  [formGroup]="signinForm"
+  (ngSubmit)="sign_in_user()"
+  class="p-6 border rounded-b-md space-y-4"
+>
   <div class="flex flex-col space-y-2 text-sm font-medium">
     <label class="text-gray-900">Email Address</label>
-    <input type="email" class="outline-none border text-gray-500 p-2" />
+    <input
+      formControlName="email"
+      type="email"
+      class="outline-none border text-gray-500 p-2"
+    />
   </div>
   <div class="flex flex-col space-y-2 text-sm font-medium">
     <label class="text-gray-900">Password</label>
-    <input type="password" class="outline-none border text-gray-500 p-2" />
+    <input
+      formControlName="password"
+      type="password"
+      class="outline-none border text-gray-500 p-2"
+    />
   </div>
   <div class="flex justify-center">
     <button
+      type="submit"
       class="flex space-x-2 items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
     >
       <span class="uppercase">Sign in</span> <i class="pi pi-arrow-right"></i>
@@ -33,4 +46,4 @@
     <i class="pi pi-apple"></i>
     <span>Login with Apple</span>
   </div>
-</div>
+</form>
