@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
+import { Subject, takeUntil } from 'rxjs';
+import { token } from '../../../auth_types';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +13,10 @@ import { BackendService } from '../../../../../services/backend/backend.service'
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css',
 })
-export class SigninComponent {
+export class SigninComponent implements OnDestroy {
+  $destroy = new Subject<void>();
+  token!: token;
+
   constructor(private backend_service: BackendService) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
@@ -20,6 +25,20 @@ export class SigninComponent {
 
   sign_in_user() {
     console.log(this.signinForm.value);
-    this.backend_service.signInUser(this.signinForm);
+    this.backend_service
+      .signInUser(this.signinForm)
+      .pipe(takeUntil(this.$destroy))
+      .subscribe({
+        next: (data) => console.log(data),
+        error: (e: HttpErrorResponse) => {
+          window.alert(e.error.message);
+        },
+      });
+    console.log(this.token);
+  }
+
+  ngOnDestroy(): void {
+    this.$destroy.next();
+    this.$destroy.complete();
   }
 }

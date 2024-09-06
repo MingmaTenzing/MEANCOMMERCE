@@ -6,13 +6,14 @@ import {
   trigger,
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-auth-form',
@@ -43,6 +44,7 @@ import {
 export class AuthFormComponent {
   currentRoute: string = '';
   left_side_bar: boolean = false;
+
   constructor(private Router: Router) {
     this.currentRoute = this.Router.url.split('/')[2];
     if (this.currentRoute == 'signin') {

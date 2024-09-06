@@ -7,6 +7,7 @@ import {
   shopProducts,
 } from '../../types';
 import { FormGroup } from '@angular/forms';
+import { token } from '../../app/auth/auth_types';
 
 @Injectable({
   providedIn: 'root',
@@ -45,11 +46,9 @@ export class BackendService {
   signInUser(user_credentials: FormGroup) {
     console.log(user_credentials.value.email, user_credentials.value.password);
 
-    this.http
-      .post('http://localhost:5000/api/v1/auth/login', {
-        email: 'testing@gmail.com',
-        password: '123testing',
-      })
-      .subscribe((token) => console.log(token));
+    return this.http.post<token>('http://localhost:5000/api/v1/auth/login', {
+      email: user_credentials.value.email,
+      password: user_credentials.value.password,
+    });
   }
 }
