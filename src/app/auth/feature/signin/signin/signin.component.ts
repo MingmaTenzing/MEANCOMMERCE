@@ -15,7 +15,7 @@ import { token } from '../../../auth_types';
 })
 export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
-  token!: token;
+  token: string = '';
 
   constructor(private backend_service: BackendService) {}
   signinForm = new FormGroup({
@@ -29,12 +29,13 @@ export class SigninComponent implements OnDestroy {
       .signInUser(this.signinForm)
       .pipe(takeUntil(this.$destroy))
       .subscribe({
-        next: (data) => console.log(data),
+        next: (data) => {
+          (this.token = data.token), console.log(this.token);
+        },
         error: (e: HttpErrorResponse) => {
           window.alert(e.error.message);
         },
       });
-    console.log(this.token);
   }
 
   ngOnDestroy(): void {
