@@ -1,20 +1,39 @@
-<div class="p-6 border rounded-b-md space-y-4">
+<form
+  [formGroup]="signup_form"
+  (ngSubmit)="user_signup()"
+  class="p-6 border rounded-b-md space-y-4"
+>
   <!-- name -->
   <div class="flex flex-col space-y-2 text-sm font-medium">
     <label class="text-gray-900">Name</label>
-    <input type="text" class="outline-none border text-gray-500 p-2" />
+    <input
+      required
+      formControlName="user_name"
+      type="text"
+      class="outline-none text-gray-500 p-2"
+    />
   </div>
 
   <!-- email -->
   <div class="flex flex-col space-y-2 text-sm font-medium">
     <label class="text-gray-900">Email Address</label>
-    <input type="email" class="outline-none border text-gray-500 p-2" />
+    <input
+      required
+      formControlName="email"
+      type="email"
+      class="outline-none border text-gray-500 p-2"
+    />
   </div>
 
   <!-- password -->
   <div class="flex flex-col space-y-2 text-sm font-medium">
     <label class="text-gray-900">Password</label>
-    <input type="password" class="outline-none border text-gray-500 p-2" />
+    <input
+      required
+      formControlName="password"
+      type="password"
+      class="outline-none border text-gray-500 p-2"
+    />
   </div>
 
   <!-- terms agrrement -->
@@ -27,9 +46,10 @@
   </div>
   <div class="flex justify-center">
     <button
-      class="flex space-x-2 items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
+      type="submit"
+      class="flex space-x-2 uppercase items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
     >
-      <span class="uppercase">Sign up</span> <i class="pi pi-arrow-right"></i>
+      Sign up
     </button>
   </div>
   <!-- or line -->
@@ -51,4 +71,4 @@
     <i class="pi pi-apple"></i>
     <span>Sign up with Apple</span>
   </div>
-</div>
+</form>

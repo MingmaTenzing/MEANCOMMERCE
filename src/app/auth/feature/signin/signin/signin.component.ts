@@ -16,7 +16,9 @@ export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
   token: string = '';
 
-  constructor(private backend_service: BackendService) {}
+  constructor(private backend_service: BackendService) {
+    console.log(localStorage.getItem('access_token'));
+  }
   signinForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),

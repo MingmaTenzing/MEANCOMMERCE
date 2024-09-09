@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   FilterSearch,
   MeanProducts,
@@ -13,6 +13,9 @@ import { token } from '../../app/auth/auth_types';
   providedIn: 'root',
 })
 export class BackendService {
+  httpHeaders: HttpHeaders = new HttpHeaders({
+    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+  });
   constructor(private http: HttpClient) {}
 
   getData() {
@@ -24,7 +27,8 @@ export class BackendService {
   getshopProducts(filter: FilterSearch) {
     return this.http.post<MeanProducts[]>(
       'http://localhost:5000/api/v1/products?page=1&limit=10',
-      filter
+      filter,
+      { headers: this.httpHeaders }
     );
   }
 
@@ -50,5 +54,16 @@ export class BackendService {
       email: user_credentials.value.email,
       password: user_credentials.value.password,
     });
+  }
+
+  signup_user(user_details: FormGroup) {
+    console.log(user_details.value);
+    this.http
+      .post('http://localhost:5000/api/v1/auth/register', {
+        email: user_details.value.email,
+        password: user_details.value.password,
+        user_name: user_details.value.user_name,
+      })
+      .subscribe((data) => console.log(data));
   }
 }
