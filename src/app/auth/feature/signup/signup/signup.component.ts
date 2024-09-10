@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ import { BackendService } from '../../../../../services/backend/backend.service'
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
-export class SignupComponent {
+export class SignupComponent implements OnDestroy {
+  private $destroy = new Subject<void>();
   constructor(private backend: BackendService) {}
   signup_form = new FormGroup({
     email: new FormControl('', [Validators.required]),
@@ -25,6 +27,10 @@ export class SignupComponent {
   });
 
   user_signup() {
-    this.backend.signup_user(this.signup_form);
+    this.backend.signup_user(this.signup_form).pipe(takeUntil(this.$destroy)).subscribe((data) => )
+  }
+  ngOnDestroy(): void {
+    this.$destroy.next()
+    this.$destroy.complete()
   }
 }

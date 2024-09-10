@@ -27,8 +27,7 @@ export class BackendService {
   getshopProducts(filter: FilterSearch) {
     return this.http.post<MeanProducts[]>(
       'http://localhost:5000/api/v1/products?page=1&limit=10',
-      filter,
-      { headers: this.httpHeaders }
+      filter
     );
   }
 
@@ -57,13 +56,10 @@ export class BackendService {
   }
 
   signup_user(user_details: FormGroup) {
-    console.log(user_details.value);
-    this.http
-      .post('http://localhost:5000/api/v1/auth/register', {
-        email: user_details.value.email,
-        password: user_details.value.password,
-        user_name: user_details.value.user_name,
-      })
-      .subscribe((data) => console.log(data));
+    return this.http.post('http://localhost:5000/api/v1/auth/register', {
+      email: user_details.value.email,
+      password: user_details.value.password,
+      user_name: user_details.value.user_name,
+    });
   }
 }
