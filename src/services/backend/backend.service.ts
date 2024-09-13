@@ -5,6 +5,7 @@ import {
   MeanProducts,
   categoryProductFilter,
   shopProducts,
+  user_session,
 } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
@@ -61,5 +62,14 @@ export class BackendService {
       password: user_details.value.password,
       user_name: user_details.value.user_name,
     });
+  }
+
+  check_session() {
+    return this.http.post<user_session>(
+      'http://localhost:5000/api/v1/auth/check-session',
+      {
+        headers: this.httpHeaders,
+      }
+    );
   }
 }

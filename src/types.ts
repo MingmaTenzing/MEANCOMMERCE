@@ -61,3 +61,9 @@ export interface cartItems {
   _id: string;
   quantity?: number;
 }
+
+export interface user_session {
+  name: string;
+  userId: string;
+  message: string;
+}
