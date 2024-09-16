@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   FilterSearch,
@@ -9,14 +9,12 @@ import {
 } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
-  httpHeaders: HttpHeaders = new HttpHeaders({
-    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-  });
   constructor(private http: HttpClient) {}
 
   getData() {
@@ -64,12 +62,9 @@ export class BackendService {
     });
   }
 
-  check_session() {
-    return this.http.post<user_session>(
-      'http://localhost:5000/api/v1/auth/check-session',
-      {
-        headers: this.httpHeaders,
-      }
-    );
-  }
+  // check_session() {
+  //   return this.http.post<user_session>(
+  //     'http://localhost:5000/api/v1/auth/check-session'
+  //   );
+  // }
 }

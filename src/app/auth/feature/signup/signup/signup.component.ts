@@ -27,8 +27,11 @@ export class SignupComponent implements OnDestroy {
   });
 
   user_signup() {
-    // this.backend.signup_user(this.signup_form).pipe(takeUntil(this.$destroy)).subscribe((data) => )
-    this.backend.check_session().subscribe((data) => console.log(data));
+    this.backend
+      .signup_user(this.signup_form)
+      .pipe(takeUntil(this.$destroy))
+      .subscribe((data) => console.log(data));
+    // this.backend.check_session().subscribe((data) => console.log(data));
   }
   ngOnDestroy(): void {
     this.$destroy.next();
