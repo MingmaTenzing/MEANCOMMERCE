@@ -24,6 +24,7 @@ export class SignupComponent implements OnDestroy {
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     user_name: new FormControl('', [Validators.required]),
+    profile_image: new FormControl('', [Validators.required]),
   });
 
   user_signup() {
