@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../types';
+import { auth_session } from '../../types';
 import { BackendService } from '../backend/backend.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  current_user: User | null = null;
+  current_user: auth_session | null = null;
 
   constructor(private backend: BackendService) {}
 

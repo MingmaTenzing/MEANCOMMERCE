@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FilterSearch, MeanProducts } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
-import { User } from '../../types';
+import { auth_session } from '../../types';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +61,7 @@ export class BackendService {
         email: user_details.value.email,
         password: user_details.value.password,
         user_name: user_details.value.user_name,
+        profile_image: user_details.value.profile_image,
       },
       {
         withCredentials: true,
@@ -69,7 +70,7 @@ export class BackendService {
   }
 
   check_session() {
-    return this.http.get<User>(
+    return this.http.get<auth_session>(
       'http://localhost:5000/api/v1/auth/session-check',
       {
         withCredentials: true,

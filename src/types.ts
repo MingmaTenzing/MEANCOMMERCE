@@ -62,7 +62,7 @@ export interface cartItems {
   quantity?: number;
 }
 
-export interface User {
+export interface auth_session {
   name: string;
   userId: string;
   message: string;
