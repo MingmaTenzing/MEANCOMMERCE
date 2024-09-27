@@ -4,6 +4,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
 import { Subject, takeUntil } from 'rxjs';
+import { UserService } from '../../../../../services/user/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,9 +17,7 @@ export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
   token: string = '';
 
-  constructor(private backend_service: BackendService) {
-    console.log(localStorage.getItem('access_token'));
-  }
+  constructor(private backend_service: BackendService) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -29,15 +28,7 @@ export class SigninComponent implements OnDestroy {
     this.backend_service
       .signInUser(this.signinForm)
       .pipe(takeUntil(this.$destroy))
-      .subscribe({
-        next: (data) => {
-          (this.token = data.token),
-            localStorage.setItem('access_token', this.token);
-        },
-        error: (e: HttpErrorResponse) => {
-          window.alert(e.error.message);
-        },
-      });
+      .subscribe((data) => console.log(data));
   }
 
   ngOnDestroy(): void {

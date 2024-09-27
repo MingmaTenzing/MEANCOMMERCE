@@ -98,6 +98,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
     this.router.navigate(['/wishlist']);
   }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
   goToCart() {
     if (this.numberofCartItems <= 0) {
       return this.messageService.add({

@@ -1,15 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {
-  FilterSearch,
-  MeanProducts,
-  categoryProductFilter,
-  shopProducts,
-  user_session,
-} from '../../types';
+import { FilterSearch, MeanProducts } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
-import { DOCUMENT } from '@angular/common';
+import { User } from '../../types';
 
 @Injectable({
   providedIn: 'root',
@@ -48,23 +42,38 @@ export class BackendService {
   signInUser(user_credentials: FormGroup) {
     console.log(user_credentials.value.email, user_credentials.value.password);
 
-    return this.http.post<token>('http://localhost:5000/api/v1/auth/login', {
-      email: user_credentials.value.email,
-      password: user_credentials.value.password,
-    });
+    return this.http.post<token>(
+      'http://localhost:5000/api/v1/auth/login',
+      {
+        email: user_credentials.value.email,
+        password: user_credentials.value.password,
+      },
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   signup_user(user_details: FormGroup) {
-    return this.http.post('http://localhost:5000/api/v1/auth/register', {
-      email: user_details.value.email,
-      password: user_details.value.password,
-      user_name: user_details.value.user_name,
-    });
+    return this.http.post(
+      'http://localhost:5000/api/v1/auth/register',
+      {
+        email: user_details.value.email,
+        password: user_details.value.password,
+        user_name: user_details.value.user_name,
+      },
+      {
+        withCredentials: true,
+      }
+    );
   }
 
-  // check_session() {
-  //   return this.http.post<user_session>(
-  //     'http://localhost:5000/api/v1/auth/check-session'
-  //   );
-  // }
+  check_session() {
+    return this.http.get<User>(
+      'http://localhost:5000/api/v1/auth/session-check',
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }
