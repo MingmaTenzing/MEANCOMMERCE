@@ -75,7 +75,12 @@ export const routes: Routes = [
       {
         path: 'cart',
         component: DashboardCartComponent,
-        title: 'Dashboard-cart',
+        title: 'Cart',
+      },
+      {
+        path: 'wishlist',
+        component: WishlistComponent,
+        title: 'Whishlist',
       },
       {
         path: 'main',
