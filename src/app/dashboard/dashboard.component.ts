@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidePanelComponent } from './components/side-panel/side-panel/side-panel.component';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,4 +17,12 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {}
+export class DashboardComponent implements OnInit {
+  constructor(private backend: BackendService) {
+    // this.backend.check_session();
+  }
+
+  ngOnInit(): void {
+    this.backend.check_session().subscribe((data) => console.log(data));
+  }
+}
