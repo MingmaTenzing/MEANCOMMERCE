@@ -1,0 +1,71 @@
+<div class="p-4 md:space-y-14 lg:space-y-0 lg:flex lg:space-x-4">
+  <!-- shopping card -->
+
+  <div class="hidden md:inline-block border">
+    <h2 class="p-4 text-lg font-medium text-gray-900">Shopping Card</h2>
+    <table class="table-auto w-full border">
+      <thead class="border border-gray-100">
+        <tr class="bg-gray-50 text-sm uppercase">
+          <th class="text-gray-700 font-normal w-[50%] p-2">Products</th>
+          <th class="text-gray-700 font-normal">Price</th>
+          <th class="text-gray-700 font-normal">Quantity</th>
+          <th class="text-gray-700 font-normal">Sub-Total</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr *ngFor="let item of cartItems" class="hover:bg-gray-50">
+          <td class="text-center text-sm flex items-center space-x-3 p-4">
+            <button
+              (click)="removeProduct(item)"
+              class="hover:border-red-500 text-sm hover:text-red-500 cursor-pointer border-2 px-2 py-0.5 rounded-full text-gray-400 border-gray-400 font-semibold"
+            >
+              x
+            </button>
+            <img ngSrc="{{ item.images[0] }}" width="72" height="72" />
+            <p class="">
+              {{ item.name }}
+            </p>
+          </td>
+          <td class="text-center text-sm">${{ item.price }}</td>
+          <td class="text-center text-sm flex justify-center">
+            <div class="border flex items-center h-[40px] p-2 space-x-4">
+              <button
+                class="text-lg text-gray-400"
+                (click)="descreaseQuantity(item)"
+              >
+                -
+              </button>
+              <p>{{ item.quantity }}</p>
+              <button class="text-lg" (click)="increaseQuantity(item)">
+                +
+              </button>
+            </div>
+          </td>
+          <td class="text-center text-sm">
+            ${{ item.price * item.quantity! }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="border p-4 flex justify-between">
+      <div
+        class="p-4 text-[#2DA5F3] flex space-x-2 items-center border border-[#2DA5F3] uppercase"
+      >
+        <img ngSrc="../../assets/icons/arrowback.png" width="20" height="20" />
+        <p class="font-semibold">return to shop</p>
+      </div>
+
+      <div class="p-4 text-[#2DA5F3] border border-[#2DA5F3] uppercase">
+        <p class="font-semibold">update cart</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobileshopping card -->
+
+  <app-mobile-shopping-cart-item
+    class="md:hidden"
+    *ngFor="let item of cartItems"
+    [product]="item"
+  ></app-mobile-shopping-cart-item>
+</div>

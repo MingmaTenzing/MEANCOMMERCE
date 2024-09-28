@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
-import { CartComponent } from './cart/cart.component';
+import { DashboardCartComponent } from './dashboard/feature/dash-cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
 import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
@@ -23,6 +23,7 @@ import { SettingsComponent } from './dashboard/feature/settings/settings.compone
 import { SigninComponent } from './auth/feature/signin/signin/signin.component';
 import { SignupComponent } from './auth/feature/signup/signup/signup.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
+import { CartComponent } from './cart/cart.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -70,6 +71,11 @@ export const routes: Routes = [
         path: 'order-history',
         component: OrderHistoryComponent,
         title: 'Order History',
+      },
+      {
+        path: 'cart',
+        component: DashboardCartComponent,
+        title: 'Dashboard-cart',
       },
       {
         path: 'main',
