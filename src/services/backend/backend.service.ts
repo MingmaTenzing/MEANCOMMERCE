@@ -77,4 +77,13 @@ export class BackendService {
       }
     );
   }
+
+  fetch_user_details() {
+    return this.http.get(
+      'http://localhost:5000/api/v1/dashboard/user-details',
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }

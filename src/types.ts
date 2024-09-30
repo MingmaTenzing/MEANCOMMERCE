@@ -67,3 +67,12 @@ export interface auth_session {
   userId: string;
   message: string;
 }
+
+export interface user {
+  email: string;
+  password: string;
+  profile_image: string;
+  user_name: string;
+  date: Date;
+  _id: string;
+}

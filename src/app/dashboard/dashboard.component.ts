@@ -23,6 +23,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.backend.check_session().subscribe((data) => console.log(data));
+    this.backend.fetch_user_details().subscribe((data) => console.log(data));
   }
 }

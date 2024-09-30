@@ -22,6 +22,7 @@
         <td
           (click)="routeToProductDetail(item)"
           class="text-sm cursor-pointer md:text-base p-4 flex items-center space-x-2 lg:w-[580px]"
+          [ngStyle]="{ width: viewing_in_dashboard ? '300px' : '' }"
         >
           <img ngSrc="{{ item.images[0] }}" width="72" height="72" />
           <p class="line-clamp-2">{{ item.name }}</p>
