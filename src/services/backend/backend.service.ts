@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FilterSearch, MeanProducts } from '../../types';
+import { FilterSearch, MeanProducts, user } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
 import { auth_session } from '../../types';
@@ -79,7 +79,7 @@ export class BackendService {
   }
 
   fetch_user_details() {
-    return this.http.get(
+    return this.http.get<user>(
       'http://localhost:5000/api/v1/dashboard/user-details',
       {
         withCredentials: true,
