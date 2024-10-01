@@ -86,4 +86,10 @@ export class BackendService {
       }
     );
   }
+
+  log_out_user() {
+    return this.http.get('http://localhost:5000/api/v1/dashboard/logout', {
+      withCredentials: true,
+    });
+  }
 }
