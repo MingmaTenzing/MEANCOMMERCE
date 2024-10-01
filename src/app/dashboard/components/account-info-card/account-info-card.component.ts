@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { user } from '../../../../types';
-import { NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-account-info-card',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, CommonModule],
   templateUrl: './account-info-card.component.html',
   styleUrl: './account-info-card.component.css',
 })
