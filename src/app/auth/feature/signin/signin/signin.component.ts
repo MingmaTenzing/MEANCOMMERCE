@@ -5,6 +5,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
 import { Subject, takeUntil } from 'rxjs';
 import { UserService } from '../../../../../services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +18,10 @@ export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
   token: string = '';
 
-  constructor(private backend_service: BackendService) {}
+  constructor(
+    private backend_service: BackendService,
+    private router: Router
+  ) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -28,7 +32,12 @@ export class SigninComponent implements OnDestroy {
     this.backend_service
       .signInUser(this.signinForm)
       .pipe(takeUntil(this.$destroy))
-      .subscribe((data) => console.log(data));
+      .subscribe((user) => {
+        if (user) {
+          console.log(user);
+          this.router.navigate(['/dashboard']);
+        }
+      });
   }
 
   ngOnDestroy(): void {

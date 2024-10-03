@@ -23,6 +23,8 @@ export interface session_Status {
   status: string;
   customer_email: string;
   customer_name: string;
+  id: string;
+  payment_intent: string;
 }
 
 export interface shopProducts {
