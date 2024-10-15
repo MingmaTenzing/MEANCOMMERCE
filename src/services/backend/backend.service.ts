@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FilterSearch, MeanProducts, user } from '../../types';
+import { FilterSearch, MeanProducts, orders, user } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
 import { auth_session } from '../../types';
@@ -91,5 +91,14 @@ export class BackendService {
     return this.http.get('http://localhost:5000/api/v1/dashboard/logout', {
       withCredentials: true,
     });
+  }
+
+  get_recent_orders() {
+    return this.http.get<orders[]>(
+      'http://localhost:5000/api/v1/orders/get_recent_orders',
+      {
+        withCredentials: true,
+      }
+    );
   }
 }

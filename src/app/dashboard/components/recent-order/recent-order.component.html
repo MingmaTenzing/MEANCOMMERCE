@@ -21,31 +21,17 @@
         </tr>
       </thead>
       <tbody class="">
-        <tr class="text-sm font-medium hover:bg-gray-50">
-          <td class="p-4">#124261</td>
-          <td class="p-4 uppercase text-ciliconorange">In progress</td>
+        <tr
+          *ngFor="let item of recent_orders"
+          class="text-sm font-medium hover:bg-gray-50"
+        >
+          <td class="p-4">{{ item._id }}</td>
+          <td class="p-4 uppercase text-ciliconorange">{{ item.status }}</td>
           <td class="p-4">{{ date }}</td>
-          <td class="p-4">2233</td>
+          <td class="p-4">{{ item.total_amount }}</td>
           <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-            <span>View Details</span><i class="pi pi-arrow-right"></i>
-          </td>
-        </tr>
-        <tr class="text-sm font-medium hover:bg-gray-50">
-          <td class="p-4">#124261</td>
-          <td class="p-4 uppercase text-green-500">Completed</td>
-          <td class="p-4">{{ date }}</td>
-          <td class="p-4">2233</td>
-          <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-            <span>View Details</span><i class="pi pi-arrow-right"></i>
-          </td>
-        </tr>
-        <tr class="text-sm font-medium hover:bg-gray-50">
-          <td class="p-4">#124261</td>
-          <td class="p-4 uppercase text-red-500">canceled</td>
-          <td class="p-4">{{ date }}</td>
-          <td class="p-4">2233</td>
-          <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-            <span>View Details</span><i class="pi pi-arrow-right"></i>
+            <a href="{{ item.receipt_url }}" target="_blank">print receipt</a
+            ><i class="pi pi-arrow-right"></i>
           </td>
         </tr>
       </tbody>

@@ -92,4 +92,5 @@ export interface orders {
   customer_name: String;
   status: String;
   receipt_url: String;
+  _id: string;
 }
