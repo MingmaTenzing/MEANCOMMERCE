@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { Url } from 'url';
 
 export interface MeanProducts {
   brand: string;
@@ -25,6 +26,9 @@ export interface session_Status {
   customer_name: string;
   id: string;
   payment_intent: string;
+  amount_total: number;
+  amount_subtotal: number;
+  receipt: string;
 }
 
 export interface shopProducts {
@@ -77,4 +81,15 @@ export interface user {
   user_name: string;
   date: Date;
   _id: string;
+}
+
+export interface orders {
+  user_id: String;
+  paymend_intent: String;
+  charge_id: String;
+  total_amount: Number;
+  customer_email: String;
+  customer_name: String;
+  status: String;
+  receipt_url: String;
 }

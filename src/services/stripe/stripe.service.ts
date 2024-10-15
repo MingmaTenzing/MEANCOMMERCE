@@ -24,13 +24,19 @@ export class StripeService {
 
       {
         line_items: this.getLineItems(),
+      },
+      {
+        withCredentials: true,
       }
     );
   }
 
   fetchSessionStatus(sessionId: string) {
     return this.http.get<session_Status>(
-      `http://localhost:5000/api/v1/checkout/session-status?session_id=${sessionId}`
+      `http://localhost:5000/api/v1/checkout/session-status?session_id=${sessionId}`,
+      {
+        withCredentials: true,
+      }
     );
   }
 }
