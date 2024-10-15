@@ -27,8 +27,10 @@
         >
           <td class="p-4">{{ item._id }}</td>
           <td class="p-4 uppercase text-ciliconorange">{{ item.status }}</td>
-          <td class="p-4">{{ date }}</td>
-          <td class="p-4">{{ item.total_amount }}</td>
+          <td class="p-4">
+            {{ item.created_at | date : "dd/MM/yyyy" }}
+          </td>
+          <td class="p-4">${{ item.total_amount / 100 }}</td>
           <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
             <a href="{{ item.receipt_url }}" target="_blank">print receipt</a
             ><i class="pi pi-arrow-right"></i>
@@ -61,7 +63,7 @@
           <td class="uppercase text-sm p-2">#2343</td>
           <td class="uppercase text-sm p-2 text-ciliconorange">in progress</td>
           <td class="p-2 text-sm">
-            {{ date.slice(0, 10) }}
+            <!--  date {{ .slice(0, 10) }}  -->
           </td>
           <td class="p-2 text-sm">$5000</td>
           <td class="p-2 text-sm flex space-x-2">

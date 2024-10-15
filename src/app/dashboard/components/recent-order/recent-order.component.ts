@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 export class RecentOrderComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
   constructor(private backend: BackendService) {}
-  date = new Date().toUTCString();
 
   recent_orders: orders[] = [];
   ngOnInit(): void {
@@ -23,6 +22,10 @@ export class RecentOrderComponent implements OnInit, OnDestroy {
       .get_recent_orders()
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => (this.recent_orders = data));
+
+    this.recent_orders.sort(
+      (a, b) => b.created_at.getTime() - a.created_at.getTime()
+    );
   }
 
   ngOnDestroy(): void {

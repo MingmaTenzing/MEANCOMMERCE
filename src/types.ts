@@ -84,13 +84,14 @@ export interface user {
 }
 
 export interface orders {
-  user_id: String;
-  paymend_intent: String;
-  charge_id: String;
-  total_amount: Number;
-  customer_email: String;
-  customer_name: String;
-  status: String;
-  receipt_url: String;
+  user_id: string;
+  paymend_intent: string;
+  charge_id: string;
+  total_amount: number;
+  customer_email: string;
+  customer_name: string;
+  status: string;
+  receipt_url: string;
   _id: string;
+  created_at: Date;
 }
