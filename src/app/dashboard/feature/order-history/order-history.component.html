@@ -10,31 +10,17 @@
       </tr>
     </thead>
     <tbody class="">
-      <tr class="text-sm font-medium hover:bg-gray-50">
-        <td class="p-4">#124261</td>
-        <td class="p-4 uppercase text-ciliconorange">In progress</td>
-        <td class="p-4">{{ date }}</td>
-        <td class="p-4">2233</td>
+      <tr
+        *ngFor="let item of recent_orders"
+        class="text-sm font-medium hover:bg-gray-50"
+      >
+        <td class="p-4">{{ item._id }}</td>
+        <td class="p-4 uppercase text-ciliconorange">{{ item.status }}</td>
+        <td class="p-4">{{ item.created_at | date : "dd/MM/yyyy" }}</td>
+        <td class="p-4">${{ item.total_amount / 100 }}</td>
         <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-          <span>View Details</span><i class="pi pi-arrow-right"></i>
-        </td>
-      </tr>
-      <tr class="text-sm font-medium hover:bg-gray-50">
-        <td class="p-4">#124261</td>
-        <td class="p-4 uppercase text-green-500">Completed</td>
-        <td class="p-4">{{ date }}</td>
-        <td class="p-4">2233</td>
-        <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-          <span>View Details</span><i class="pi pi-arrow-right"></i>
-        </td>
-      </tr>
-      <tr class="text-sm font-medium hover:bg-gray-50">
-        <td class="p-4">#124261</td>
-        <td class="p-4 uppercase text-red-500">canceled</td>
-        <td class="p-4">{{ date }}</td>
-        <td class="p-4">2233</td>
-        <td class="text-[#2DA5F3] flex items-center space-x-2 p-4">
-          <span>View Details</span><i class="pi pi-arrow-right"></i>
+          <a href="{{ item.receipt_url }}" target="_blank">Print Receipt</a
+          ><i class="pi pi-arrow-right"></i>
         </td>
       </tr>
     </tbody>
@@ -43,9 +29,9 @@
 
 <!-- mobile table  -->
 <div class="lg:hidden">
-  <table class="table-auto flex justify-between">
+  <table class="table-auto">
     <thead class="">
-      <tr class="flex flex-col">
+      <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
         <th class="uppercase text-sm font-normal text-gray-600 p-2">
           Order Id
         </th>
@@ -55,16 +41,18 @@
         <th class="uppercase text-sm font-normal text-gray-600 p-2">Action</th>
       </tr>
     </thead>
-    <tbody>
-      <tr class="flex flex-col">
-        <td class="uppercase text-sm p-2">#2343</td>
-        <td class="uppercase text-sm p-2 text-ciliconorange">in progress</td>
-        <td class="p-2 text-sm">
-          {{ date.slice(0, 10) }}
+    <tbody *ngFor="let item of recent_orders">
+      <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
+        <td class="uppercase text-sm p-2">{{ item._id }}</td>
+        <td class="uppercase text-sm p-2 text-ciliconorange">
+          {{ item.status }}
         </td>
-        <td class="p-2 text-sm">$5000</td>
+        <td class="p-2 text-sm">
+          {{ item.created_at | date : "dd/mm/yyyy" }}
+        </td>
+        <td class="p-2 text-sm">${{ item.total_amount / 100 }}</td>
         <td class="p-2 text-sm flex space-x-2">
-          <span>View Details</span
+          <a href="{{ item.receipt_url }}" target="_blank">Print Receipt</a
           ><span><i class="pi pi-arrow-right text-sm"></i></span>
         </td>
       </tr>
