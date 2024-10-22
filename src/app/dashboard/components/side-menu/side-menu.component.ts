@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {
   ActivatedRoute,
+  Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
@@ -15,9 +16,14 @@ import { BackendService } from '../../../../services/backend/backend.service';
   styleUrl: './side-menu.component.css',
 })
 export class SideMenuComponent {
-  constructor(private backend: BackendService) {}
+  constructor(private backend: BackendService, private router: Router) {}
   logOut() {
-    this.backend.log_out_user().subscribe((data) => console.log(data));
+    this.backend.log_out_user().subscribe((data) => {
+      if (data) {
+        this.router.navigate(['/home']);
+      }
+    });
+
     console.log('logout ');
   }
 }
