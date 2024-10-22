@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+
 import { FooterComponent } from './home/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuickViewService } from '../services/quickview/quick-view.service';
 import { Observable } from 'rxjs';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
+import { Header } from 'primeng/api';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',

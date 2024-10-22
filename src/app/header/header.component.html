@@ -41,6 +41,9 @@
       <div (click)="goToDashboard()">
         <img class="w-6" src="./../../assets/icons/user.svg" />
       </div>
+      <div>
+        <a [routerLink]="['/auth']" class="text-white">Sign in</a>
+      </div>
       <button type="button">
         <img
           class="w-6 invert md:hidden"
@@ -50,7 +53,7 @@
       </button>
 
       <!-- LOGIN FORM MODAL -->
-      <div
+      <!-- <div
         *ngIf="loginModal"
         class="absolute -left-0 md:-left-1/2 top-14 -translate-x-1/2 bg-white shadow-2xl shadow-black w-[300px] p-4 rounded-lg space-y-4 z-10"
       >
@@ -82,7 +85,7 @@
         >
           create account
         </button>
-      </div>
+      </div> -->
       <!-- /// LOGIN FORM MODAL -->
     </div>
   </div>

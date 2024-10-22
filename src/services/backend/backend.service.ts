@@ -1,14 +1,24 @@
-import { Inject, Injectable } from '@angular/core';
+import {
+  DestroyRef,
+  inject,
+  Inject,
+  Injectable,
+  OnDestroy,
+} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FilterSearch, MeanProducts, orders, user } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { token } from '../../app/auth/auth_types';
 import { auth_session } from '../../types';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
+  destroy$ = new Subject<void>();
+  destroyRef = inject(DestroyRef);
+
   constructor(private http: HttpClient) {}
 
   getData() {
@@ -71,7 +81,7 @@ export class BackendService {
 
   check_session() {
     return this.http.get<auth_session>(
-      'http://localhost:5000/api/v1/auth/session-check',
+      'http://localhost:5000/api/v1/auth/auth-check-session',
       {
         withCredentials: true,
       }

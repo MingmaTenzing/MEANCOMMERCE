@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
-import { SearchModalComponent } from './search-modal/search-modal.component';
+// import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
 import {
   Router,
@@ -25,6 +25,7 @@ import { MessageService } from 'primeng/api';
 import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -32,8 +33,8 @@ import { selectWishlist } from '../states/wishlist-items/selector';
   imports: [
     CommonModule,
     BottomNavComponent,
-    SearchModalComponent,
     RouterModule,
+    SearchModalComponent,
     ToastModule,
     ButtonModule,
     RippleModule,
