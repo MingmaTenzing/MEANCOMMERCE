@@ -13,7 +13,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { DashboardCartComponent } from './dashboard/feature/dash-cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ReturnComponent } from './return/return.component';
-import { checkoutGaurdGuard } from '../gaurd/checkout-gaurd.guard';
+import { checkoutGaurdGuard } from '../guard/checkout-gaurd.guard';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 import { MainComponent } from './dashboard/feature/main/main.component';

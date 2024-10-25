@@ -32,12 +32,20 @@ export class SigninComponent implements OnDestroy {
     this.backend_service
       .signInUser(this.signinForm)
       .pipe(takeUntil(this.$destroy))
-      .subscribe((user) => {
-        if (user) {
-          console.log(user);
-          this.router.navigate(['/dashboard']);
-        }
+      .subscribe({
+        next: (user) => {
+          if (user) {
+            this.router.navigate(['/dashboard']);
+          }
+        },
+        error: (error: HttpErrorResponse) => console.log(error.error),
       });
+    // .subscribe((user) => {
+    //   if (user) {
+    //     console.log(user);
+    //     this.router.navigate(['/dashboard']);
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {

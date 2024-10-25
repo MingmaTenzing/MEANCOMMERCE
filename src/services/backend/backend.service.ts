@@ -50,8 +50,6 @@ export class BackendService {
   }
 
   signInUser(user_credentials: FormGroup) {
-    console.log(user_credentials.value.email, user_credentials.value.password);
-
     return this.http.post<user>(
       'http://localhost:5000/api/v1/auth/login',
       {

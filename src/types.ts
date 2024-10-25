@@ -69,8 +69,10 @@ export interface cartItems {
 }
 
 export interface auth_session {
-  userId: string;
-  userName: string;
+  message: {
+    userId: string;
+    userName: string;
+  };
 }
 
 export interface user {
