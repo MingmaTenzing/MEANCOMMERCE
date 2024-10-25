@@ -6,6 +6,8 @@ import { BackendService } from '../../../../../services/backend/backend.service'
 import { Subject, takeUntil } from 'rxjs';
 import { UserService } from '../../../../../services/user/user.service';
 import { Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +22,7 @@ export class SigninComponent implements OnDestroy {
 
   constructor(
     private backend_service: BackendService,
-    private router: Router
+    private router: Router // private messageService: MessageService
   ) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
@@ -38,7 +40,9 @@ export class SigninComponent implements OnDestroy {
             this.router.navigate(['/dashboard']);
           }
         },
-        error: (error: HttpErrorResponse) => console.log(error.error),
+        error: (error: HttpErrorResponse) => {
+          window.alert(error.error);
+        },
       });
     // .subscribe((user) => {
     //   if (user) {
