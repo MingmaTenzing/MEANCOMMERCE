@@ -10,7 +10,9 @@ export class UserService implements OnDestroy {
   destroy$ = new Subject<void>();
   current_user: auth_session | null = null;
 
-  constructor(private backend: BackendService) {
+  constructor(private backend: BackendService) {}
+
+  is_loggedIn() {
     this.backend
       .check_session()
       .pipe(takeUntil(this.destroy$))
