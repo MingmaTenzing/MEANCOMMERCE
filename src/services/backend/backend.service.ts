@@ -77,6 +77,10 @@ export class BackendService {
     );
   }
 
+  upload_profile_image(image: File) {
+    return this.http.post('http://localhost:5000/api/v1/upload-image', {});
+  }
+
   check_session() {
     return this.http.get<auth_session>(
       'http://localhost:5000/api/v1/auth/auth-check-session',

@@ -31,7 +31,7 @@
     <label class="text-gray-900">Upload Profile Image</label>
     <input
       required
-      formControlName="profile_image"
+      (change)="uploadImage($event)"
       type="file"
       class="outline-none border text-gray-500 p-2"
     />

@@ -21,6 +21,8 @@ import { error } from 'console';
 })
 export class SignupComponent implements OnDestroy {
   private $destroy = new Subject<void>();
+  img!: any;
+  name: string = '';
   constructor(private backend: BackendService, private router: Router) {}
   signup_form = new FormGroup({
     email: new FormControl('', [Validators.required]),
@@ -41,14 +43,12 @@ export class SignupComponent implements OnDestroy {
         },
         error: (e) => console.log(e.message),
       });
-    // .subscribe({next: data => {
-    //   if (data) {
-    //     this.router.navigate(['/dashboard']);
-    //   }
-    // }
-    // },
-    // error: e => console.log(e))
-    // this.backend.check_session().subscribe((data) => console.log(data));
+  }
+
+  uploadImage($event: Event) {
+    let file = (<HTMLInputElement>$event.target).files?.[0];
+    console.log(file);
+    // this.backend.upload_profile_image(this.profile_image!);
   }
   ngOnDestroy(): void {
     this.$destroy.next();
