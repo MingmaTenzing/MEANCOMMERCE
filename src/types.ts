@@ -75,6 +75,10 @@ export interface auth_session {
   };
 }
 
+export interface uploadImage {
+  image: string;
+}
+
 export interface user {
   email: string;
   password: string;

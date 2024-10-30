@@ -1,22 +1,19 @@
-import {
-  DestroyRef,
-  inject,
-  Inject,
-  Injectable,
-  OnDestroy,
-} from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FilterSearch, MeanProducts, orders, user } from '../../types';
+import {
+  FilterSearch,
+  MeanProducts,
+  orders,
+  uploadImage,
+  user,
+} from '../../types';
 import { FormGroup } from '@angular/forms';
-import { token } from '../../app/auth/auth_types';
 import { auth_session } from '../../types';
-import { Subject, take, takeUntil } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
-  destroy$ = new Subject<void>();
   destroyRef = inject(DestroyRef);
 
   constructor(private http: HttpClient) {}
@@ -78,7 +75,18 @@ export class BackendService {
   }
 
   upload_profile_image(image: File) {
-    return this.http.post('http://localhost:5000/api/v1/upload-image', {});
+    let formData = new FormData();
+    formData.append('image', image);
+    console.log(formData);
+
+    return this.http.post<uploadImage>(
+      'http://localhost:5000/api/v1/upload-image',
+      formData,
+
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   check_session() {
