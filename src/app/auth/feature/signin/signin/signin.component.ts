@@ -5,6 +5,9 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
 import { Subject, takeUntil } from 'rxjs';
 import { UserService } from '../../../../../services/user/user.service';
+import { Router } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +20,10 @@ export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
   token: string = '';
 
-  constructor(private backend_service: BackendService) {}
+  constructor(
+    private backend_service: BackendService,
+    private router: Router // private messageService: MessageService
+  ) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -28,7 +34,22 @@ export class SigninComponent implements OnDestroy {
     this.backend_service
       .signInUser(this.signinForm)
       .pipe(takeUntil(this.$destroy))
-      .subscribe((data) => console.log(data));
+      .subscribe({
+        next: (user) => {
+          if (user) {
+            this.router.navigate(['/dashboard']);
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          window.alert(error.error);
+        },
+      });
+    // .subscribe((user) => {
+    //   if (user) {
+    //     console.log(user);
+    //     this.router.navigate(['/dashboard']);
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {

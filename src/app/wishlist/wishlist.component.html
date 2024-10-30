@@ -1,4 +1,7 @@
-<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto my-[72px]">
+<div
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto my-[72px]"
+  [ngStyle]="{ width: viewing_in_dashboard ? '984px' : '' }"
+>
   <div class="border p-4">
     <h1 class="text-gray-900 font-semibold">Wishlist</h1>
   </div>
@@ -19,6 +22,7 @@
         <td
           (click)="routeToProductDetail(item)"
           class="text-sm cursor-pointer md:text-base p-4 flex items-center space-x-2 lg:w-[580px]"
+          [ngStyle]="{ width: viewing_in_dashboard ? '300px' : '' }"
         >
           <img ngSrc="{{ item.images[0] }}" width="72" height="72" />
           <p class="line-clamp-2">{{ item.name }}</p>

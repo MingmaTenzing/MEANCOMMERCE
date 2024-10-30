@@ -1,13 +1,17 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { Observable, ObservedValueOf, Subject, Subscription } from 'rxjs';
-import { MeanProducts } from '../../../types';
+import { cartItems, MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
 import { Router } from '@angular/router';
+import {
+  addToWishlist,
+  remove_wishlist_item,
+} from '../../states/wishlist-items/actions';
 
 @Component({
   selector: 'app-quick-view',
@@ -58,10 +62,14 @@ export class QuickViewComponent implements OnInit, OnDestroy {
     this.QuickViewService.closeQuickView();
   }
 
-  favoriteModal() {
+  add_to_Wishlist(product: MeanProducts) {
     this.addtoFav = !this.addtoFav;
+    this.store.dispatch(addToWishlist({ product }));
   }
-
+  remove_from_wishList(product: MeanProducts) {
+    this.addtoFav = !this.addtoFav;
+    this.store.dispatch(remove_wishlist_item({ product }));
+  }
   changeMainImage(image: string) {
     this.mainProductImage = image;
   }

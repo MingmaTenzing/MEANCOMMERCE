@@ -1,14 +1,21 @@
-import { Inject, Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FilterSearch, MeanProducts } from '../../types';
+import {
+  FilterSearch,
+  MeanProducts,
+  orders,
+  uploadImage,
+  user,
+} from '../../types';
 import { FormGroup } from '@angular/forms';
-import { token } from '../../app/auth/auth_types';
 import { auth_session } from '../../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
+  destroyRef = inject(DestroyRef);
+
   constructor(private http: HttpClient) {}
 
   getData() {
@@ -40,9 +47,7 @@ export class BackendService {
   }
 
   signInUser(user_credentials: FormGroup) {
-    console.log(user_credentials.value.email, user_credentials.value.password);
-
-    return this.http.post<token>(
+    return this.http.post<user>(
       'http://localhost:5000/api/v1/auth/login',
       {
         email: user_credentials.value.email,
@@ -69,9 +74,48 @@ export class BackendService {
     );
   }
 
+  upload_profile_image(image: File) {
+    let formData = new FormData();
+    formData.append('image', image);
+    console.log(formData);
+
+    return this.http.post<uploadImage>(
+      'http://localhost:5000/api/v1/upload-image',
+      formData,
+
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   check_session() {
     return this.http.get<auth_session>(
-      'http://localhost:5000/api/v1/auth/session-check',
+      'http://localhost:5000/api/v1/auth/auth-check-session',
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  fetch_user_details() {
+    return this.http.get<user>(
+      'http://localhost:5000/api/v1/dashboard/user-details',
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  log_out_user() {
+    return this.http.get('http://localhost:5000/api/v1/dashboard/logout', {
+      withCredentials: true,
+    });
+  }
+
+  get_recent_orders() {
+    return this.http.get<orders[]>(
+      'http://localhost:5000/api/v1/orders/get_recent_orders',
       {
         withCredentials: true,
       }

@@ -3,6 +3,8 @@ import { SidePanelComponent } from './components/side-panel/side-panel/side-pane
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BackendService } from '../../services/backend/backend.service';
+import { user } from '../../types';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,11 +20,12 @@ import { BackendService } from '../../services/backend/backend.service';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
+  // user_details: Observable<user> | null = null;
   constructor(private backend: BackendService) {
     // this.backend.check_session();
   }
 
   ngOnInit(): void {
-    this.backend.check_session().subscribe((data) => console.log(data));
+    // this.user_details = this.backend.fetch_user_details();
   }
 }

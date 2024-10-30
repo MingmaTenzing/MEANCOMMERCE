@@ -92,15 +92,10 @@
 
       <!-- add to cart section -->
       <div class="flex space-x-2">
-        <div class="border flex w-[20%] justify-between p-2 px-3 items-center">
-          <button (click)="decreaseNumber()">-</button>
-          <p>{{ numberofItems_addToCart }}</p>
-          <button (click)="increaseNumber()">+</button>
-        </div>
         <div
           *ngIf="addedtoCart"
           (click)="gotoCart()"
-          class="w-[60%] bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+          class="w-full bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
         >
           <span>Go to Cart</span>
           <img src="../../../assets/icons/cart.svg" class="w-6" />
@@ -108,13 +103,13 @@
         <div
           *ngIf="!addedtoCart"
           (click)="addtoCart(product)"
-          class="w-[60%] bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
+          class="w-full bg-ciliconorange cursor-pointer flex text-white items-center justify-center p-2 uppercase space-x-3 font-semibold"
         >
           <span>Add to cart</span>
           <img src="../../../assets/icons/cart.svg" class="w-6" />
         </div>
         <button
-          class="p-2 border-ciliconorange text-ciliconorange uppercase border w-[20%]"
+          class="p-2 border-ciliconorange text-ciliconorange uppercase border w-full"
         >
           buy now
         </button>
@@ -124,21 +119,19 @@
         <div class="flex space-x-2">
           <div class="flex text-sm items-center space-x-1 text-gray-500">
             @if (!addtoFav) {
-
-            <mat-icon
-              fontSet="material-symbols-outlined"
-              (click)="favoriteModal()"
-              class="text-gray-500"
-              width="6px"
-              >favorite</mat-icon
-            >
+            <i
+              class="pi pi-heart"
+              style="font-size: 1rem"
+              (click)="add_to_Wishlist(product)"
+            ></i>
             } @else {
 
-            <mat-icon
-              (click)="favoriteModal()"
-              fontIcon="favorite"
-              class="text-ciliconorange"
-            ></mat-icon>
+            <i
+              class="pi pi-heart-fill"
+              style="font-size: 1rem"
+              style="color: #fa8232"
+              (click)="remove_from_wishList(product)"
+            ></i>
             }
             <p>Add to wishlist</p>
           </div>

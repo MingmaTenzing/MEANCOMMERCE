@@ -26,6 +26,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { routes } from '../app.routes';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../states/cart-items/action';
+import { addToWishlist } from '../states/wishlist-items/actions';
 
 @Component({
   selector: 'app-product-detail',
@@ -91,8 +92,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  favoriteModal() {
+  add_to_Wishlist(product: cartItems) {
     this.addtoFav = !this.addtoFav;
+    this.store.dispatch(addToWishlist({ product }));
   }
 
   changeMainImage(image: string) {

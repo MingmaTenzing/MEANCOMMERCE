@@ -108,6 +108,7 @@ export class WishlistComponent implements OnInit {
     },
   ];
   $destroy = new Subject<void>();
+  viewing_in_dashboard: boolean = false;
   constructor(
     private store: Store<WishListState>,
     private cartStore: Store<AppState>,
@@ -120,6 +121,10 @@ export class WishlistComponent implements OnInit {
       .pipe(takeUntil(this.$destroy))
       .subscribe((products) => (this.wishListItems = products));
     console.log(this.wishListItems);
+
+    if (this.router.url === '/dashboard/wishlist') {
+      this.viewing_in_dashboard = true;
+    }
   }
 
   addToCart(product: MeanProducts) {

@@ -22,7 +22,10 @@
       <p-toast />
 
       <div (click)="goToCart()" class="relative cursor-pointer">
-        <img class="w-6" src="./../../assets/icons/cart.svg" />
+        <i
+          class="pi pi-shopping-cart"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
         <div
           *ngIf="numberofCartItems >= 1"
           class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
@@ -32,14 +35,36 @@
           </p>
         </div>
       </div>
+      <div class="relative cursor-pointer">
+        <i
+          (click)="gotoWishList()"
+          class="pi pi-heart"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
 
-      <img
-        (click)="gotoWishList()"
-        class="w-6"
-        src="./../../assets/icons/love.svg"
-      />
+        <div
+          *ngIf="numberof_WishListedItems >= 1"
+          class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
+        >
+          <p class="text-white rounded-full text-sm">
+            {{ numberof_WishListedItems }}
+          </p>
+        </div>
+      </div>
+
       <div (click)="goToDashboard()">
-        <img class="w-6" src="./../../assets/icons/user.svg" />
+        <i
+          class="pi pi-user"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
+        <!-- <img class="w-6" src="./../../assets/icons/user.svg" /> -->
+      </div>
+      <div>
+        <i
+          [routerLink]="['/auth']"
+          class="pi pi-sign-in"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
       </div>
       <button type="button">
         <img
@@ -50,7 +75,7 @@
       </button>
 
       <!-- LOGIN FORM MODAL -->
-      <div
+      <!-- <div
         *ngIf="loginModal"
         class="absolute -left-0 md:-left-1/2 top-14 -translate-x-1/2 bg-white shadow-2xl shadow-black w-[300px] p-4 rounded-lg space-y-4 z-10"
       >
@@ -82,7 +107,7 @@
         >
           create account
         </button>
-      </div>
+      </div> -->
       <!-- /// LOGIN FORM MODAL -->
     </div>
   </div>

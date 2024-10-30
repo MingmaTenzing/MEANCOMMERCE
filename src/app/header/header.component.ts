@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
-import { SearchModalComponent } from './search-modal/search-modal.component';
+// import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
 import {
   Router,
@@ -25,6 +25,9 @@ import { MessageService } from 'primeng/api';
 import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
+import { SearchModalComponent } from './search-modal/search-modal.component';
+import { UserService } from '../../services/user/user.service';
+import { auth_session } from '../../types';
 
 @Component({
   selector: 'app-header',
@@ -32,8 +35,8 @@ import { selectWishlist } from '../states/wishlist-items/selector';
   imports: [
     CommonModule,
     BottomNavComponent,
-    SearchModalComponent,
     RouterModule,
+    SearchModalComponent,
     ToastModule,
     ButtonModule,
     RippleModule,
@@ -48,13 +51,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
+  current_user: auth_session | null = null;
   numberofCartItems: number = 0;
   numberof_WishListedItems: number = 0;
   constructor(
     private SearchModalService: SearchModalService,
     private store: Store,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +70,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
+      this.current_user = this.userService.current_user;
+      console.log(this.current_user);
     });
 
     this.store
