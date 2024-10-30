@@ -22,7 +22,10 @@
       <p-toast />
 
       <div (click)="goToCart()" class="relative cursor-pointer">
-        <img class="w-6" src="./../../assets/icons/cart.svg" />
+        <i
+          class="pi pi-shopping-cart"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
         <div
           *ngIf="numberofCartItems >= 1"
           class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
@@ -33,16 +36,25 @@
         </div>
       </div>
 
-      <img
+      <i
         (click)="gotoWishList()"
-        class="w-6"
-        src="./../../assets/icons/love.svg"
-      />
+        class="pi pi-heart"
+        [style]="{ 'font-size': '1.25rem', color: 'white' }"
+      ></i>
+
       <div (click)="goToDashboard()">
-        <img class="w-6" src="./../../assets/icons/user.svg" />
+        <i
+          class="pi pi-user"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
+        <!-- <img class="w-6" src="./../../assets/icons/user.svg" /> -->
       </div>
       <div>
-        <a [routerLink]="['/auth']" class="text-white">Sign in</a>
+        <i
+          [routerLink]="['/auth']"
+          class="pi pi-sign-in"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
       </div>
       <button type="button">
         <img
