@@ -35,12 +35,22 @@
           </p>
         </div>
       </div>
+      <div class="relative cursor-pointer">
+        <i
+          (click)="gotoWishList()"
+          class="pi pi-heart"
+          [style]="{ 'font-size': '1.25rem', color: 'white' }"
+        ></i>
 
-      <i
-        (click)="gotoWishList()"
-        class="pi pi-heart"
-        [style]="{ 'font-size': '1.25rem', color: 'white' }"
-      ></i>
+        <div
+          *ngIf="numberof_WishListedItems >= 1"
+          class="bg-ciliconorange flex justify-center items-center absolute w-6 h-6 -bottom-4 -right-3 px-1.5 py-0.5 rounded-full"
+        >
+          <p class="text-white rounded-full text-sm">
+            {{ numberof_WishListedItems }}
+          </p>
+        </div>
+      </div>
 
       <div (click)="goToDashboard()">
         <i
