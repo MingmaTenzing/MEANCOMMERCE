@@ -19,7 +19,6 @@ import { HeaderComponent } from './header/header.component';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    HttpClientModule,
     QuickViewComponent,
   ],
   templateUrl: './app.component.html',
