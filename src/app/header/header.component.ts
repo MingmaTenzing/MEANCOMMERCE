@@ -70,8 +70,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
-      this.current_user = this.userService.current_user;
-      console.log(this.current_user);
     });
 
     this.store
