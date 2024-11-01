@@ -5,7 +5,10 @@ import { UserService } from '../../services/user/user.service';
 export const authGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService);
   const router = inject(Router);
-  if (userService.current_user) {
+  if (
+    userService.current_user.message.userId == '' &&
+    userService.current_user.message.userName == ''
+  ) {
     return true;
   }
   window.alert('Please login to your account');

@@ -22,7 +22,8 @@ export class SigninComponent implements OnDestroy {
 
   constructor(
     private backend_service: BackendService,
-    private router: Router // private messageService: MessageService
+    private router: Router, // private messageService: MessageService,
+    private userService: UserService
   ) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
@@ -37,6 +38,7 @@ export class SigninComponent implements OnDestroy {
       .subscribe({
         next: (user) => {
           if (user) {
+            this.userService.set_user(user);
             this.router.navigate(['/dashboard']);
           }
         },

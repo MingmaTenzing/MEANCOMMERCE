@@ -1,15 +1,21 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { auth_session } from '../../types';
+import { auth_session, user } from '../../types';
 import { BackendService } from '../backend/backend.service';
 import { Subject, take, takeUntil } from 'rxjs';
 import { error } from 'console';
+import { setThrowInvalidWriteToSignalError } from '@angular/core/primitives/signals';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
   destroy$ = new Subject<void>();
-  current_user: auth_session | null = null;
+  current_user: auth_session = {
+    message: {
+      userId: '',
+      userName: '',
+    },
+  };
 
   constructor(private backend: BackendService) {}
 
@@ -26,6 +32,16 @@ export class UserService implements OnDestroy {
         },
       });
     return this.current_user;
+  }
+
+  set_user(details: user) {
+    this.current_user!.message.userId = details._id;
+    this.current_user!.message.userName = details.user_name;
+  }
+
+  log_out_user() {
+    this.current_user.message.userId = '';
+    this.current_user.message.userName = '';
   }
 
   ngOnDestroy(): void {
