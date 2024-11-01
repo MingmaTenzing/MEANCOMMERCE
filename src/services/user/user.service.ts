@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { auth_session } from '../../types';
 import { BackendService } from '../backend/backend.service';
 import { Subject, take, takeUntil } from 'rxjs';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,19 @@ export class UserService implements OnDestroy {
 
   constructor(private backend: BackendService) {}
 
-  is_loggedIn() {
+  check_auth_session() {
     this.backend
       .check_session()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => (this.current_user = data));
+      .subscribe({
+        next: (data) => {
+          this.current_user = data;
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+    return this.current_user;
   }
 
   ngOnDestroy(): void {

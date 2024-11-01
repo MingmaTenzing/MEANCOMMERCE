@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 
 import { FooterComponent } from './home/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
 import { QuickViewService } from '../services/quickview/quick-view.service';
 import { Observable } from 'rxjs';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
-import { Header } from 'primeng/api';
 import { HeaderComponent } from './header/header.component';
+import { auth_session, user } from '../types';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -24,11 +23,18 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MEANCOMMERCE';
-
+  current_user: auth_session | null = null;
   isquickviewEnabled!: Observable<boolean>;
-  constructor(private QuickViewService: QuickViewService) {
+  constructor(
+    private QuickViewService: QuickViewService,
+    private userService: UserService
+  ) {
     this.isquickviewEnabled = this.QuickViewService.quickView$;
+  }
+
+  ngOnInit(): void {
+    this.userService.check_auth_session();
   }
 }
