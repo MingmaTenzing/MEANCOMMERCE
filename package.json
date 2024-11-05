@@ -25,6 +25,7 @@
     "@angular/ssr": "^18.2.10",
     "@ngrx/store": "^18.1.1",
     "@stripe/stripe-js": "^4.9.0",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "ngx-skeleton-loader": "^9.0.0",
     "ngx-stripe": "^18.1.0",
