@@ -47,10 +47,10 @@ import { auth_session } from '../../types';
   providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @Input() current_user: auth_session | null = null;
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
-  current_user: auth_session | null = null;
   numberofCartItems: number = 0;
   numberof_WishListedItems: number = 0;
   constructor(
@@ -103,6 +103,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToDashboard() {
+    if (!this.current_user?.userId) {
+      return window.alert('please login to yoru account ');
+    }
     this.router.navigate(['/dashboard']);
   }
   goToCart() {

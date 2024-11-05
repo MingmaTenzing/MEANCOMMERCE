@@ -9,12 +9,10 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   return backendService.check_session().pipe(
     map((data) => {
-      if (data.message.userId) {
-        return true;
-      } else {
-        window.alert('Please login to your account ');
-        router.navigate(['/auth/signin']);
+      if (!data.userId) {
         return false;
+      } else {
+        return true;
       }
     })
   );
