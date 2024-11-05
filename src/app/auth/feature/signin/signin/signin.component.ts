@@ -4,7 +4,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../../../../services/backend/backend.service';
 import { Subject, takeUntil } from 'rxjs';
-import { UserService } from '../../../../../services/user/user.service';
 import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -22,8 +21,7 @@ export class SigninComponent implements OnDestroy {
 
   constructor(
     private backend_service: BackendService,
-    private router: Router, // private messageService: MessageService,
-    private userService: UserService
+    private router: Router // private messageService: MessageService,
   ) {}
   signinForm = new FormGroup({
     email: new FormControl(''),
@@ -38,7 +36,6 @@ export class SigninComponent implements OnDestroy {
       .subscribe({
         next: (user) => {
           if (user) {
-            this.userService.set_user(user);
             this.router.navigate(['/dashboard']);
           }
         },

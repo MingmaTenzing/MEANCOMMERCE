@@ -26,7 +26,6 @@ import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
 import { SearchModalComponent } from './search-modal/search-modal.component';
-import { UserService } from '../../services/user/user.service';
 import { auth_session } from '../../types';
 
 @Component({
@@ -58,8 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private SearchModalService: SearchModalService,
     private store: Store,
     private router: Router,
-    private messageService: MessageService,
-    private userService: UserService
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {

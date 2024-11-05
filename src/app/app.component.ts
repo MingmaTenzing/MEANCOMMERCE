@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { HeaderComponent } from './header/header.component';
 import { auth_session, user } from '../types';
-import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -27,14 +26,11 @@ export class AppComponent implements OnInit {
   title = 'MEANCOMMERCE';
   current_user: auth_session | null = null;
   isquickviewEnabled!: Observable<boolean>;
-  constructor(
-    private QuickViewService: QuickViewService,
-    private userService: UserService
-  ) {
+  constructor(private QuickViewService: QuickViewService) {
     this.isquickviewEnabled = this.QuickViewService.quickView$;
   }
 
   ngOnInit(): void {
-    this.userService.check_auth_session();
+    // this.userService.check_auth_session();
   }
 }
