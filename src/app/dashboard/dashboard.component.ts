@@ -3,8 +3,6 @@ import { SidePanelComponent } from './components/side-panel/side-panel/side-pane
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BackendService } from '../../services/backend/backend.service';
-import { user } from '../../types';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',

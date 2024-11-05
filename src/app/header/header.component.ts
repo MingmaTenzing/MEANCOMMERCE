@@ -26,7 +26,6 @@ import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
 import { SearchModalComponent } from './search-modal/search-modal.component';
-import { UserService } from '../../services/user/user.service';
 import { auth_session } from '../../types';
 
 @Component({
@@ -48,18 +47,17 @@ import { auth_session } from '../../types';
   providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @Input() current_user: auth_session | null = null;
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
-  current_user: auth_session | null = null;
   numberofCartItems: number = 0;
   numberof_WishListedItems: number = 0;
   constructor(
     private SearchModalService: SearchModalService,
     private store: Store,
     private router: Router,
-    private messageService: MessageService,
-    private userService: UserService
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -70,8 +68,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
-      this.current_user = this.userService.current_user;
-      console.log(this.current_user);
     });
 
     this.store
@@ -107,6 +103,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToDashboard() {
+    if (!this.current_user?.userId) {
+      return window.alert('please login to yoru account ');
+    }
     this.router.navigate(['/dashboard']);
   }
   goToCart() {

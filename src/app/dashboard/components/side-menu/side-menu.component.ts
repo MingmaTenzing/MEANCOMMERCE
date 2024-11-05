@@ -7,6 +7,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { BackendService } from '../../../../services/backend/backend.service';
+import { user } from '../../../../types';
 
 @Component({
   selector: 'app-side-menu',
