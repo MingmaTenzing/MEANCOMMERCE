@@ -9,6 +9,7 @@ import {
 } from '../../types';
 import { FormGroup } from '@angular/forms';
 import { auth_session } from '../../types';
+require('dotenv').config();
 
 @Injectable({
   providedIn: 'root',
