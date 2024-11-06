@@ -103,9 +103,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToDashboard() {
-    if (!this.current_user?.userId) {
-      return window.alert('please login to yoru account ');
-    }
     this.router.navigate(['/dashboard']);
   }
   goToCart() {
