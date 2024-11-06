@@ -15,7 +15,7 @@ import { auth_session } from '../../types';
 })
 export class BackendService {
   // use localhost: 5000 for development
-  api_Url: string = 'https://meancommerce-backend.onrender.com/';
+  api_Url: string = 'https://meancommerce-backend.onrender.com';
 
   constructor(private http: HttpClient) {}
 
