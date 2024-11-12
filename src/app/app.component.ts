@@ -23,29 +23,12 @@ import { BackendService } from '../services/backend/backend.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   $destroy = new Subject<void>();
   title = 'MEANCOMMERCE';
-  current_user: auth_session | null = null;
   isquickviewEnabled!: Observable<boolean>;
-  constructor(
-    private QuickViewService: QuickViewService,
-    private backendService: BackendService
-  ) {
+
+  constructor(private QuickViewService: QuickViewService) {
     this.isquickviewEnabled = this.QuickViewService.quickView$;
-  }
-
-  ngOnInit(): void {
-    this.backendService
-      .check_session()
-      .pipe(takeUntil(this.$destroy))
-      .subscribe((data) => {
-        this.current_user = data;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.$destroy.next();
-    this.$destroy.complete();
   }
 }
