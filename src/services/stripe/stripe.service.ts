@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class StripeService {
   line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+  api_Url: string = 'https://meancommerce-backend.onrender.com';
+
   constructor(private http: HttpClient) {}
 
   provideLineItems(items: Stripe.Checkout.SessionCreateParams.LineItem[]) {
@@ -20,7 +22,7 @@ export class StripeService {
   }
   createCheckoutSession() {
     return this.http.post<string>(
-      'http://localhost:5000/api/v1/checkout/create-checkout-session',
+      `${this.api_Url}/api/v1/checkout/create-checkout-session`,
 
       {
         line_items: this.getLineItems(),
@@ -33,7 +35,7 @@ export class StripeService {
 
   fetchSessionStatus(sessionId: string) {
     return this.http.get<session_Status>(
-      `http://localhost:5000/api/v1/checkout/session-status?session_id=${sessionId}`,
+      `${this.api_Url}/api/v1/checkout/session-status?session_id=${sessionId}`,
       {
         withCredentials: true,
       }
