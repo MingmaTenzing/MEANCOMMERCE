@@ -27,6 +27,7 @@ import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
 import { SearchModalComponent } from './search-modal/search-modal.component';
 import { auth_session } from '../../types';
+import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
   selector: 'app-header',
@@ -47,7 +48,7 @@ import { auth_session } from '../../types';
   providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Input() current_user: auth_session | null = null;
+  current_user: auth_session | null = null;
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
@@ -57,7 +58,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private SearchModalService: SearchModalService,
     private store: Store,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private backendService: BackendService
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +70,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
+    });
+
+    this.backendService.check_session().subscribe((data) => {
+      this.current_user = data;
+      console.log(data);
     });
 
     this.store

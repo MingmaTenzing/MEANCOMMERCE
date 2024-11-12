@@ -21,6 +21,7 @@ export class SideMenuComponent {
   logOut() {
     this.backend.log_out_user().subscribe((data) => {
       if (data) {
+        console.log(data);
         this.router.navigate(['/home']);
       }
     });
