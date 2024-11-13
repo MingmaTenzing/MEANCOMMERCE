@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UploadProductsComponent } from './upload-products.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('UploadProductsComponent', () => {
   let component: UploadProductsComponent;
@@ -8,10 +9,10 @@ describe('UploadProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UploadProductsComponent]
-    })
-    .compileComponents();
-    
+      providers: [provideHttpClient()],
+      imports: [UploadProductsComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(UploadProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

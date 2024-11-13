@@ -9,6 +9,7 @@ import { QuickViewComponent } from './components/quick-view/quick-view.component
 import { HeaderComponent } from './header/header.component';
 import { auth_session, user } from '../types';
 import { BackendService } from '../services/backend/backend.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Stripe from 'stripe';
 import { line_items, session_Status } from '../../types';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

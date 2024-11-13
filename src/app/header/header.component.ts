@@ -12,6 +12,7 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 // import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
 import {
+  ActivatedRoute,
   Router,
   RouterLink,
   RouterLinkActive,
