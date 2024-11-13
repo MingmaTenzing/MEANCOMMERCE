@@ -7,6 +7,8 @@ import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
   withFetch,
+  withInterceptors,
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideState, provideStore } from '@ngrx/store';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WishListState } from '../states/wishlist-items/wishlist-State';
-import { Store } from '@ngrx/store';
+import { provideState, StateObservable, Store } from '@ngrx/store';
 import { MeanProducts } from '../../types';
 import { Subject, takeUntil } from 'rxjs';
 import { selectWishlist } from '../states/wishlist-items/selector';
@@ -18,7 +18,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   imports: [CommonModule, NgOptimizedImage, ToastModule],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
-  providers: [MessageService],
+  providers: [MessageService, Store],
 })
 export class WishlistComponent implements OnInit {
   wishListItems: MeanProducts[] = [

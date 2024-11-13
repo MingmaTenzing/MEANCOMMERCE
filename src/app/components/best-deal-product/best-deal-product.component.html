@@ -4,7 +4,10 @@
   class="w-[170px] md:w-[200px] lg:w-[300px] h-[296px] border p-2 md:p-4 flex flex-col items-center space-y-2"
 >
   <div class="relative w-[full] flex justify-center items-center">
-    <img src="{{ product.images }}" class="h-[188px] object-contain" />
+    @if (product.images) {
+
+    <img src="{{ product!.images }}" class="h-[188px] object-contain" />
+    }
     <div
       *ngIf="isHoveringProduct == true"
       class="hidden lg:flex bg-gray-400 opacity-80 absolute top-0 left-0 w-full h-full"

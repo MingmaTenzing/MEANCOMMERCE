@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BottomNavComponent } from './bottom-nav.component';
+import { provideRouter, RouterModule } from '@angular/router';
 
 describe('BottomNavComponent', () => {
   let component: BottomNavComponent;
@@ -8,10 +9,10 @@ describe('BottomNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BottomNavComponent]
-    })
-    .compileComponents();
-    
+      providers: [provideRouter([])],
+      imports: [BottomNavComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BottomNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

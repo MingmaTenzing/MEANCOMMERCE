@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuickViewComponent } from './quick-view.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('QuickViewComponent', () => {
   let component: QuickViewComponent;
@@ -8,6 +9,7 @@ describe('QuickViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideHttpClient()],
       imports: [QuickViewComponent],
     }).compileComponents();
 

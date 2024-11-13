@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReturnComponent } from './return.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
 describe('ReturnComponent', () => {
   let component: ReturnComponent;
@@ -8,10 +10,11 @@ describe('ReturnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReturnComponent]
-    })
-    .compileComponents();
-    
+      providers: [provideHttpClient(), provideRouter([])],
+
+      imports: [ReturnComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ReturnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
