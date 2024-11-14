@@ -12,6 +12,7 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 // import { SearchModalComponent } from './search-modal/search-modal.component';
 import { SearchModalService } from '../../../services/search-modal.service';
 import {
+  ActivatedRoute,
   Router,
   RouterLink,
   RouterLinkActive,
@@ -26,8 +27,8 @@ import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
 import { SearchModalComponent } from './search-modal/search-modal.component';
-import { UserService } from '../../services/user/user.service';
 import { auth_session } from '../../types';
+import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
   selector: 'app-header',
@@ -48,10 +49,10 @@ import { auth_session } from '../../types';
   providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  current_user: auth_session | null = null;
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
-  current_user: auth_session | null = null;
   numberofCartItems: number = 0;
   numberof_WishListedItems: number = 0;
   constructor(
@@ -59,7 +60,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private store: Store,
     private router: Router,
     private messageService: MessageService,
-    private userService: UserService
+    private backendService: BackendService
   ) {}
 
   ngOnInit(): void {
@@ -70,8 +71,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
-      this.current_user = this.userService.current_user;
-      console.log(this.current_user);
+    });
+
+    this.backendService.check_session().subscribe((data) => {
+      this.current_user = data;
+      console.log(data);
     });
 
     this.store

@@ -3,8 +3,6 @@ import { SidePanelComponent } from './components/side-panel/side-panel/side-pane
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BackendService } from '../../services/backend/backend.service';
-import { user } from '../../types';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,9 +17,9 @@ import { Observable } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   // user_details: Observable<user> | null = null;
-  constructor(private backend: BackendService) {
+  constructor() {
     // this.backend.check_session();
   }
 

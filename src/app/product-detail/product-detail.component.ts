@@ -61,12 +61,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private meanBackend: BackendService,
     private store: Store
   ) {
-    Router.events.pipe(takeUntil(this._destroy$)).subscribe((event: Event) => {
-      if (event instanceof ActivationEnd) {
-        window.scrollTo(0, 0);
-      }
-    });
+    window.scrollTo(0, 0);
+  }
 
+  ngOnInit(): void {
     this.route.params
       .pipe(
         takeUntil(this._destroy$),
@@ -78,17 +76,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       )
       .subscribe((categoryProduct) => {
         this.relatedproducts = categoryProduct;
-      });
-  }
-
-  ngOnInit(): void {
-    this.Router.events
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((event: Event) => {
-        if (event instanceof NavigationEnd) {
-          window.scrollTo(0, 0);
-          console.log(event);
-        }
       });
   }
 

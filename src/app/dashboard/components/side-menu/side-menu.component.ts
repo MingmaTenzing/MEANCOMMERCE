@@ -7,6 +7,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { BackendService } from '../../../../services/backend/backend.service';
+import { user } from '../../../../types';
 
 @Component({
   selector: 'app-side-menu',
@@ -20,6 +21,7 @@ export class SideMenuComponent {
   logOut() {
     this.backend.log_out_user().subscribe((data) => {
       if (data) {
+        console.log(data);
         this.router.navigate(['/home']);
       }
     });
