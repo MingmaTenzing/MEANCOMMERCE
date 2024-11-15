@@ -8,6 +8,7 @@ import { BackendService } from '../../../../services/backend/backend.service';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { user } from '../../../../types';
 import { CommonModule } from '@angular/common';
+import { MainLoadingComponent } from '../../components/loading/main-loading/main-loading.component';
 
 @Component({
   selector: 'app-main',
@@ -19,12 +20,14 @@ import { CommonModule } from '@angular/common';
     PaymentOptionComponent,
     CommonModule,
     RecentOrderComponent,
+    MainLoadingComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
 })
 export class MainComponent implements OnDestroy {
   user$: Observable<any> | null = null;
+  testloading: boolean = true;
 
   constructor(private backend: BackendService) {
     this.user$ = this.backend.fetch_user_details();
