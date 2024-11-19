@@ -25,7 +25,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  $destroy = new Subject<void>();
   title = 'MEANCOMMERCE';
   isquickviewEnabled!: Observable<boolean>;
 

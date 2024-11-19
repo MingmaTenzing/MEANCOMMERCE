@@ -1,6 +1,8 @@
 <div
-  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto my-[72px]"
-  [ngStyle]="{ width: viewing_in_dashboard ? '984px' : '' }"
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto"
+  [ngStyle]="
+    viewing_in_dashboard ? { width: '984px' } : { margin: '20px auto' }
+  "
 >
   <div class="border p-4">
     <h1 class="text-gray-900 font-semibold">Wishlist</h1>
@@ -17,7 +19,7 @@
     <tbody class="">
       <tr
         *ngFor="let item of wishListItems"
-        class="space-y-[16px] hover:bg-gray-50"
+        class="space-y-[16px] hover:bg-gray-50 border-b"
       >
         <td
           (click)="routeToProductDetail(item)"

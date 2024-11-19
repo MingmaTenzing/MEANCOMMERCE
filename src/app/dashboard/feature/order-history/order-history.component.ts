@@ -3,11 +3,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { BackendService } from '../../../../services/backend/backend.service';
 import { orders } from '../../../../types';
 import { CommonModule } from '@angular/common';
+import { OrderHistoryLoadingComponent } from '../../components/loading/order-history-loading/order-history-loading.component';
+import { RecentOrderComponent } from '../../components/recent-order/recent-order.component';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OrderHistoryLoadingComponent, RecentOrderComponent],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })
