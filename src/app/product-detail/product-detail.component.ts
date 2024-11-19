@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  afterNextRender,
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {
   ActivatedRoute,
   ActivationEnd,
@@ -10,6 +16,7 @@ import {
 } from '@angular/router';
 import { BackendService } from '../../services/backend/backend.service';
 import {
+  Observable,
   Subject,
   Subscription,
   filter,
@@ -53,7 +60,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   product: MeanProducts | null = null;
 
-  relatedproducts: MeanProducts[] | null = null;
+  relatedproducts: MeanProducts[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -105,5 +112,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._destroy$.next();
+    this._destroy$.complete();
   }
 }
