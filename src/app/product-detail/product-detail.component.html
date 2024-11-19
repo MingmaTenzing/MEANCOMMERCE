@@ -1,8 +1,7 @@
 <div class="lg:w-[1200px] lg:m-auto space-y-10 lg:space-y-20 py-6">
-  @if (product) {
   <div class="flex justify-center items-center">
     <div
-      *ngIf="product"
+      *ngIf="product; else loading"
       class="lg:w-[1200px] w-full bg-white p-4 lg:p-0 lg:flex lg:space-x-20 space-y-8"
     >
       <!-- PRODUCT IMAGES -->
@@ -164,9 +163,9 @@
   </div>
 
   <!-- related products -->
-  @defer (when relatedproducts!.length > 0) {
+  @defer (when relatedproducts.length > 0) {
   <div class="p-4 lg:p-0 space-y-4">
-    <h3 class="font-semibold text-lg">Recommend {{ product.category }}s</h3>
+    <h3 class="font-semibold text-lg">Recommend {{ product!.category }}s</h3>
     <div
       class="space-y-4 md:space-y-0 md:flex md:overflow-x-scroll scrollbar-hide lg:flex-wrap lg:justify-between lg:left-0"
     >
@@ -175,7 +174,9 @@
       </div>
     </div>
   </div>
-  } } @else {
-  <app-product-detail-loading></app-product-detail-loading>
   }
 </div>
+
+<ng-template #loading>
+  <app-product-detail-loading></app-product-detail-loading
+></ng-template>
