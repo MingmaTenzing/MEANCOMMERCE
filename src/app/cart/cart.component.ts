@@ -53,6 +53,7 @@ export class CartComponent implements OnDestroy {
     private router: Router,
     private routeAuth: RouteAuthService
   ) {
+    window.scrollTo(0, 0);
     this.store
       .select(selectProducts)
       .pipe(takeUntil(this.destroy$))
