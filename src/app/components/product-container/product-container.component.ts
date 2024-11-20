@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { cartItems, MeanProducts } from '../../../types';
+import { MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { QuickViewComponent } from '../quick-view/quick-view.component';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -9,8 +8,7 @@ import { addProduct } from '../../states/cart-items/action';
 
 @Component({
   selector: 'app-product-container',
-  standalone: true,
-  imports: [NgOptimizedImage, CommonModule, QuickViewComponent, RouterModule],
+  imports: [NgOptimizedImage, CommonModule, RouterModule],
   templateUrl: './product-container.component.html',
   styleUrl: './product-container.component.css',
 })

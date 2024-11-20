@@ -6,11 +6,10 @@ import { orders } from '../../../../types';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-recent-order',
-  standalone: true,
-  imports: [TableModule, CommonModule],
-  templateUrl: './recent-order.component.html',
-  styleUrl: './recent-order.component.css',
+    selector: 'app-recent-order',
+    imports: [TableModule, CommonModule],
+    templateUrl: './recent-order.component.html',
+    styleUrl: './recent-order.component.css'
 })
 export class RecentOrderComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();

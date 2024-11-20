@@ -22,18 +22,17 @@ import { StripeService } from '../../services/stripe/stripe.service';
 import { RouteAuthService } from '../../services/routeAuth/route-auth.service';
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [
-    NgOptimizedImage,
-    MobileShoppingCartItemComponent,
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    FormsModule,
-  ],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
+    selector: 'app-cart',
+    imports: [
+        NgOptimizedImage,
+        MobileShoppingCartItemComponent,
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule,
+        FormsModule,
+    ],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnDestroy {
   cartItems: cartItems[] = [];

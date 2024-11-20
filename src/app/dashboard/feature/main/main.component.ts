@@ -11,19 +11,18 @@ import { MainLoadingComponent } from '../../components/loading/main-loading/main
 import { PaymentOptionComponent } from '../../components/payment-option/payment-option.component';
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [
-    AccountInfoCardComponent,
-    BillingAddressCardComponent,
-    FunFactCardsComponent,
-    PaymentOptionComponent,
-    CommonModule,
-    RecentOrderComponent,
-    MainLoadingComponent,
-  ],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css',
+    selector: 'app-main',
+    imports: [
+        AccountInfoCardComponent,
+        BillingAddressCardComponent,
+        FunFactCardsComponent,
+        PaymentOptionComponent,
+        CommonModule,
+        RecentOrderComponent,
+        MainLoadingComponent,
+    ],
+    templateUrl: './main.component.html',
+    styleUrl: './main.component.css'
 })
 export class MainComponent implements OnDestroy {
   user$: Observable<any> | null = null;

@@ -8,8 +8,7 @@ import { RecentOrderComponent } from '../../components/recent-order/recent-order
 
 @Component({
   selector: 'app-order-history',
-  standalone: true,
-  imports: [CommonModule, OrderHistoryLoadingComponent, RecentOrderComponent],
+  imports: [CommonModule, OrderHistoryLoadingComponent],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })

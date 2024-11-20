@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     WidgetsComponent,
     FeaturesComponent,
@@ -32,8 +31,6 @@ import { Observable } from 'rxjs';
     FlashSaleComponent,
     LatestNewsComponent,
     NewsletterComponent,
-    FooterComponent,
-    QuickViewComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

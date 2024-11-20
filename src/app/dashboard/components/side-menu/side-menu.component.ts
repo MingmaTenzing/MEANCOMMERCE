@@ -11,8 +11,7 @@ import { user } from '../../../../types';
 
 @Component({
   selector: 'app-side-menu',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.css',
 })

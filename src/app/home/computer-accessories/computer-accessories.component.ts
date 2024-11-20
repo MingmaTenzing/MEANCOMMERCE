@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { LoadingProductComponent } from '../../components/loading-product/loading-product.component';
 
 @Component({
-  selector: 'app-computer-accessories',
-  standalone: true,
-  imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
-  templateUrl: './computer-accessories.component.html',
-  styleUrl: './computer-accessories.component.css',
+    selector: 'app-computer-accessories',
+    imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
+    templateUrl: './computer-accessories.component.html',
+    styleUrl: './computer-accessories.component.css'
 })
 export class ComputerAccessoriesComponent implements OnInit {
   products!: Observable<MeanProducts[]>;

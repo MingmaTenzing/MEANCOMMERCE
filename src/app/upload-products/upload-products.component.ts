@@ -7,20 +7,12 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-upload-products',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterOutlet],
   templateUrl: './upload-products.component.html',
   styleUrl: './upload-products.component.css',
 })

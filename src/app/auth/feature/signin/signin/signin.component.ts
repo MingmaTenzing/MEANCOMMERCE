@@ -7,11 +7,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-signin',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './signin.component.html',
-  styleUrl: './signin.component.css',
+    selector: 'app-signin',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './signin.component.html',
+    styleUrl: './signin.component.css'
 })
 export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();

@@ -15,11 +15,10 @@ import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-checkout',
-  standalone: true,
-  imports: [NgxSkeletonLoaderModule, CommonModule, MatProgressSpinnerModule],
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css',
+    selector: 'app-checkout',
+    imports: [NgxSkeletonLoaderModule, CommonModule, MatProgressSpinnerModule],
+    templateUrl: './checkout.component.html',
+    styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();

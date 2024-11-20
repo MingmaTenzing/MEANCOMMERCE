@@ -11,12 +11,11 @@ import { selectWishlist } from '../../states/wishlist-items/selector';
 import { WishListState } from '../../states/wishlist-items/wishlist-State';
 
 @Component({
-  selector: 'app-best-deal-product',
-  standalone: true,
-  imports: [CommonModule, ToastModule],
-  providers: [MessageService],
-  templateUrl: './best-deal-product.component.html',
-  styleUrl: './best-deal-product.component.css',
+    selector: 'app-best-deal-product',
+    imports: [CommonModule, ToastModule],
+    providers: [MessageService],
+    templateUrl: './best-deal-product.component.html',
+    styleUrl: './best-deal-product.component.css'
 })
 export class BestDealProductComponent {
   @Input() product!: MeanProducts;

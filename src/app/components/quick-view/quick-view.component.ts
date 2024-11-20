@@ -15,7 +15,6 @@ import {
 
 @Component({
   selector: 'app-quick-view',
-  standalone: true,
   imports: [NgOptimizedImage, MatIconModule, CommonModule],
   templateUrl: './quick-view.component.html',
   styleUrl: './quick-view.component.css',

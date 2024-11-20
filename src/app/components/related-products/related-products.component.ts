@@ -4,11 +4,10 @@ import { NgOptimizedImage } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-related-products',
-  standalone: true,
-  imports: [NgOptimizedImage, RouterModule],
-  templateUrl: './related-products.component.html',
-  styleUrl: './related-products.component.css',
+    selector: 'app-related-products',
+    imports: [NgOptimizedImage, RouterModule],
+    templateUrl: './related-products.component.html',
+    styleUrl: './related-products.component.css'
 })
 export class RelatedProductsComponent {
   @Input() product!: MeanProducts;

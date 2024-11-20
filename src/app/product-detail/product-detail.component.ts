@@ -36,17 +36,16 @@ import { addProduct } from '../states/cart-items/action';
 import { addToWishlist } from '../states/wishlist-items/actions';
 
 @Component({
-  selector: 'app-product-detail',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    CommonModule,
-    NgOptimizedImage,
-    RelatedProductsComponent,
-    ProductDetailLoadingComponent,
-  ],
-  templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css',
+    selector: 'app-product-detail',
+    imports: [
+        MatIconModule,
+        CommonModule,
+        NgOptimizedImage,
+        RelatedProductsComponent,
+        ProductDetailLoadingComponent,
+    ],
+    templateUrl: './product-detail.component.html',
+    styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   productId: string = '';

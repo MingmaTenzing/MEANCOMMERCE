@@ -4,8 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-side-panel',
-  standalone: true,
-  imports: [SidebarModule, ButtonModule, NgOptimizedImage],
+  imports: [SidebarModule, ButtonModule],
   templateUrl: './side-panel.component.html',
   styleUrl: './side-panel.component.css',
 })

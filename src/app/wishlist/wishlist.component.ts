@@ -13,12 +13,11 @@ import { ToastModule } from 'primeng/toast';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-wishlist',
-  standalone: true,
-  imports: [CommonModule, NgOptimizedImage, ToastModule],
-  templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.css',
-  providers: [MessageService, Store],
+    selector: 'app-wishlist',
+    imports: [CommonModule, NgOptimizedImage, ToastModule],
+    templateUrl: './wishlist.component.html',
+    styleUrl: './wishlist.component.css',
+    providers: [MessageService, Store]
 })
 export class WishlistComponent implements OnInit {
   wishListItems: MeanProducts[] = [];

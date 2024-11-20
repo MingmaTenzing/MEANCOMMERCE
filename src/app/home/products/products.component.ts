@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { LoadingProductComponent } from '../../components/loading-product/loading-product.component';
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css',
+    selector: 'app-products',
+    imports: [ProductContainerComponent, CommonModule, LoadingProductComponent],
+    templateUrl: './products.component.html',
+    styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
   constructor(private meanBackend: BackendService) {}
