@@ -16,30 +16,23 @@ import {
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-auth-form',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
-  templateUrl: './auth-form.component.html',
-  styleUrl: './auth-form.component.css',
-  animations: [
-    trigger('openClose', [
-      // ...
-      state(
-        'open',
-        style({
-          transform: 'translateX(0)',
-        })
-      ),
-      state(
-        'closed',
-        style({
-          transform: 'translateX(100%)',
-        })
-      ),
-      transition('open => closed', [animate('300ms ease-in-out')]),
-      transition('closed => open', [animate('300ms ease-out')]),
-    ]),
-  ],
+    selector: 'app-auth-form',
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
+    templateUrl: './auth-form.component.html',
+    styleUrl: './auth-form.component.css',
+    animations: [
+        trigger('openClose', [
+            // ...
+            state('open', style({
+                transform: 'translateX(0)',
+            })),
+            state('closed', style({
+                transform: 'translateX(100%)',
+            })),
+            transition('open => closed', [animate('300ms ease-in-out')]),
+            transition('closed => open', [animate('300ms ease-out')]),
+        ]),
+    ]
 })
 export class AuthFormComponent {
   currentRoute: string = '';

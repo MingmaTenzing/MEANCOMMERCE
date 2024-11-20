@@ -11,18 +11,17 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-upload-products',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-  ],
-  templateUrl: './upload-products.component.html',
-  styleUrl: './upload-products.component.css',
+    selector: 'app-upload-products',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+    ],
+    templateUrl: './upload-products.component.html',
+    styleUrl: './upload-products.component.css'
 })
 export class UploadProductsComponent implements OnInit {
   uploadedImages: Array<string> = [];

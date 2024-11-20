@@ -21,11 +21,10 @@ import {
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [MobileShoppingCartItemComponent, NgOptimizedImage, CommonModule],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
+    selector: 'app-cart',
+    imports: [MobileShoppingCartItemComponent, NgOptimizedImage, CommonModule],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.css'
 })
 export class DashboardCartComponent {
   cartItems: cartItems[] = [];

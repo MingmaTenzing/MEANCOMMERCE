@@ -5,17 +5,16 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [
-    SidePanelComponent,
-    RouterOutlet,
-    SideMenuComponent,
-    RouterLink,
-    RouterLinkActive,
-  ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+    selector: 'app-dashboard',
+    imports: [
+        SidePanelComponent,
+        RouterOutlet,
+        SideMenuComponent,
+        RouterLink,
+        RouterLinkActive,
+    ],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
   // user_details: Observable<user> | null = null;

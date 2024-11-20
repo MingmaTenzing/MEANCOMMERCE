@@ -6,11 +6,10 @@ import { MeanProducts } from '../../../types';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-bestdeals',
-  standalone: true,
-  imports: [BestDealProductComponent, CommonModule],
-  templateUrl: './bestdeals.component.html',
-  styleUrl: './bestdeals.component.css',
+    selector: 'app-bestdeals',
+    imports: [BestDealProductComponent, CommonModule],
+    templateUrl: './bestdeals.component.html',
+    styleUrl: './bestdeals.component.css'
 })
 export class BestdealsComponent implements OnInit {
   products!: Observable<MeanProducts[]>;

@@ -9,11 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { session_Status } from '../../types';
 
 @Component({
-  selector: 'app-return',
-  standalone: true,
-  imports: [MatIconModule],
-  templateUrl: './return.component.html',
-  styleUrl: './return.component.css',
+    selector: 'app-return',
+    imports: [MatIconModule],
+    templateUrl: './return.component.html',
+    styleUrl: './return.component.css'
 })
 export class ReturnComponent implements OnInit, OnDestroy {
   _$destroy = new Subject<void>();

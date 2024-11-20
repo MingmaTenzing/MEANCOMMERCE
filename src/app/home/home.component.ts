@@ -17,25 +17,24 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    WidgetsComponent,
-    FeaturesComponent,
-    CommonModule,
-    BestdealsComponent,
-    ShopCategoryComponent,
-    ProductsComponent,
-    BannerComponent,
-    ComputerAccessoriesComponent,
-    MacbookBannerComponent,
-    FlashSaleComponent,
-    LatestNewsComponent,
-    NewsletterComponent,
-    FooterComponent,
-    QuickViewComponent,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+    selector: 'app-home',
+    imports: [
+        WidgetsComponent,
+        FeaturesComponent,
+        CommonModule,
+        BestdealsComponent,
+        ShopCategoryComponent,
+        ProductsComponent,
+        BannerComponent,
+        ComputerAccessoriesComponent,
+        MacbookBannerComponent,
+        FlashSaleComponent,
+        LatestNewsComponent,
+        NewsletterComponent,
+        FooterComponent,
+        QuickViewComponent,
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css'
 })
 export class HomeComponent {}

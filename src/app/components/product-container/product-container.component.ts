@@ -8,11 +8,10 @@ import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
 
 @Component({
-  selector: 'app-product-container',
-  standalone: true,
-  imports: [NgOptimizedImage, CommonModule, QuickViewComponent, RouterModule],
-  templateUrl: './product-container.component.html',
-  styleUrl: './product-container.component.css',
+    selector: 'app-product-container',
+    imports: [NgOptimizedImage, CommonModule, QuickViewComponent, RouterModule],
+    templateUrl: './product-container.component.html',
+    styleUrl: './product-container.component.css'
 })
 export class ProductContainerComponent {
   @Input() product!: MeanProducts;

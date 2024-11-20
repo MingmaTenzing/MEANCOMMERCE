@@ -10,11 +10,10 @@ import { BackendService } from '../../../../services/backend/backend.service';
 import { user } from '../../../../types';
 
 @Component({
-  selector: 'app-side-menu',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './side-menu.component.html',
-  styleUrl: './side-menu.component.css',
+    selector: 'app-side-menu',
+    imports: [RouterOutlet, RouterLink, RouterLinkActive],
+    templateUrl: './side-menu.component.html',
+    styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
   constructor(private backend: BackendService, private router: Router) {}

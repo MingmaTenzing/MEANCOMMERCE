@@ -31,22 +31,21 @@ import { auth_session } from '../../types';
 import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    CommonModule,
-    BottomNavComponent,
-    RouterModule,
-    SearchModalComponent,
-    ToastModule,
-    ButtonModule,
-    RippleModule,
-    RouterLink,
-    RouterLinkActive,
-  ],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  providers: [MessageService],
+    selector: 'app-header',
+    imports: [
+        CommonModule,
+        BottomNavComponent,
+        RouterModule,
+        SearchModalComponent,
+        ToastModule,
+        ButtonModule,
+        RippleModule,
+        RouterLink,
+        RouterLinkActive,
+    ],
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    providers: [MessageService]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   current_user: auth_session | null = null;

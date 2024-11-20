@@ -19,18 +19,17 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-shop',
-  standalone: true,
-  imports: [
-    ProductContainerComponent,
-    LoadingProductComponent,
-    CommonModule,
-    ReactiveFormsModule,
-    LoadingProductComponent,
-    FormsModule,
-  ],
-  templateUrl: './shop.component.html',
-  styleUrl: './shop.component.css',
+    selector: 'app-shop',
+    imports: [
+        ProductContainerComponent,
+        LoadingProductComponent,
+        CommonModule,
+        ReactiveFormsModule,
+        LoadingProductComponent,
+        FormsModule,
+    ],
+    templateUrl: './shop.component.html',
+    styleUrl: './shop.component.css'
 })
 export class ShopComponent implements OnInit, OnDestroy {
   value!: string;
