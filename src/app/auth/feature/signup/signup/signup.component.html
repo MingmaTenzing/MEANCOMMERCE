@@ -36,9 +36,10 @@
         type="file"
         class="outline-none border text-gray-500 p-2"
       />
+
       @if (image_uploading) {
 
-      <app-progress-bar></app-progress-bar>
+      <div class="loader"></div>
       } @if(uploadingImageCompleted) {
       <div>
         <i class="pi pi-check text-green-500 text-xl"></i>

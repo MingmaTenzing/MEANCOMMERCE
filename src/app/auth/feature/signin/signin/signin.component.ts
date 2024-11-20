@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnDestroy {
   $destroy = new Subject<void>();
   token: string = '';
+  signinLoading: boolean = false;
 
   constructor(
     private backend_service: BackendService,
@@ -27,6 +28,7 @@ export class SigninComponent implements OnDestroy {
   });
 
   sign_in_user() {
+    this.signinLoading = true;
     console.log(this.signinForm.value);
     this.backend_service
       .signInUser(this.signinForm)
@@ -35,10 +37,12 @@ export class SigninComponent implements OnDestroy {
         next: (user) => {
           if (user) {
             this.router.navigate(['/dashboard']);
+            this.signinLoading = false;
           }
         },
         error: (error: HttpErrorResponse) => {
           window.alert(error.error);
+          this.signinLoading = false;
         },
       });
     // .subscribe((user) => {
