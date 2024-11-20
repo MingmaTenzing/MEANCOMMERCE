@@ -14,19 +14,19 @@ import {
 } from '../../states/wishlist-items/actions';
 
 @Component({
-    selector: 'app-quick-view',
-    imports: [NgOptimizedImage, MatIconModule, CommonModule],
-    templateUrl: './quick-view.component.html',
-    styleUrl: './quick-view.component.css',
-    animations: [
-        trigger('enterAndLeave', [
-            transition(':enter', [
-                style({ opacity: 0 }),
-                animate('100ms', style({ opacity: 1 })),
-            ]),
-            transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
-        ]),
-    ]
+  selector: 'app-quick-view',
+  imports: [NgOptimizedImage, MatIconModule, CommonModule],
+  templateUrl: './quick-view.component.html',
+  styleUrl: './quick-view.component.css',
+  animations: [
+    trigger('enterAndLeave', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('100ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class QuickViewComponent implements OnInit, OnDestroy {
   constructor(

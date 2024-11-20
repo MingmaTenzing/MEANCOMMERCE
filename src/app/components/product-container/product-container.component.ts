@@ -1,17 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { cartItems, MeanProducts } from '../../../types';
+import { MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { QuickViewComponent } from '../quick-view/quick-view.component';
 import { QuickViewService } from '../../../services/quickview/quick-view.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
 
 @Component({
-    selector: 'app-product-container',
-    imports: [NgOptimizedImage, CommonModule, QuickViewComponent, RouterModule],
-    templateUrl: './product-container.component.html',
-    styleUrl: './product-container.component.css'
+  selector: 'app-product-container',
+  imports: [NgOptimizedImage, CommonModule, RouterModule],
+  templateUrl: './product-container.component.html',
+  styleUrl: './product-container.component.css',
 })
 export class ProductContainerComponent {
   @Input() product!: MeanProducts;

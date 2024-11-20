@@ -10,19 +10,12 @@ import {
 import { BackendService } from '../../../../../services/backend/backend.service';
 import { catchError, Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { error } from 'console';
-import { ProgressBarComponent } from '../../../components/loading/progress-bar/progress-bar.component';
 
 @Component({
-    selector: 'app-signup',
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ProgressBarComponent,
-    ],
-    templateUrl: './signup.component.html',
-    styleUrl: './signup.component.css'
+  selector: 'app-signup',
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent implements OnDestroy {
   private $destroy = new Subject<void>();

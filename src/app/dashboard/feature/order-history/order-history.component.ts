@@ -7,10 +7,10 @@ import { OrderHistoryLoadingComponent } from '../../components/loading/order-his
 import { RecentOrderComponent } from '../../components/recent-order/recent-order.component';
 
 @Component({
-    selector: 'app-order-history',
-    imports: [CommonModule, OrderHistoryLoadingComponent, RecentOrderComponent],
-    templateUrl: './order-history.component.html',
-    styleUrl: './order-history.component.css'
+  selector: 'app-order-history',
+  imports: [CommonModule, OrderHistoryLoadingComponent],
+  templateUrl: './order-history.component.html',
+  styleUrl: './order-history.component.css',
 })
 export class OrderHistoryComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();

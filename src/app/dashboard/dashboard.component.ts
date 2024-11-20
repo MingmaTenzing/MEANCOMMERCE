@@ -1,20 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { SidePanelComponent } from './components/side-panel/side-panel/side-panel.component';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
-import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
-    selector: 'app-dashboard',
-    imports: [
-        SidePanelComponent,
-        RouterOutlet,
-        SideMenuComponent,
-        RouterLink,
-        RouterLinkActive,
-    ],
-    templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.css'
+  selector: 'app-dashboard',
+  imports: [RouterOutlet, SideMenuComponent],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
   // user_details: Observable<user> | null = null;

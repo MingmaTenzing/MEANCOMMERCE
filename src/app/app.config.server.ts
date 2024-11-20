@@ -7,12 +7,15 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
+import { provideServerRoutesConfig } from '@angular/ssr';
+import { serverRoutes } from './app.routes.server';
 
 const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(),
     provideHttpClient(withFetch()),
     provideHttpClient(withInterceptorsFromDi()),
+    provideServerRoutesConfig(serverRoutes),
   ],
 };
 
