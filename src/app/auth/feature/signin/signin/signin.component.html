@@ -19,13 +19,17 @@
       class="outline-none border text-gray-500 p-2"
     />
   </div>
-  <div class="flex justify-center">
-    <button
-      type="submit"
-      class="flex space-x-2 items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
-    >
-      <span class="uppercase">Sign in</span> <i class="pi pi-arrow-right"></i>
-    </button>
+  <div class="flex justify-center items-center bg-ciliconorange">
+    <div>
+      <button
+        type="submit"
+        class="flex space-x-2 items-center p-2 bg-ciliconorange text-white w-full justify-center font-medium"
+      >
+        <span class="uppercase">Sign in</span> <i class="pi pi-arrow-right"></i>
+      </button>
+    </div>
+
+    <div *ngIf="signinLoading" class="loader"></div>
   </div>
   <!-- or line -->
   <div class="flex items-center space-x-1 text-gray-500 text-sm">
