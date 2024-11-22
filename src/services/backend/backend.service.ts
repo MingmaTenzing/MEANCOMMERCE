@@ -108,9 +108,13 @@ export class BackendService {
   }
 
   log_out_user() {
-    return this.http.get(`${this.api_Url}/api/v1/dashboard/logout`, {
-      withCredentials: true,
-    });
+    return this.http.post(
+      `${this.api_Url}/api/v1/auth/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   get_recent_orders() {
