@@ -19,6 +19,7 @@
           class="hover:bg-ciliconorange cursor-pointer group/hovericons bg-white rounded-full w-[40px] h-[40px] p-2 flex justify-center items-center"
         >
           <img
+            (click)="addToWishlist(product)"
             src="../../../assets/icons/love.svg"
             class="invert group-hover/hovericons:invert-0"
           />
@@ -63,3 +64,5 @@
   </p>
   <p class="font-semibold text-ciliconPriceBlue">${{ product.price }}</p>
 </div>
+
+<p-toast></p-toast>

@@ -5,12 +5,16 @@ import { QuickViewService } from '../../../services/quickview/quick-view.service
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
+import { addToWishlist } from '../../states/wishlist-items/actions';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-product-container',
-  imports: [NgOptimizedImage, CommonModule, RouterModule],
+  imports: [NgOptimizedImage, CommonModule, RouterModule, ToastModule],
   templateUrl: './product-container.component.html',
   styleUrl: './product-container.component.css',
+  providers: [MessageService],
 })
 export class ProductContainerComponent {
   @Input() product!: MeanProducts;
@@ -20,7 +24,8 @@ export class ProductContainerComponent {
   constructor(
     private quickViewService: QuickViewService,
     private router: ActivatedRoute,
-    private store: Store
+    private store: Store,
+    private MessageService: MessageService
   ) {}
 
   hovering() {
@@ -35,6 +40,20 @@ export class ProductContainerComponent {
   }
   addToCart(product: MeanProducts) {
     this.store.dispatch(addProduct({ product }));
+    this.MessageService.add({
+      severity: 'success',
+      summary: 'Added to Cart',
+      detail: 'Product has been added to Cart',
+    });
+  }
+
+  addToWishlist(product: MeanProducts) {
+    this.store.dispatch(addToWishlist({ product }));
+    this.MessageService.add({
+      severity: 'success',
+      summary: 'Added to Wishlist',
+      detail: 'Product has been added to Wishlist',
+    });
   }
 }
 
