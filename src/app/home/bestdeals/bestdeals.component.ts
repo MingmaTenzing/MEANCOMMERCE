@@ -6,10 +6,10 @@ import { MeanProducts } from '../../../types';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-bestdeals',
-    imports: [BestDealProductComponent, CommonModule],
-    templateUrl: './bestdeals.component.html',
-    styleUrl: './bestdeals.component.css'
+  selector: 'app-bestdeals',
+  imports: [BestDealProductComponent, CommonModule],
+  templateUrl: './bestdeals.component.html',
+  styleUrl: './bestdeals.component.css',
 })
 export class BestdealsComponent implements OnInit {
   products!: Observable<MeanProducts[]>;
@@ -17,7 +17,6 @@ export class BestdealsComponent implements OnInit {
   constructor(private meanBackend: BackendService) {}
 
   ngOnInit(): void {
-    this.products = this.meanBackend.getData();
+    this.products = this.meanBackend.getCategoryProducts('Smartphone');
   }
 }
- 
