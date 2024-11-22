@@ -3,7 +3,7 @@ import { QuickViewService } from '../../../services/quickview/quick-view.service
 import { Observable, ObservedValueOf, Subject, Subscription } from 'rxjs';
 import { cartItems, MeanProducts } from '../../../types';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../../states/cart-items/action';
@@ -14,19 +14,19 @@ import {
 } from '../../states/wishlist-items/actions';
 
 @Component({
-  selector: 'app-quick-view',
-  imports: [NgOptimizedImage, MatIconModule, CommonModule],
-  templateUrl: './quick-view.component.html',
-  styleUrl: './quick-view.component.css',
-  animations: [
-    trigger('enterAndLeave', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('100ms', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
-    ]),
-  ],
+    selector: 'app-quick-view',
+    imports: [NgOptimizedImage, CommonModule, ],
+    templateUrl: './quick-view.component.html',
+    styleUrl: './quick-view.component.css',
+    animations: [
+        trigger('enterAndLeave', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('100ms', style({ opacity: 1 })),
+            ]),
+            transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
+        ]),
+    ]
 })
 export class QuickViewComponent implements OnInit, OnDestroy {
   constructor(
