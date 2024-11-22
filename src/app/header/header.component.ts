@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectorRef,
   Component,
   Input,
   NgModule,
@@ -19,7 +20,7 @@ import {
   RouterModule,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil, take } from 'rxjs';
+import { Subject, takeUntil, take, Observable } from 'rxjs';
 import { selectProducts } from '../states/cart-items/selector';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -27,28 +28,27 @@ import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
 import { SearchModalComponent } from './search-modal/search-modal.component';
-import { auth_session } from '../../types';
+import { auth_session, user } from '../../types';
 import { BackendService } from '../../services/backend/backend.service';
 
 @Component({
-    selector: 'app-header',
-    imports: [
-        CommonModule,
-        BottomNavComponent,
-        RouterModule,
-        SearchModalComponent,
-        ToastModule,
-        ButtonModule,
-        RippleModule,
-        RouterLink,
-        RouterLinkActive,
-    ],
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css'],
-    providers: [MessageService]
+  selector: 'app-header',
+  imports: [
+    CommonModule,
+    BottomNavComponent,
+    RouterModule,
+    SearchModalComponent,
+    ToastModule,
+    ButtonModule,
+    RippleModule,
+    RouterLink,
+    RouterLinkActive,
+  ],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
+  providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  current_user: auth_session | null = null;
   modalState: Boolean = false;
   loginModal: Boolean = false;
   destroy$ = new Subject<void>();
@@ -70,11 +70,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       } else {
         this.modalState = true;
       }
-    });
-
-    this.backendService.check_session().subscribe((data) => {
-      this.current_user = data;
-      console.log(data);
     });
 
     this.store
@@ -110,7 +105,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashboard']);
+    this.backendService
+      .check_session()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (user) => {
+          this.router.navigate(['/dashboard']);
+        },
+        error: ({ error }) => {
+          if (error == 'user unauthorized') {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'User Unauthorized',
+              detail: 'Please login to your account',
+            });
+          }
+        },
+      });
   }
   goToCart() {
     if (this.numberofCartItems <= 0) {

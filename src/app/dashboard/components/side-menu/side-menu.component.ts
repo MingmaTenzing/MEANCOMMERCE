@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -21,6 +21,7 @@ export class SideMenuComponent {
     this.backend.log_out_user().subscribe((data) => {
       if (data) {
         console.log(data);
+
         this.router.navigate(['/home']);
       }
     });

@@ -24,7 +24,7 @@ import { SigninComponent } from './auth/feature/signin/signin/signin.component';
 import { SignupComponent } from './auth/feature/signup/signup/signup.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { CartComponent } from './cart/cart.component';
-import { authGuard } from '../guard/auth/auth.guard';
+import { dashBoardGuard } from '../guard/auth/auth.guard';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -67,7 +67,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     title: 'Dashboard',
-    canActivate: [authGuard],
+    canActivate: [dashBoardGuard],
     children: [
       {
         path: 'order-history',
