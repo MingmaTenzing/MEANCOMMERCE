@@ -1,4 +1,7 @@
-<div class="p-4 md:space-y-14 lg:space-y-0 lg:flex lg:space-x-4">
+<div
+  *ngIf="cartItems.length > 0; else nocartItemsMessage"
+  class="p-4 md:space-y-14 lg:space-y-0 lg:flex lg:space-x-4"
+>
   <!-- shopping card -->
 
   <div class="hidden md:inline-block border">
@@ -69,3 +72,12 @@
     [product]="item"
   ></app-mobile-shopping-cart-item>
 </div>
+
+<ng-template #nocartItemsMessage>
+  <div class="flex justify-center items-center h-[400px]">
+    <div class="flex justify-center space-x-4 items-center text-gray-500">
+      <i class="pi pi-cart-minus text-4xl"></i>
+      <p class="text-2xl">No items found in cart</p>
+    </div>
+  </div>
+</ng-template>
