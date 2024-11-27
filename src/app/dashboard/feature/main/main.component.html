@@ -1,4 +1,4 @@
-<main *ngIf="user$ | async; let current_user" class="space-y-4">
+<main *ngIf="user$ | async; let current_user; else: loading" class="space-y-4">
   <!-- heading -->
   <section id="heading" class="space-y-2">
     <h3 class="text-gray-900 text-2xl font-semibold">
@@ -35,6 +35,6 @@
 </main>
 
 <!-- loaddingggg -->
-<div #loading>
+<ng-template #loading>
   <app-main-loading></app-main-loading>
-</div>
+</ng-template>

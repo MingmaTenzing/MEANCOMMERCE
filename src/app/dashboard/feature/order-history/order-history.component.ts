@@ -14,6 +14,8 @@ import { RecentOrderComponent } from '../../components/recent-order/recent-order
 })
 export class OrderHistoryComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
+
+  noItems: boolean = false;
   constructor(private backend: BackendService) {}
 
   recent_orders: orders[] = [];
@@ -21,7 +23,12 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
     this.backend
       .get_recent_orders()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => (this.recent_orders = data));
+      .subscribe((data) => {
+        this.recent_orders = data;
+        if (this.recent_orders.length < 0) {
+          this.noItems = true;
+        }
+      });
 
     this.recent_orders.sort(
       (a, b) =>
