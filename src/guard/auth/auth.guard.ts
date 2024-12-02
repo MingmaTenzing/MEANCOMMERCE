@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { BackendService } from '../../services/backend/backend.service';
 import { map } from 'rxjs';
+import { state } from '@angular/animations';
 
 export const dashBoardGuard: CanActivateFn = (route, state) => {
   const backendService = inject(BackendService);
@@ -10,7 +11,6 @@ export const dashBoardGuard: CanActivateFn = (route, state) => {
   return backendService.check_session().pipe(
     map((data) => {
       if (!data.userId) {
-        window.alert('Please Login First');
         return false;
       } else {
         return true;
