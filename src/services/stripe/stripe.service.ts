@@ -9,6 +9,7 @@ import { line_items, session_Status } from '../../types';
 export class StripeService {
   line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
   api_Url: string = 'https://meancommerce-backend.onrender.com';
+  // api_Url: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
