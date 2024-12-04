@@ -17,6 +17,7 @@ export class BackendService {
   // use localhost: 5000 for development
   api_Url: string = 'https://meancommerce-backend.onrender.com';
   // api_Url: string = 'http://localhost:5000';
+  // api_Url: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -57,6 +58,12 @@ export class BackendService {
         withCredentials: true,
       }
     );
+  }
+
+  googleAuth() {
+    return this.http.get<any>(`${this.api_Url}/auth/google`, {
+      withCredentials: true,
+    });
   }
 
   signup_user(user_details: FormGroup) {
