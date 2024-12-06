@@ -7,12 +7,14 @@ import Stripe from 'stripe';
 import { MatIconModule } from '@angular/material/icon';
 
 import { session_Status } from '../../types';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-return',
-    imports: [MatIconModule],
-    templateUrl: './return.component.html',
-    styleUrl: './return.component.css'
+  selector: 'app-return',
+  imports: [MatIconModule, ProgressSpinnerModule, CommonModule],
+  templateUrl: './return.component.html',
+  styleUrl: './return.component.css',
 })
 export class ReturnComponent implements OnInit, OnDestroy {
   _$destroy = new Subject<void>();
