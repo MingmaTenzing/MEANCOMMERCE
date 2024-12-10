@@ -1,4 +1,4 @@
-<div class="p-4 flex space-x-6 text-sm relative">
+<div class="py-4 flex space-x-6 text-sm relative">
   <div
     (click)="changeState()"
     class="flex bg-gray-100 hover:bg-ciliconorange group/allcategory p-2 space-x-2"
@@ -20,19 +20,23 @@
     <i class="pi pi-shop" style="font-size: 20px"></i>
     <p>Shop</p>
   </div>
-  <div class="flex text-gray-600 cursor-pointer space-x-2 items-center">
+  <div
+    routerLink="ai-assistant"
+    routerLinkActive="active"
+    class="flex text-gray-600 cursor-pointer space-x-2 items-center"
+  >
+    <i class="pi pi-microchip-ai" style="font-size: 20px"></i>
+    <p>AI Assistant</p>
+  </div>
+  <div class="flex text-gray-600 space-x-2 items-center cursor-not-allowed">
     <i class="pi pi-map-marker" style="font-size: 20px"></i>
     <p>Track Order</p>
   </div>
-  <div class="flex text-gray-600 cursor-pointer space-x-2 items-center">
-    <i class="pi pi-arrow-right-arrow-left" style="font-size: 20px"></i>
-    <p>Compare</p>
-  </div>
-  <div class="flex text-gray-600 cursor-pointer space-x-2 items-center">
+  <div class="flex text-gray-600 space-x-2 items-center cursor-not-allowed">
     <i class="pi pi-headphones" style="font-size: 20px"></i>
     <p>Customer Support</p>
   </div>
-  <div class="flex text-gray-600 cursor-pointer space-x-2 items-center">
+  <div class="flex text-gray-600 space-x-2 items-center cursor-not-allowed">
     <i class="pi-info-circle pi" style="font-size: 20px"></i>
     <p>Need Help</p>
   </div>
