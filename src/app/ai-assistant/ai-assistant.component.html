@@ -1,3 +1,83 @@
-<div class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6">
-  <p>ai assitatns is working</p>
-</div>
+<main class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6">
+  <div class="flex flex-col h-[800px] space-y-4">
+    <!-- Header -->
+    <div class="flex justify-center items-center space-x-4">
+      <i
+        class="pi pi-microchip-ai text-ciliconorange"
+        style="font-size: 40px"
+      ></i>
+      <h1 class="bg-white text-2xl text-center font-semibold">
+        MeanCommerce AI Assistant
+      </h1>
+    </div>
+    chatttgtingg
+    <section id="chat" class="space-y-4">
+      <div *ngFor="let chat of conversation">
+        <div
+          class=""
+          [ngClass]="{
+            'flex justify-start': chat.role == 'system',
+            'flex justify-end': chat.role == 'user'
+          }"
+        >
+          <p
+            class="p-4"
+            [ngClass]="{
+              'bg-gray-100 max-w-lg  rounded-lg text-sm text-gray-900 shadow':
+                chat.role == 'system',
+              'bg-[#242424] text-white  rounded-lg text-sm shadow':
+                chat.role == 'user'
+            }"
+          >
+            {{ chat.message }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat History -->
+    <div id="chat-history" class="flex-1 p-4 overflow-y-auto space-y-4">
+      <!-- AI Message -->
+      <div class="flex">
+        <div
+          class="max-w-2xl bg-gray-100 p-4 rounded-lg text-sm text-gray-900 shadow"
+        >
+          Hi, I'm your assistant. I can help you with your tech queries or
+          suggest you on which product is better suited for you.
+        </div>
+      </div>
+
+      <!-- User Message -->
+      <div class="flex justify-end">
+        <div
+          class="max-w-2xl bg-[#242424] text-white p-4 rounded-lg text-sm shadow"
+        >
+          Can you suggest a laptop for gaming?
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="bg-gray-100 relative">
+      <textarea
+        [(ngModel)]="user_query"
+        class="p-4 shadow-lg w-full rounded-lg h-[150px] focus:border-ciliconorange focus:outline-none"
+        placeholder="Message Assitant"
+      ></textarea>
+      <div
+        class="bg-[#242424] cursor-pointer flex w-10 h-10 absolute bottom-4 right-4 rounded-full justify-center items-center"
+      >
+        @if (user_query.length>0) {
+        <button (click)="send_query()">
+          <i class="pi pi-arrow-up text-white text-xl"></i>
+        </button>
+
+        } @else {<button>
+          <i class="pi pi-align-center text-white text-xl rotate-90"></i>
+        </button>
+
+        }
+      </div>
+    </div>
+  </div>
+</main>

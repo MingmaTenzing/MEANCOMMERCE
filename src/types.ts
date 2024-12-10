@@ -20,6 +20,11 @@ export interface line_items {
   line_items: Stripe.Checkout.SessionCreateParams.LineItem[];
 }
 
+export interface ai_assistant_chat {
+  message: string;
+  role: string;
+}
+
 export interface session_Status {
   status: string;
   customer_email: string;
