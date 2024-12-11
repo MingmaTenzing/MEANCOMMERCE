@@ -34,7 +34,7 @@ export class AiAssistantComponent implements OnDestroy {
     {
       message:
         "Hi, I'm your assistant. I can help you with your tech queries or suggest you on which product is better suited for you.",
-      role: 'system',
+      role: 'user',
     },
     {
       message: 'my name is',

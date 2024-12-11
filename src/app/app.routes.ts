@@ -26,6 +26,7 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { CartComponent } from './cart/cart.component';
 import { dashBoardGuard } from '../guard/auth/auth.guard';
 import { AiAssistantComponent } from './ai-assistant/ai-assistant.component';
+import { CompareComponent } from './compare/compare.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -68,6 +69,11 @@ export const routes: Routes = [
     path: 'ai-assistant',
     component: AiAssistantComponent,
     title: 'AI Assistant',
+  },
+  {
+    path: 'compare',
+    component: CompareComponent,
+    title: 'Compare',
   },
   {
     path: 'dashboard',
