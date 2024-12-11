@@ -1,40 +1,126 @@
 <main class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6">
-  <table class="table-auto">
-    <thead class="">
-      <tr class="border">
-        <th class="w-[282px] h-[530px] p-8">
+  <table class="table-fixed flex">
+    <thead>
+      <tr class="flex flex-col">
+        <th class="min-w-[280px] h-[530px] border"></th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Rating
+        </th>
+        <th
+          class="py-[12px] h-[52px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Price
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Brand
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Category
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Stock
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Sku
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Available since
+        </th>
+      </tr>
+    </thead>
+    <tbody class="flex">
+      <tr class="flex flex-col">
+        <td class="w-[300px] h-[530px] p-8 space-y-4 border">
+          <!-- product image with remove button -->
           <div>
-            <i class="pi pi-times-circle text-gray-500"></i>
+            <div class="flex justify-center">
+              <i class="pi pi-times-circle text-gray-500"></i>
+            </div>
+            <div>
+              <img
+                src="../../assets/images/keyboard.svg"
+                class="w-[272px] h-[272px] object-contain"
+                width="272"
+                height="272"
+              />
+            </div>
           </div>
-          <div>
-            <img
-              src="../../assets/images/macbook.png"
-              class="w-[272px] h-[272px] object-contain"
-              width="272"
-              height="272"
-            />
-          </div>
+
+          <!-- title product -->
           <p class="text-[16px] font-medium text-left">
             Gamdias ARES M2 Gaming Keyboard, Mouse and Mouse Mat Combo
           </p>
-          <div
-            class="w-[212px] h-[50px] bg-ciliconorange text-white rounded-lg flex space-x-4 items-center justify-center font-medium"
-          >
-            <button class="uppercase text-sm">Add to cart</button>
-            <i class="pi pi-shopping-cart"></i>
+
+          <!-- add to cart section -->
+          <div class="flex items-center justify-center space-x-4">
+            <div
+              class="w-[212px] h-[50px] bg-ciliconorange text-white rounded-lg flex space-x-4 items-center justify-center font-medium"
+            >
+              <button class="uppercase text-sm">Add to cart</button>
+              <i class="pi pi-shopping-cart"></i>
+            </div>
+            <div
+              class="w-[48px] h-[48px] border border-ciliconorange rounded-lg flex justify-center items-center"
+            >
+              <button>
+                <i class="pi pi-heart text-ciliconorange text-2xl"></i>
+              </button>
+            </div>
           </div>
-        </th>
-        <th class="w-[382px] h-[530px]">product 2</th>
-        <th class="w-[382px] h-[530px]">product 3</th>
-        <th class="w-[382px] h-[530px]">product 5</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="border">
-        <td class="">pdfd</td>
-        <td>pdfd</td>
-        <td>pdfd</td>
-        <td>pdfd</td>
+        </td>
+        <!-- rating -->
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          <div>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+          </div>
+        </td>
+        <td
+          class="py-[12px] h-[52px] text-ciliconPriceBlue font-semibold px-[32px] border odd:bg-gray-100 even:bg-white text-lg"
+        >
+          $1000
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Apple
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Accessories
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          5000
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          lskdfjldsjf5s5d54f
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          2021
+        </td>
       </tr>
     </tbody>
   </table>
