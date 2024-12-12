@@ -1,8 +1,5 @@
-<main class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6">
-  <table
-    *ngIf="compare_items.length > 0; else no_items_to_compare"
-    class="table-fixed flex"
-  >
+<main class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 relative">
+  <table class="table-fixed flex">
     <thead>
       <tr class="flex flex-col">
         <th class="min-w-[280px] h-[530px] border"></th>
@@ -127,7 +124,83 @@
       </tr>
     </tbody>
   </table>
+  <div class="fixed bottom-[100px] right-10 drop-shadow-xl">
+    <div
+      (click)="change_modal_sate()"
+      class="bg-[#242424] cursor-pointer flex w-10 h-10 rounded-full justify-center items-center"
+    >
+      <button>
+        <i class="pi pi-align-center text-white text-xl rotate-90"></i>
+      </button>
+    </div>
+  </div>
 </main>
+
+<section
+  class="md:p-0 md:w-[400px] lg:w-[500px] m-auto md:my-6 border rounded-xl relative shadow-2xl"
+>
+  <div class="flex flex-col scrollbar-hide space-y-6 py-6">
+    <!-- Header -->
+    <div class="flex justify-center items-center space-x-4">
+      <i
+        class="pi pi-microchip-ai text-ciliconorange"
+        style="font-size: 40px"
+      ></i>
+      <h1 class="bg-white text-2xl text-center font-semibold">
+        MeanCommerce AI Assistant
+      </h1>
+    </div>
+    <!-- Chat History -->
+    <section
+      id="chat"
+      class="space-y-4 h-[600px] overflow-y-scroll scrollbar-hide p-4"
+    >
+      <div *ngFor="let chat of conversation">
+        <div
+          class=""
+          [ngClass]="{
+            'flex justify-start': chat.role == 'system',
+            'flex justify-end': chat.role == 'user'
+          }"
+        >
+          <p
+            class="p-4 rounded-xl shadow-sm max-w-lg"
+            [ngClass]="{
+              'bg-gray-100   text-sm text-gray-900 ': chat.role == 'system',
+              'bg-[#242424] text-white   text-sm ': chat.role == 'user'
+            }"
+          >
+            {{ chat.message }}
+          </p>
+        </div>
+      </div>
+      <div #lastelementRef class="h-[180px]"></div>
+    </section>
+
+    <!-- Input Area -->
+    <div class="absolute bottom-0 w-[80%] left-1/2 -translate-x-1/2">
+      <textarea
+        [(ngModel)]="user_query"
+        class="p-4 shadow-2xl w-full rounded-lg h-[100px] focus:border-ciliconorange focus:outline-none bg-gray-50 border"
+        placeholder="Message Assitant"
+      ></textarea>
+      <div
+        class="bg-[#242424] cursor-pointer flex w-10 h-10 absolute bottom-4 right-4 rounded-full justify-center items-center"
+      >
+        @if (user_query.length>0) {
+        <button (click)="send_query()">
+          <i class="pi pi-arrow-up text-white text-xl"></i>
+        </button>
+
+        } @else {<button>
+          <i class="pi pi-align-center text-white text-xl rotate-90"></i>
+        </button>
+
+        }
+      </div>
+    </div>
+  </div>
+</section>
 
 <ng-template #no_items_to_compare>
   <div
