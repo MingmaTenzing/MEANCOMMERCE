@@ -13,12 +13,40 @@ import { Subject, takeUntil } from 'rxjs';
 import { ai_assistant_chat, MeanProducts } from '../../types';
 import { FormsModule } from '@angular/forms';
 import { Block } from '@angular/compiler';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-compare',
   imports: [NgOptimizedImage, CommonModule, FormsModule],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.css',
+  animations: [
+    trigger('myInsertRemoveTrigger', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateX(20%)',
+          height: 0,
+        }),
+        animate(
+          '120ms ease',
+          style({ opacity: 1, transform: 'translateX(0%)', height: '*' })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '100ms ease-out',
+          style({ opacity: 0, transform: 'translateX(20%)', height: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class CompareComponent implements OnInit, OnDestroy {
   @ViewChild('lastelementRef')
