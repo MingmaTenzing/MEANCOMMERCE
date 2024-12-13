@@ -16,10 +16,12 @@ import { cartReducer } from './states/cart-items/reducer';
 import { provideNgxStripe } from 'ngx-stripe';
 import { wishListReducer } from './states/wishlist-items/reducer';
 import { compare_Reducer } from './states/compare-items/reducer';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
+    provideMarkdown(),
     provideRouter(routes),
     provideStore(),
     provideState({ name: 'cartItems', reducer: cartReducer }),

@@ -165,10 +165,30 @@
                 'bg-[#242424] text-white   text-sm ': chat.role == 'user'
               }"
             >
-              {{ chat.message }}
+              <markdown [data]="chat.message"></markdown>
             </p>
           </div>
         </div>
+
+        <!-- chat bubble loading -->
+        <div
+          *ngIf="ai_response_loading"
+          class="chat-bubble w-[60px] h-[40px] flex justify-center items-center p-2 bg-gray-100 rounded-lg"
+        >
+          <div class="typing-indicator flex justify-between items-center">
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot"
+            ></span>
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot delay-200"
+            ></span>
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot delay-400"
+            ></span>
+          </div>
+        </div>
+
+        <!-- last element ref -->
         <div #lastelementRef class="h-[180px]"></div>
       </section>
 

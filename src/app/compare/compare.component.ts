@@ -20,10 +20,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { BackendService } from '../../services/backend/backend.service';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-compare',
-  imports: [NgOptimizedImage, CommonModule, FormsModule],
+  imports: [NgOptimizedImage, CommonModule, FormsModule, MarkdownModule],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.css',
   animations: [
@@ -51,10 +53,11 @@ import {
 export class CompareComponent implements OnInit, OnDestroy {
   @ViewChild('lastelementRef')
   lastMessageRef!: ElementRef;
+  ai_response_loading: boolean = false;
   $destroy = new Subject<void>();
   ai_modal_openclose: boolean = false;
   compare_items: MeanProducts[] = [];
-  constructor(private store: Store) {}
+  constructor(private store: Store, private backend: BackendService) {}
 
   conversation: ai_assistant_chat[] = [
     {
@@ -63,26 +66,9 @@ export class CompareComponent implements OnInit, OnDestroy {
       role: 'system',
     },
     {
-      message: "Hi, I'm your assistant. .",
-      role: 'user',
-    },
-    {
-      message:
-        'I can help you with your tech queries or suggest you on which product is better suited for you.',
+      message: '1. hame, 2. name, 3.mac',
+
       role: 'system',
-    },
-    {
-      message: "Hi, I'm yourted for you.",
-      role: 'user',
-    },
-    {
-      message:
-        "Hi, I'm your assistant. I can help you with your tech queries or suggest you on which product is better suited for you.",
-      role: 'user',
-    },
-    {
-      message: 'my name is',
-      role: 'user',
     },
   ];
   user_query: string = '';
@@ -98,24 +84,29 @@ export class CompareComponent implements OnInit, OnDestroy {
     console.log(this.ai_modal_openclose);
   }
   send_query() {
+    this.ai_response_loading = !this.ai_response_loading;
     this.conversation.push({
       message: this.user_query,
       role: 'user',
     });
-    this.user_query = '';
 
     this.lastMessageRef.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
     });
-    // this.backend
-    //   .chat_OpenAI(this.user_query)
-    //   .pipe(takeUntil(this.$destroy))
-    //   .subscribe((message) => {
-    //     console.log(message);
-    //     this.conversation.push(message);
-    //     this.user_query = '';
-    //   });
+    this.backend
+      .chat_OpenAI(this.user_query)
+      .pipe(takeUntil(this.$destroy))
+      .subscribe((message) => {
+        console.log(message);
+        this.conversation.push(message);
+        this.user_query = '';
+        this.ai_response_loading = !this.ai_response_loading;
+        this.lastMessageRef.nativeElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+      });
   }
 
   ngOnDestroy(): void {
