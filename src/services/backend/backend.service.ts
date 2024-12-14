@@ -24,7 +24,7 @@ export class BackendService {
 
   chat_OpenAI(user_query: string) {
     return this.http.post<ai_assistant_chat>(
-      `http://localhost:3000/api/v1/compare/shop_ai`,
+      `${this.api_Url}/api/v1/compare/shop_ai`,
       {
         query: user_query,
       }
