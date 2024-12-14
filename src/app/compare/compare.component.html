@@ -1,4 +1,7 @@
-<main class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 relative">
+<main
+  *ngIf="compare_items.length > 0; else no_items_to_compare"
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 relative"
+>
   <table class="table-fixed flex overflow-x-scroll scrollbar-hide">
     <thead>
       <tr class="flex flex-col">

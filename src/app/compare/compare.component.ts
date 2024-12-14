@@ -65,11 +65,6 @@ export class CompareComponent implements OnInit, OnDestroy {
         "Hi, I'm your assistant. I can help you with your tech queries or suggest you on which product is better suited for you.",
       role: 'system',
     },
-    {
-      message: '1. hame, 2. name, 3.mac',
-
-      role: 'system',
-    },
   ];
   user_query: string = '';
 
