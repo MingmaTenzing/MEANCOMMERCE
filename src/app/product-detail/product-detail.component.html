@@ -136,7 +136,10 @@
               }
               <p>Add to wishlist</p>
             </div>
-            <div class="flex items-center space-x-1 text-sm text-gray-500">
+            <div
+              (click)="addToCompare(product)"
+              class="flex items-center space-x-1 text-sm text-gray-500"
+            >
               <mat-icon fontSet="material-symbols-outlined">autorenew</mat-icon>
               <p>Add to Compare</p>
             </div>

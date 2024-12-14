@@ -1,0 +1,262 @@
+<main
+  *ngIf="compare_items.length > 0; else no_items_to_compare"
+  class="p-4 md:p-0 md:w-[800px] lg:w-[1200px] m-auto md:my-6 relative"
+>
+  <table class="table-fixed flex overflow-x-scroll scrollbar-hide">
+    <thead>
+      <tr class="flex flex-col">
+        <th class="min-w-[280px] h-[530px] border"></th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Rating
+        </th>
+        <th
+          class="py-[12px] h-[52px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Price
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Brand
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Category
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Stock
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Sku
+        </th>
+        <th
+          class="py-[12px] px-[32px] font-semibold text-left border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          Available since
+        </th>
+      </tr>
+    </thead>
+    <tbody class="flex">
+      <tr *ngFor="let item of compare_items" class="flex flex-col">
+        <td class="w-[300px] h-[530px] p-8 space-y-4 border">
+          <!-- product image with remove button -->
+          <div class="space-y-4">
+            <div class="flex justify-center">
+              <i class="pi pi-times-circle text-gray-500"></i>
+            </div>
+            <div>
+              <img
+                ngSrc="{{ item.images[0] }}"
+                class="w-[272px] h-[272px] object-contain"
+                width="272"
+                height="272"
+              />
+            </div>
+          </div>
+
+          <!-- title product -->
+          <p class="text-[16px] font-medium text-left line-clamp-2">
+            {{ item.name }}
+          </p>
+
+          <!-- add to cart section -->
+          <div class="flex items-center justify-center space-x-4">
+            <div
+              class="w-[212px] h-[50px] bg-ciliconorange text-white rounded-lg flex space-x-4 items-center justify-center font-medium"
+            >
+              <button class="uppercase text-sm">Add to cart</button>
+              <i class="pi pi-shopping-cart"></i>
+            </div>
+            <div
+              class="w-[48px] h-[48px] border border-ciliconorange rounded-lg flex justify-center items-center"
+            >
+              <button>
+                <i class="pi pi-heart text-ciliconorange text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        </td>
+        <!-- rating -->
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          <div>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+            <i class="pi pi-star-fill text-orange-500"></i>
+          </div>
+        </td>
+        <td
+          class="py-[12px] h-[52px] text-ciliconPriceBlue font-semibold px-[32px] border odd:bg-gray-100 even:bg-white text-lg"
+        >
+          ${{ item.price }}
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          {{ item.brand }}
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          {{ item.category }}
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          {{ item.stock }}
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          {{ item.sku }}
+        </td>
+        <td
+          class="py-[12px] px-[32px] border odd:bg-gray-100 even:bg-white text-sm"
+        >
+          {{ item.createdAt | date }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- chat modal  -->
+  <section
+    class="md:p-0 m-auto md:my-6 fixed right-20 bottom-20 flex items-end space-x-2"
+  >
+    @if (ai_modal_openclose) {
+
+    <div
+      @myInsertRemoveTrigger
+      class="flex md:w-[400px] lg:w-[500px] flex-col scrollbar-hide space-y-6 py-6 bg-white shadow-2xl drop-shadow-2xl border rounded-xl"
+    >
+      <!-- Header -->
+      <div class="flex justify-center items-center space-x-4">
+        <i
+          class="pi pi-microchip-ai text-ciliconorange"
+          style="font-size: 40px"
+        ></i>
+        <h1 class="bg-white text-2xl text-center font-semibold">
+          MeanCommerce AI Assistant
+        </h1>
+      </div>
+      <!-- Chat History -->
+      <section
+        id="chat"
+        class="space-y-4 h-[500px] overflow-y-scroll scrollbar-hide p-4"
+      >
+        <div *ngFor="let chat of conversation">
+          <div
+            class=""
+            [ngClass]="{
+              'flex justify-start': chat.role == 'system',
+              'flex justify-end': chat.role == 'user'
+            }"
+          >
+            <p
+              class="p-4 rounded-xl shadow-sm max-w-lg"
+              [ngClass]="{
+                'bg-gray-100   text-sm text-gray-900 ': chat.role == 'system',
+                'bg-[#242424] text-white   text-sm ': chat.role == 'user'
+              }"
+            >
+              <markdown [data]="chat.message"></markdown>
+            </p>
+          </div>
+        </div>
+
+        <!-- chat bubble loading -->
+        <div
+          *ngIf="ai_response_loading"
+          class="chat-bubble w-[60px] h-[40px] flex justify-center items-center p-2 bg-gray-100 rounded-lg"
+        >
+          <div class="typing-indicator flex justify-between items-center">
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot"
+            ></span>
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot delay-200"
+            ></span>
+            <span
+              class="dot bg-gray-500 rounded-full w-2 h-2 animate-typing-dot delay-400"
+            ></span>
+          </div>
+        </div>
+
+        <!-- last element ref -->
+        <div #lastelementRef class="h-[180px]"></div>
+      </section>
+
+      <!-- Input Area -->
+      <div class="absolute bottom-0 w-[80%] left-1/2 -translate-x-1/2">
+        <textarea
+          [(ngModel)]="user_query"
+          class="p-4 shadow-2xl w-full rounded-lg h-[100px] focus:border-ciliconorange focus:outline-none bg-gray-50 border"
+          placeholder="Message Assitant"
+        ></textarea>
+        <div
+          class="bg-[#242424] cursor-pointer flex w-10 h-10 absolute bottom-4 right-4 rounded-full justify-center items-center"
+        >
+          @if (user_query.length>0) {
+          <button (click)="send_query()">
+            <i class="pi pi-arrow-up text-white text-xl"></i>
+          </button>
+
+          } @else {<button>
+            <i class="pi pi-align-center text-white text-xl rotate-90"></i>
+          </button>
+
+          }
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- open ai button -->
+    <div class="drop-shadow-xl">
+      <div
+        (click)="change_modal_sate()"
+        class="bg-[#242424] cursor-pointer flex w-16 h-16 rounded-full justify-center items-center"
+      >
+        <button>
+          <i class="pi pi-microchip-ai text-white" style="font-size: 40px"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<ng-template #no_items_to_compare>
+  <div
+    class="flex flex-col justify-center items-center h-[70vh] text-gray-500 space-y-6 max-w-[600px] m-auto"
+  >
+    <div class="flex space-x-4 items-center text-4xl">
+      <i class="pi pi-sort-alt-slash text-4xl"></i>
+      <p>No Items to compare</p>
+    </div>
+    <p>Please add items to compare inorder to start comparing items.</p>
+    <p class="text-center">
+      MeanCommerce AI Assistant will also be available for you to assist on
+      finding the right products that suits your budget or help you with any
+      queries regarding the products.
+    </p>
+    <div class="space-y-2 flex flex-col items-center pt-10">
+      <img
+        ngSrc="../../assets/icons/openai-svgrepo-com.svg"
+        width="40"
+        height="40"
+        class="opacity-55"
+      />
+      <p>Powered By Open AI</p>
+    </div>
+  </div>
+  <p></p>
+</ng-template>

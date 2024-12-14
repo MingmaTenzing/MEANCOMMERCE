@@ -25,6 +25,7 @@ import { SignupComponent } from './auth/feature/signup/signup/signup.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { CartComponent } from './cart/cart.component';
 import { dashBoardGuard } from '../guard/auth/auth.guard';
+import { CompareComponent } from './compare/compare.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -62,6 +63,12 @@ export const routes: Routes = [
     path: 'wishlist',
     component: WishlistComponent,
     title: 'Wishlist',
+  },
+
+  {
+    path: 'compare',
+    component: CompareComponent,
+    title: 'Compare',
   },
   {
     path: 'dashboard',

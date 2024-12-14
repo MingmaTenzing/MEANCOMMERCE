@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
+  ai_assistant_chat,
   FilterSearch,
   MeanProducts,
   orders,
@@ -20,6 +21,15 @@ export class BackendService {
   // api_Url: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
+
+  chat_OpenAI(user_query: string) {
+    return this.http.post<ai_assistant_chat>(
+      `http://localhost:3000/api/v1/compare/shop_ai`,
+      {
+        query: user_query,
+      }
+    );
+  }
 
   getData() {
     return this.http.get<MeanProducts[]>(

@@ -34,18 +34,19 @@ import { routes } from '../app.routes';
 import { Store } from '@ngrx/store';
 import { addProduct } from '../states/cart-items/action';
 import { addToWishlist } from '../states/wishlist-items/actions';
+import { add_to_compare } from '../states/compare-items/action';
 
 @Component({
-    selector: 'app-product-detail',
-    imports: [
-        MatIconModule,
-        CommonModule,
-        NgOptimizedImage,
-        RelatedProductsComponent,
-        ProductDetailLoadingComponent,
-    ],
-    templateUrl: './product-detail.component.html',
-    styleUrl: './product-detail.component.css'
+  selector: 'app-product-detail',
+  imports: [
+    MatIconModule,
+    CommonModule,
+    NgOptimizedImage,
+    RelatedProductsComponent,
+    ProductDetailLoadingComponent,
+  ],
+  templateUrl: './product-detail.component.html',
+  styleUrl: './product-detail.component.css',
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   productId: string = '';
@@ -107,6 +108,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   addToCart(product: cartItems) {
     this.store.dispatch(addProduct({ product }));
+  }
+
+  addToCompare(product: MeanProducts) {
+    console.log('adding to compare');
+    this.store.dispatch(add_to_compare({ product }));
   }
 
   ngOnDestroy(): void {
