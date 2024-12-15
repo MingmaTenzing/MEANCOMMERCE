@@ -93,7 +93,7 @@ export interface user {
 
 export interface orders {
   user_id: string;
-  paymend_intent: string;
+  payment_intent: string;
   charge_id: string;
   total_amount: number;
   customer_email: string;
