@@ -1,18 +1,5 @@
 <div class="py-4 flex space-x-6 text-sm relative">
   <div
-    (click)="changeState()"
-    class="flex bg-gray-100 hover:bg-ciliconorange group/allcategory p-2 space-x-2"
-  >
-    <button class="group-hover/allcategory:text-white w-[100px]">
-      All Category
-    </button>
-    <img
-      class="group-hover/allcategory:invert"
-      src="./../../../assets/icons/downarrow.svg"
-      alt="arrow down image"
-    />
-  </div>
-  <div
     routerLink="shop"
     routerLinkActive="active"
     class="flex text-gray-600 cursor-pointer space-x-2 items-center"
@@ -36,52 +23,5 @@
   <div class="flex text-gray-600 space-x-2 items-center cursor-not-allowed">
     <i class="pi-info-circle pi" style="font-size: 20px"></i>
     <p>Need Help</p>
-  </div>
-
-  <div *ngIf="isAllCategoryOpen" class="absolute top-20 left-0 shadow-lg">
-    <div class="bg-white space-y-6 text-xs p-6 text-gray-600 w-[200px]">
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Computer & Laptop</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Accessories</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Smartphone</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Headphones</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Mobile Accessories</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-      <div class="flex justify-between items-center hover:text-black">
-        <p class="cursor-pointer">Camera</p>
-        <img
-          src="../../../assets/icons/rightarrow.svg"
-          class="invert w-4 opacity-50"
-        />
-      </div>
-    </div>
   </div>
 </div>
