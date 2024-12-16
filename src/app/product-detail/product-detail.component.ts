@@ -35,6 +35,8 @@ import { Store } from '@ngrx/store';
 import { addProduct } from '../states/cart-items/action';
 import { addToWishlist } from '../states/wishlist-items/actions';
 import { add_to_compare } from '../states/compare-items/action';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-product-detail',
@@ -44,9 +46,11 @@ import { add_to_compare } from '../states/compare-items/action';
     NgOptimizedImage,
     RelatedProductsComponent,
     ProductDetailLoadingComponent,
+    ToastModule,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
+  providers: [MessageService],
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   productId: string = '';
@@ -64,6 +68,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private messageService: MessageService,
     private Router: Router,
     private meanBackend: BackendService,
     private store: Store
@@ -113,6 +118,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   addToCompare(product: MeanProducts) {
     console.log('adding to compare');
     this.store.dispatch(add_to_compare({ product }));
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Added to compare',
+      detail: `Product has been added to compare `,
+    });
   }
 
   ngOnDestroy(): void {
