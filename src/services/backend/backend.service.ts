@@ -31,6 +31,15 @@ export class BackendService {
     );
   }
 
+  fetch_order_details(order_id: string) {
+    return this.http.get<orders>(
+      `${this.api_Url}/api/v1/orders/get-order-details?order_id=${order_id}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   getData() {
     return this.http.get<MeanProducts[]>(
       `${this.api_Url}/api/v1/products?page=1&limit=10`

@@ -102,4 +102,5 @@ export interface orders {
   receipt_url: string;
   _id: string;
   created_at: Date;
+  line_items: [];
 }
