@@ -16,9 +16,9 @@ import { auth_session } from '../../types';
 })
 export class BackendService {
   // use localhost: 5000 for development
-  api_Url: string = 'https://meancommerce-backend.onrender.com';
+  // api_Url: string = 'https://meancommerce-backend.onrender.com';
   // api_Url: string = 'http://localhost:5000';
-  // api_Url: string = 'http://localhost:3000';
+  api_Url: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +27,15 @@ export class BackendService {
       `${this.api_Url}/api/v1/compare/shop_ai`,
       {
         query: user_query,
+      }
+    );
+  }
+
+  fetch_order_details(order_id: string) {
+    return this.http.get<orders>(
+      `${this.api_Url}/api/v1/orders/get-order-details?order_id=${order_id}`,
+      {
+        withCredentials: true,
       }
     );
   }

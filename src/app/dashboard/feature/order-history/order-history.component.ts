@@ -5,10 +5,11 @@ import { orders } from '../../../../types';
 import { CommonModule } from '@angular/common';
 import { OrderHistoryLoadingComponent } from '../../components/loading/order-history-loading/order-history-loading.component';
 import { RecentOrderComponent } from '../../components/recent-order/recent-order.component';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
-  imports: [CommonModule, OrderHistoryLoadingComponent],
+  imports: [CommonModule, OrderHistoryLoadingComponent, RouterModule],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })

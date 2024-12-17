@@ -1,0 +1,219 @@
+<main *ngIf="order_details" class="space-y-6">
+  <!-- headers -->
+  <div class="flex space-x-4 items-center">
+    <h1 class="text-2xl font-medium">Order ID: {{ order_details._id }}</h1>
+    <div class="text-green-500 text-xs bg-green-200 p-2 rounded-lg">
+      <p>Success</p>
+    </div>
+  </div>
+  <!-- date created -->
+  <div>
+    <p class="">
+      Order created at
+      {{ order_details.created_at | date : "MMM dd, yyyy 'at' hh:mm a" }}
+    </p>
+  </div>
+
+  <!-- items -->
+
+  <div>
+    <!-- order items -->
+    <div class="border rounded-t-lg w-full p-6 space-y-4">
+      <!-- header section  -->
+      <div class="flex space-x-2 items-center">
+        <p class="font-medium text-lg">Order Items</p>
+        <div class="text-orange-500 w-24 text-xs bg-orange-200 p-2 rounded-lg">
+          <p>Order Placed</p>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500">
+        Items that were included in this order
+      </p>
+
+      <!-- items -->
+      <section
+        *ngFor="let item of order_details.line_items"
+        id="ordered-items"
+        class="space-y-4 font-light"
+      >
+        <div class="flex justify-between">
+          <!-- image and name section -->
+          <div class="flex items-center space-x-6 w-[70%]">
+            <img ngSrc="{{ item.images[0] }}" width="80" height="80" />
+
+            <div>
+              <p class="font-medium line-clamp-3">{{ item.name }}</p>
+            </div>
+          </div>
+
+          <!-- price and quantity section -->
+          <div class="flex space-x-6 items-center">
+            <div class="border rounded-lg p-2">
+              <p>{{ item.quantity }} x ${{ item.price }}</p>
+            </div>
+            <div class="font-semibold">
+              <p>${{ item.quantity * item.price }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="bg-gray-50 rounded-b-lg p-6 flex justify-between items-center">
+      <p class="text-gray-500 font-light">
+        Effortlessly manage your orders. Order List page
+      </p>
+      <div class="space-x-2">
+        <button
+          disabled
+          class="px-4 py-2 rounded-lg cursor-not-allowed text-sm border bg-white"
+        >
+          Fulfill item
+        </button>
+        <button
+          disabled
+          class="px-4 py-2 rounded-lg cursor-not-allowed text-sm border bg-ciliconorange text-white"
+        >
+          Create Shipping Label
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- order summary -->
+  <div>
+    <section
+      id="order summary"
+      class="border rounded-t-lg w-full p-6 space-y-4"
+    >
+      <p class="text-lg font-medium">Order Summary</p>
+
+      <p class="text-sm">Extend summary of your order: 34255144545</p>
+
+      <!-- order summary table -->
+
+      <section class="flex justify-between">
+        <div class="space-y-2">
+          <p>Subtotal</p>
+          <p>Discount</p>
+          <p>Shipping</p>
+          <p class="font-bold">Total</p>
+        </div>
+        <div class="flex space-x-24">
+          <div class="space-y-2">
+            <p>{{ order_details.line_items.length }} items</p>
+            <p>New Customer</p>
+            <p>Free Shipping</p>
+            <p>....</p>
+          </div>
+          <div class="space-y-2">
+            <p>${{ order_details.total_amount }}</p>
+            <p>$0.00</p>
+            <p>$100</p>
+            <p class="font-semibold">${{ order_details.total_amount + 100 }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- breaker line -->
+      <div class="h-[2px] w-full bg-gray-100"></div>
+
+      <!--  -->
+      <!-- paid by customer -->
+      <div class="justify-between flex">
+        <p>Paid by customer</p>
+        <p>${{ order_details.total_amount + 100 }}</p>
+      </div>
+      <div class="justify-between flex">
+        <p>Paid due when invoice is sent</p>
+        <p class="text-ciliconorange">Edit</p>
+      </div>
+    </section>
+    <div class="bg-gray-50 rounded-b-lg p-6 flex justify-between items-center">
+      <p class="text-gray-500 font-light">
+        Review your order at a glance on the Order Summary page
+      </p>
+      <div class="space-x-2">
+        <button
+          disabled
+          class="px-4 py-2 rounded-lg cursor-not-allowed text-sm border bg-white"
+        >
+          Send Invoice
+        </button>
+        <button
+          disabled
+          class="px-4 py-2 rounded-lg cursor-not-allowed text-sm border bg-ciliconorange text-white"
+        >
+          Collect Payment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- customer details -->
+  <div class="flex space-x-2">
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Customer</p>
+      <div class="flex items-center space-x-2">
+        <i class="pi pi-user"></i>
+        <p>{{ order_details.customer_name }}</p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <i class="pi pi-shopping-bag"></i>
+        <p>{{ order_details.customer_email }}</p>
+      </div>
+      <p class="text-sm">Customer is tax-exempt</p>
+    </div>
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Notes</p>
+      <textarea
+        class="w-full outline-none"
+        placeholder="First customer and order"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- contact -->
+  <div class="flex space-x-2">
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Contact Information</p>
+      <div class="flex items-center space-x-2">
+        <i class="pi pi-envelope"></i>
+        <p>{{ order_details.customer_email }}</p>
+      </div>
+
+      <p class="text-sm">No phone number</p>
+    </div>
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Shipping Address</p>
+      <div class="flex items-center space-x-2">
+        <i class="pi pi-envelope"></i>
+        <p>{{ order_details.customer_email }}</p>
+      </div>
+      <p>1123 Perth</p>
+      <p>Menlon, Park CA 9030</p>
+      <p>Australia</p>
+      <p>+1212475651</p>
+      <div class="text-ciliconorange flex space-x-6 items-center">
+        <i class="pi pi-map"></i>
+        <p>View Map</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- billing address -->
+  <div class="flex space-x-2">
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Billing Address</p>
+
+      <p class="text-sm">Same as shipping address</p>
+    </div>
+    <div class="w-1/2 border p-6 rounded-lg space-y-2">
+      <p class="font-semibold text-lg">Conversion Summary</p>
+
+      <p class="text-sm">
+        There aren't any conversion details available for this order
+      </p>
+      <p class="text-ciliconorange">Learn more</p>
+    </div>
+  </div>
+</main>

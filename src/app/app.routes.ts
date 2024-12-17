@@ -26,6 +26,7 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { CartComponent } from './cart/cart.component';
 import { dashBoardGuard } from '../guard/auth/auth.guard';
 import { CompareComponent } from './compare/compare.component';
+import { OrderDetailComponent } from './dashboard/feature/order-detail/order-detail.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -80,6 +81,11 @@ export const routes: Routes = [
         path: 'order-history',
         component: OrderHistoryComponent,
         title: 'Order History',
+      },
+      {
+        path: 'order-detail/:id',
+        component: OrderDetailComponent,
+        title: 'Order Details',
       },
       {
         path: 'cart',

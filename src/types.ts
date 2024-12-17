@@ -91,15 +91,22 @@ export interface user {
   _id: string;
 }
 
+export interface order_detail_lineItem {
+  currency: string;
+  images: Array<string>;
+  name: string;
+  price: number;
+  quantity: number;
+}
 export interface orders {
+  _id: string;
   user_id: string;
-  payment_intent: string;
-  charge_id: string;
   total_amount: number;
-  customer_email: string;
-  customer_name: string;
   status: string;
   receipt_url: string;
-  _id: string;
+  line_items: Array<order_detail_lineItem>;
+  customer_name: string;
+  customer_email: string;
   created_at: Date;
+  charge_id: string;
 }
