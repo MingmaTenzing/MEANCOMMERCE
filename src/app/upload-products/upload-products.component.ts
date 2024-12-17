@@ -23,11 +23,7 @@ export class UploadProductsComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.sub = this.http
-      .get('http://localhost:5000/api/v1/products')
-      .subscribe((data) => console.log(data));
-  }
+  ngOnInit(): void {}
   title = 'Upload products';
   productForm = new FormGroup({
     name: new FormControl(''),
@@ -43,7 +39,6 @@ export class UploadProductsComponent implements OnInit {
   //   this.http
   //     .post('http://localhost:5000/api/v1/products', this.productForm.value)
   //     .subscribe((response) => console.log(response));
-  //   console.log(this.productForm.value);
   // }
 
   // ngOnDestroy(): void {
