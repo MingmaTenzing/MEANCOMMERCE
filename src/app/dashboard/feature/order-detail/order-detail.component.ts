@@ -18,11 +18,11 @@ export class OrderDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.backend
       .fetch_order_details(this.router.snapshot.params['id'])
       .subscribe((data) => {
         this.order_details = data;
-        console.log(this.order_details);
       });
   }
 }

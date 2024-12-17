@@ -4,12 +4,13 @@ import { BackendService } from '../../../../services/backend/backend.service';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { orders } from '../../../../types';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-recent-order',
-    imports: [TableModule, CommonModule],
-    templateUrl: './recent-order.component.html',
-    styleUrl: './recent-order.component.css'
+  selector: 'app-recent-order',
+  imports: [TableModule, CommonModule, RouterModule],
+  templateUrl: './recent-order.component.html',
+  styleUrl: './recent-order.component.css',
 })
 export class RecentOrderComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
