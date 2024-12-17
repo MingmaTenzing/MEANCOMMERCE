@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../../../services/backend/backend.service';
+import { ActivatedRoute } from '@angular/router';
+import { orders } from '../../../../types';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-order-detail',
-  imports: [],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './order-detail.component.html',
   styleUrl: './order-detail.component.css',
 })
 export class OrderDetailComponent implements OnInit {
-  constructor(private backend: BackendService) {}
+  order_details: orders | null = null;
+  constructor(
+    private backend: BackendService,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.backend
-      .fetch_order_details('676101cb0bd52ed26bf4d43b')
+      .fetch_order_details(this.router.snapshot.params['id'])
       .subscribe((data) => {
-        console.log(data);
+        this.order_details = data;
+        console.log(this.order_details);
       });
   }
 }

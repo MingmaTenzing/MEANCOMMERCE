@@ -1,14 +1,17 @@
-<main class="space-y-6">
+<main *ngIf="order_details" class="space-y-6">
   <!-- headers -->
   <div class="flex space-x-4 items-center">
-    <h1 class="text-2xl font-medium">Order ID: 2458978252658</h1>
+    <h1 class="text-2xl font-medium">Order ID: {{ order_details._id }}</h1>
     <div class="text-green-500 text-xs bg-green-200 p-2 rounded-lg">
       <p>Success</p>
     </div>
   </div>
   <!-- date created -->
   <div>
-    <p class="">January 8, 2024 at 9:48 pm</p>
+    <p class="">
+      Order created at
+      {{ order_details.created_at | date : "MMM dd, yyyy 'at' hh:mm a" }}
+    </p>
   </div>
 
   <!-- items -->
@@ -28,76 +31,28 @@
       </p>
 
       <!-- items -->
-      <section id="ordered-items" class="space-y-4 font-light">
+      <section
+        *ngFor="let item of order_details.line_items"
+        id="ordered-items"
+        class="space-y-4 font-light"
+      >
         <div class="flex justify-between">
           <!-- image and name section -->
-          <div class="flex items-center space-x-2">
-            <img
-              src="../../../../assets/images/macbook.png"
-              width="100"
-              height="100"
-            />
+          <div class="flex items-center space-x-6 w-[70%]">
+            <img ngSrc="{{ item.images[0] }}" width="80" height="80" />
+
             <div>
-              <p class="text-xs">Laptop</p>
-              <p class="font-semibold">Macbook Pro</p>
+              <p class="font-medium line-clamp-3">{{ item.name }}</p>
             </div>
           </div>
 
           <!-- price and quantity section -->
           <div class="flex space-x-6 items-center">
-            <div class="border rounded-lg p-2 font-semibold">
-              <p>4 x $300</p>
+            <div class="border rounded-lg p-2">
+              <p>{{ item.quantity }} x ${{ item.price }}</p>
             </div>
             <div class="font-semibold">
-              <p>$1200</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-between">
-          <!-- image and name section -->
-          <div class="flex items-center space-x-2">
-            <img
-              src="../../../../assets/images/macbook.png"
-              width="100"
-              height="100"
-            />
-            <div>
-              <p class="text-xs">Laptop</p>
-              <p class="font-semibold">Macbook Pro</p>
-            </div>
-          </div>
-
-          <!-- price and quantity section -->
-          <div class="flex space-x-6 items-center">
-            <div class="border rounded-lg p-2 font-semibold">
-              <p>4 x $300</p>
-            </div>
-            <div class="font-semibold">
-              <p>$1200</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-between">
-          <!-- image and name section -->
-          <div class="flex items-center space-x-2">
-            <img
-              src="../../../../assets/images/macbook.png"
-              width="100"
-              height="100"
-            />
-            <div>
-              <p class="text-xs">Laptop</p>
-              <p class="font-semibold">Macbook Pro</p>
-            </div>
-          </div>
-
-          <!-- price and quantity section -->
-          <div class="flex space-x-6 items-center">
-            <div class="border rounded-lg p-2 font-semibold">
-              <p>4 x $300</p>
-            </div>
-            <div class="font-semibold">
-              <p>$1200</p>
+              <p>${{ item.quantity * item.price }}</p>
             </div>
           </div>
         </div>
@@ -145,16 +100,16 @@
         </div>
         <div class="flex space-x-24">
           <div class="space-y-2">
-            <p>1 item</p>
+            <p>{{ order_details.line_items.length }} items</p>
             <p>New Customer</p>
             <p>Free Shipping</p>
             <p>....</p>
           </div>
           <div class="space-y-2">
-            <p>$1500</p>
-            <p>$1.00</p>
+            <p>${{ order_details.total_amount }}</p>
+            <p>$0.00</p>
             <p>$100</p>
-            <p class="font-semibold">$2000</p>
+            <p class="font-semibold">${{ order_details.total_amount + 100 }}</p>
           </div>
         </div>
       </section>
@@ -166,7 +121,7 @@
       <!-- paid by customer -->
       <div class="justify-between flex">
         <p>Paid by customer</p>
-        <p>$1000</p>
+        <p>${{ order_details.total_amount + 100 }}</p>
       </div>
       <div class="justify-between flex">
         <p>Paid due when invoice is sent</p>
@@ -200,11 +155,11 @@
       <p class="font-semibold text-lg">Customer</p>
       <div class="flex items-center space-x-2">
         <i class="pi pi-user"></i>
-        <p>Joe Rogan</p>
+        <p>{{ order_details.customer_name }}</p>
       </div>
       <div class="flex items-center space-x-2">
         <i class="pi pi-shopping-bag"></i>
-        <p>Joe Rogan</p>
+        <p>{{ order_details.customer_email }}</p>
       </div>
       <p class="text-sm">Customer is tax-exempt</p>
     </div>
@@ -223,7 +178,7 @@
       <p class="font-semibold text-lg">Contact Information</p>
       <div class="flex items-center space-x-2">
         <i class="pi pi-envelope"></i>
-        <p>joerogangmail.com</p>
+        <p>{{ order_details.customer_email }}</p>
       </div>
 
       <p class="text-sm">No phone number</p>
@@ -232,7 +187,7 @@
       <p class="font-semibold text-lg">Shipping Address</p>
       <div class="flex items-center space-x-2">
         <i class="pi pi-envelope"></i>
-        <p>joerogangmail.com</p>
+        <p>{{ order_details.customer_email }}</p>
       </div>
       <p>1123 Perth</p>
       <p>Menlon, Park CA 9030</p>
