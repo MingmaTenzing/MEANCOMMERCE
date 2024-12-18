@@ -112,7 +112,9 @@
       <!-- add to wishlist -->
       <div class="flex justify-between w-full">
         <div class="flex space-x-2">
-          <div class="flex text-sm items-center space-x-1 text-gray-500">
+          <div
+            class="flex cursor-pointer text-sm items-center space-x-1 text-gray-500"
+          >
             @if (!addtoFav) {
             <i
               class="pi pi-heart"
@@ -130,7 +132,10 @@
             }
             <p>Add to wishlist</p>
           </div>
-          <div class="flex items-center space-x-1 text-sm text-gray-500">
+          <div
+            (click)="addtoCompare(product)"
+            class="flex items-center space-x-1 text-sm cursor-pointer text-gray-500"
+          >
             <span class="material-symbols-outlined"> autorenew </span>
             <p>Add to Compare</p>
           </div>
@@ -152,3 +157,5 @@
     </div>
   </div>
 </div>
+
+<p-toast />

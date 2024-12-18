@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { SidePanelComponent } from '../components/side-panel/side-panel.component';
 
 @Component({
   selector: 'app-dashboard',

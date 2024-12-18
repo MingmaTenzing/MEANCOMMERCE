@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { NgOptimizedImage } from '@angular/common';
@@ -9,5 +9,5 @@ import { NgOptimizedImage } from '@angular/common';
   styleUrl: './side-panel.component.css',
 })
 export class SidePanelComponent {
-  sidebarVisible: boolean = false;
+  @Input() sidebarVisible: boolean = false;
 }

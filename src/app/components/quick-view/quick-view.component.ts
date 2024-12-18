@@ -12,10 +12,13 @@ import {
   addToWishlist,
   remove_wishlist_item,
 } from '../../states/wishlist-items/actions';
+import { add_to_compare } from '../../states/compare-items/action';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-quick-view',
-  imports: [NgOptimizedImage, CommonModule],
+  imports: [NgOptimizedImage, CommonModule, ToastModule],
   templateUrl: './quick-view.component.html',
   styleUrl: './quick-view.component.css',
   animations: [
@@ -27,12 +30,14 @@ import {
       transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
     ]),
   ],
+  providers: [MessageService],
 })
 export class QuickViewComponent implements OnInit, OnDestroy {
   constructor(
     private QuickViewService: QuickViewService,
     private router: Router,
-    private store: Store
+    private store: Store,
+    private messageService: MessageService
   ) {}
 
   // product$!: Observable<MeanProducts>;
@@ -61,9 +66,23 @@ export class QuickViewComponent implements OnInit, OnDestroy {
     this.QuickViewService.closeQuickView();
   }
 
+  addtoCompare(product: MeanProducts) {
+    this.store.dispatch(add_to_compare({ product }));
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Added to compare',
+      detail: `Product has been added to compare `,
+    });
+  }
+
   add_to_Wishlist(product: MeanProducts) {
     this.addtoFav = !this.addtoFav;
     this.store.dispatch(addToWishlist({ product }));
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Added to Wishlist',
+      detail: `Product has been added wishlist `,
+    });
   }
   remove_from_wishList(product: MeanProducts) {
     this.addtoFav = !this.addtoFav;

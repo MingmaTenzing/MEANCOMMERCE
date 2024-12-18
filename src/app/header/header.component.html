@@ -13,12 +13,8 @@
       routerLink="/home"
       routerLinkActive="active"
     />
-    <!-- SEARCH BAR  -->
-    <div class="h-8 p-2 bg-white hidden md:flex">
-      <input class="outline-none w-[320px] text-black" />
-      <img class="w-6 hidden md:flex" src="./../../assets/icons/search.svg" />
-    </div>
-    <div class="flex space-x-4 relative">
+
+    <div class="flex space-x-6 relative">
       <p-toast />
 
       <div (click)="goToCart()" class="relative cursor-pointer">
@@ -66,57 +62,21 @@
           [style]="{ 'font-size': '1.25rem', color: 'white' }"
         ></i>
       </div>
-      <button type="button">
-        <img
-          class="w-6 invert md:hidden"
-          (click)="changeState()"
-          src="./../../assets/icons/search.svg"
-        />
-      </button>
-
-      <!-- LOGIN FORM MODAL -->
-      <!-- <div
-        *ngIf="loginModal"
-        class="absolute -left-0 md:-left-1/2 top-14 -translate-x-1/2 bg-white shadow-2xl shadow-black w-[300px] p-4 rounded-lg space-y-4 z-10"
+      <button
+        (click)="change_sideBarModalState()"
+        type="button"
+        class="lg:hidden"
       >
-        <h5 class="font-semibold text-center">Sign in to your account</h5>
-        <form class="space-y-4">
-          <div>
-            <label class="text-[12px]">Email Address</label>
-            <input type="email" class="border outline-none w-full h-10" />
-          </div>
-          <div>
-            <label class="text-[12px]">Password</label>
-            <input type="password" class="border outline-none w-full h-10" />
-          </div>
-          <button
-            class="w-full bg-ciliconorange p-2 text-white uppercase text-sm"
-          >
-            login
-          </button>
-        </form>
-        <div class="flex items-center">
-          <div class="w-full border-1 h-[0.5px] bg-gray-200"></div>
-          <p class="text-[8px] text-center w-full text-gray-400">
-            Don't have account
-          </p>
-          <div class="w-full border-1 h-[0.5px] bg-gray-200"></div>
-        </div>
-        <button
-          class="uppercase text-center font-semibold text-[10px] text-ciliconorange border p-2 flex items-center justify-center w-full border-ciliconorange border-opacity-45"
-        >
-          create account
-        </button>
-      </div> -->
-      <!-- /// LOGIN FORM MODAL -->
+        <i class="pi pi-bars text-white text-[1.25rem]"></i>
+      </button>
     </div>
   </div>
 </div>
-<div *ngIf="modalState">
-  <app-search-modal></app-search-modal>
-</div>
+
 <div class="border-b">
   <app-bottom-nav
     class="hidden md:flex lg:w-[1200px] m-auto justify-start"
   ></app-bottom-nav>
 </div>
+
+<app-side-panel [sidebarVisible]="sideBarModal"></app-side-panel>

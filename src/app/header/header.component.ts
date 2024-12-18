@@ -27,9 +27,9 @@ import { MessageService } from 'primeng/api';
 import { Button, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { selectWishlist } from '../states/wishlist-items/selector';
-import { SearchModalComponent } from './search-modal/search-modal.component';
 import { auth_session, user } from '../../types';
 import { BackendService } from '../../services/backend/backend.service';
+import { SidePanelComponent } from '../components/side-panel/side-panel.component';
 
 @Component({
   selector: 'app-header',
@@ -37,12 +37,12 @@ import { BackendService } from '../../services/backend/backend.service';
     CommonModule,
     BottomNavComponent,
     RouterModule,
-    SearchModalComponent,
     ToastModule,
     ButtonModule,
     RippleModule,
     RouterLink,
     RouterLinkActive,
+    SidePanelComponent,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
@@ -51,6 +51,8 @@ import { BackendService } from '../../services/backend/backend.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   modalState: Boolean = false;
   loginModal: Boolean = false;
+
+  sideBarModal: boolean = false;
   destroy$ = new Subject<void>();
   numberofCartItems: number = 0;
   numberof_WishListedItems: number = 0;
@@ -88,7 +90,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeState() {
     this.SearchModalService.open();
   }
-
+  change_sideBarModalState() {
+    this.sideBarModal = !this.sideBarModal;
+  }
   userLoginModal() {
     this.loginModal = !this.loginModal;
   }
