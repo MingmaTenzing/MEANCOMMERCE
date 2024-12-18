@@ -48,7 +48,9 @@
   <div class="lg:hidden">
     <table class="table-auto">
       <thead class="">
-        <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
+        <tr
+          class="w-full justify-between overflow-x-scroll flex scrollbar-hide"
+        >
           <th class="uppercase text-sm font-normal text-gray-600 p-2">
             Order Id
           </th>
@@ -63,7 +65,9 @@
         </tr>
       </thead>
       <tbody *ngFor="let item of recent_orders">
-        <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
+        <tr
+          class="w-full justify-between overflow-x-scroll flex scrollbar-hide"
+        >
           <td class="uppercase text-sm p-2">{{ item._id }}</td>
           <td class="uppercase text-sm p-2 text-ciliconorange">
             {{ item.status }}
@@ -74,10 +78,10 @@
           <td class="p-2 text-sm">${{ item.total_amount / 100 }}</td>
           <td class="p-2 text-sm flex space-x-2">
             <div
-              routerLink="/order-detail/{{ item._id }}"
+              routerLink="/dashboard/order-detail/{{ item._id }}"
               routerLinkActive="router-link-active"
             >
-              <p>View Details</p>
+              <p class="text-ciliconPriceBlue">View Details</p>
             </div>
           </td>
         </tr>

@@ -48,7 +48,9 @@
   <div class="lg:hidden">
     <table class="table-auto">
       <thead class="">
-        <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
+        <tr
+          class="w-full overflow-x-scroll flex justify-between scrollbar-hide"
+        >
           <th class="uppercase text-sm font-normal text-gray-600 p-2">
             Order Id
           </th>
@@ -63,8 +65,10 @@
         </tr>
       </thead>
       <tbody *ngFor="let item of recent_orders">
-        <tr class="w-[320px] overflow-x-scroll flex scrollbar-hide">
-          <td class="uppercase text-sm p-2">{{ item._id }}</td>
+        <tr class="w-full overflow-x-scroll flex scrollbar-hide">
+          <td class="uppercase text-sm p-2">
+            {{ item._id | slice : 0 : 10 }}...
+          </td>
           <td class="uppercase text-sm p-2 text-ciliconorange">
             {{ item.status }}
           </td>
