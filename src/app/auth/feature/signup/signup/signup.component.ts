@@ -50,7 +50,6 @@ export class SignupComponent implements OnDestroy {
   uploadImage($event: Event) {
     this.image_uploading = true;
     let file = (<HTMLInputElement>$event.target).files![0];
-    console.log(file);
 
     this.backend
       .upload_profile_image(file)
@@ -59,13 +58,11 @@ export class SignupComponent implements OnDestroy {
         next: (data) => {
           if (data) {
             this.signup_form.patchValue({ profile_image: data.image });
-            console.log(this.signup_form.value.profile_image);
             this.image_uploading = false;
             this.uploadingImageCompleted = true;
           }
         },
         error: (error) => {
-          console.log(error);
           this.image_uploading = false;
         },
       });

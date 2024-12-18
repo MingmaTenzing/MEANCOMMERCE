@@ -15,7 +15,6 @@ export class RouteAuthService {
 
   proceedRoute() {
     this.allowRoute = true;
-    console.log('this route');
     this.router.navigate(['/checkout']);
   }
 }

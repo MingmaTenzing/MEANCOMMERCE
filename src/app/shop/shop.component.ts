@@ -49,7 +49,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.meanBackend.getData().subscribe((data) => {
       this.products = data;
-      console.log(this.products);
     });
   }
 
@@ -83,10 +82,8 @@ export class ShopComponent implements OnInit, OnDestroy {
   addBrands(brand: string) {
     if (this.selectedBrands.includes(brand)) {
       this.selectedBrands = this.selectedBrands.filter((data) => brand != data);
-      console.log(this.selectedBrands);
     } else {
       this.selectedBrands.push(brand);
-      console.log(this.selectedBrands);
     }
   }
 

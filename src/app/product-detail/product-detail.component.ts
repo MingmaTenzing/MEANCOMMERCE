@@ -116,7 +116,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCompare(product: MeanProducts) {
-    console.log('adding to compare');
     this.store.dispatch(add_to_compare({ product }));
     this.messageService.add({
       severity: 'success',

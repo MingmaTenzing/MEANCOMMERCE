@@ -87,7 +87,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeState() {
     this.SearchModalService.open();
-    console.log(this.modalState);
   }
 
   userLoginModal() {
@@ -136,7 +135,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // changeModalState() {
   //   this.SearchModalService.changeModalState();
-  //   console.log(this.SearchModalService.isSearchModalOpen);
   // }
 
   ngOnDestroy(): void {

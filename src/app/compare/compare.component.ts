@@ -76,7 +76,6 @@ export class CompareComponent implements OnInit, OnDestroy {
   }
   change_modal_sate() {
     this.ai_modal_openclose = !this.ai_modal_openclose;
-    console.log(this.ai_modal_openclose);
   }
   send_query() {
     this.ai_response_loading = !this.ai_response_loading;
@@ -93,7 +92,6 @@ export class CompareComponent implements OnInit, OnDestroy {
       .chat_OpenAI(this.user_query)
       .pipe(takeUntil(this.$destroy))
       .subscribe((message) => {
-        console.log(message);
         this.conversation.push(message);
         this.user_query = '';
         this.ai_response_loading = !this.ai_response_loading;

@@ -15,11 +15,9 @@ export class SearchModalComponent implements OnInit {
     const data = this.searchService
       .watch()
       .subscribe((value) => (this.isModalOpen = value));
-    console.log(this.isModalOpen);
   }
 
   closeModal() {
     this.searchService.close();
-    console.log(this.isModalOpen);
   }
 }

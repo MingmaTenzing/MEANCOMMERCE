@@ -43,11 +43,9 @@ export class AuthFormComponent {
     if (this.currentRoute == 'signin') {
       this.left_side_bar = true;
     }
-    console.log(this.left_side_bar);
   }
 
   toggle() {
     this.left_side_bar = !this.left_side_bar;
-    console.log(this.left_side_bar);
   }
 }

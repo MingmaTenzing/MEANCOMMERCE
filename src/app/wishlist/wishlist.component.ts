@@ -34,7 +34,6 @@ export class WishlistComponent implements OnInit {
       .select(selectWishlist)
       .pipe(takeUntil(this.$destroy))
       .subscribe((products) => (this.wishListItems = products));
-    console.log(this.wishListItems);
 
     if (this.router.url === '/dashboard/wishlist') {
       this.viewing_in_dashboard = true;

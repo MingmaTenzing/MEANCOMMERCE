@@ -31,7 +31,6 @@ export class ReturnComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._$destroy))
       .subscribe((params) => {
         this.session_id = params['session_id'];
-        console.log(this.session_id);
       });
 
     if (this.session_id) {
@@ -40,7 +39,6 @@ export class ReturnComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this._$destroy))
         .subscribe((data) => {
           this.session_Status = data;
-          console.log(this.session_Status);
 
           if (this.session_Status.status === 'open') {
             this.router.navigate(['/checkout']);
