@@ -6,30 +6,31 @@
       class="bg-blue-300"
     >
       <div
+        routerLink="/dashboard"
+        routerLinkActive="active"
         class="flex items-center space-x-4 hover:bg-ciliconorange hover:text-white p-2"
       >
         <i class="pi pi-bars"></i>
         <span> Dashboard </span>
       </div>
       <div
+        routerLink="/dashboard/order-history"
+        routerLinkActive="active"
         class="flex items-center space-x-4 hover:bg-ciliconorange hover:text-white p-2"
       >
         <i class="pi pi-shop"></i>
         <span> Order History </span>
       </div>
+
       <div
-        class="flex items-center space-x-4 hover:bg-ciliconorange hover:text-white p-2"
-      >
-        <i class="pi pi-map-marker"></i>
-        <span> Track Order </span>
-      </div>
-      <div
+        (click)="gotoCart()"
         class="flex items-center space-x-4 hover:bg-ciliconorange hover:text-white p-2"
       >
         <i class="pi pi-shopping-cart"></i>
         <span> Shopping Cart </span>
       </div>
       <div
+        (click)="gotoWishlist()"
         class="flex items-center space-x-4 hover:bg-ciliconorange hover:text-white p-2"
       >
         <i class="pi pi-heart"></i>
@@ -45,3 +46,5 @@
     </p-sidebar>
   </div>
 </div>
+
+<router-outlet></router-outlet>
