@@ -10,4 +10,38 @@
   >
     <app-quick-view></app-quick-view>
   </div>
+
+  @defer (on timer(4000ms)) {
+
+  <div
+    @enterAndLeave
+    *ngIf="api_delay_message == true"
+    class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[100vh] w-full bg-black bg-opacity-50"
+  >
+    <div class="flex justify-center items-center">
+      <div class="bg-white rounded-lg w-[500px] p-8 space-y-4">
+        <div class="space-y-4">
+          <p class="text-xl font-semibold">
+            API may take a few seconds to respond at first
+          </p>
+          <p>
+            Hi, Mingma here. I'm using the free tier of Render to deploy the
+            backend for this project. It might take a while for backend to
+            response at first, but once the products are fetched on the home
+            page. Please feel free to use it as you'd like
+          </p>
+          <p>Thank you.</p>
+        </div>
+        <div class="flex justify-end">
+          <button
+            (click)="closeModal()"
+            class="text-white bg-ciliconorange px-4 py-2 rounded-lg"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>

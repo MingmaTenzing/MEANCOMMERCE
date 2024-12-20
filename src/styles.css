@@ -134,3 +134,11 @@ body {
   margin: 0;
   font-family: Poppins, "Poppins", sans-serif;
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+.modal-open {
+  background: black;
+}
