@@ -49,10 +49,10 @@
           <!-- price and quantity section -->
           <div class="flex space-x-6 items-center">
             <div class="border rounded-lg p-2">
-              <p>{{ item.quantity }} x ${{ item.price }}</p>
+              <p>{{ item.quantity }} x ${{ item.price / 100 }}</p>
             </div>
             <div class="font-semibold">
-              <p>${{ item.quantity * item.price }}</p>
+              <p>${{ (item.quantity * item.price) / 100 }}</p>
             </div>
           </div>
         </div>
@@ -87,7 +87,9 @@
     >
       <p class="text-lg font-medium">Order Summary</p>
 
-      <p class="text-sm">Extend summary of your order: 34255144545</p>
+      <p class="text-sm">
+        Extend summary of your order: {{ order_details._id }}
+      </p>
 
       <!-- order summary table -->
 
@@ -106,10 +108,12 @@
             <p>....</p>
           </div>
           <div class="space-y-2">
-            <p>${{ order_details.total_amount }}</p>
+            <p>${{ order_details.total_amount / 100 }}</p>
             <p>$0.00</p>
             <p>$100</p>
-            <p class="font-semibold">${{ order_details.total_amount + 100 }}</p>
+            <p class="font-semibold">
+              ${{ order_details.total_amount / 100 + 100 }}
+            </p>
           </div>
         </div>
       </section>
@@ -121,7 +125,7 @@
       <!-- paid by customer -->
       <div class="justify-between flex">
         <p>Paid by customer</p>
-        <p>${{ order_details.total_amount + 100 }}</p>
+        <p>${{ order_details.total_amount / 100 + 100 }}</p>
       </div>
       <div class="justify-between flex">
         <p>Paid due when invoice is sent</p>
