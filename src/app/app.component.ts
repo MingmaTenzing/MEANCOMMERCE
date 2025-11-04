@@ -46,14 +46,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 export class AppComponent {
   title = 'MEANCOMMERCE';
   isquickviewEnabled!: Observable<boolean>;
-  api_delay_message: boolean = true;
 
   constructor(private QuickViewService: QuickViewService) {
     this.isquickviewEnabled = this.QuickViewService.quickView$;
-  }
-
-  closeModal() {
-    this.api_delay_message = false;
-    document.body.classList.remove('stop-scrolling');
   }
 }
